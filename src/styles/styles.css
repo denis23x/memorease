@@ -1,3 +1,4 @@
+@import "./components/animations.css";
 @import "./components/buttons.css";
 
 @tailwind base;
