@@ -1,0 +1,19 @@
+.btn {
+	@apply text-base font-bold rounded-full py-2 px-4;
+
+	&.btn-light {
+		@apply bg-neutral-100 text-sky-950;
+	}
+
+	&.btn-dark {
+		@apply bg-sky-950 text-neutral-50;
+	}
+
+	&.btn-teal {
+		@apply bg-teal-200 text-sky-950;
+	}
+
+	&.btn-red {
+		@apply bg-red-500 text-neutral-50;
+	}
+}

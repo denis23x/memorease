@@ -1,0 +1,9 @@
+@import "./components/buttons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	font-family: "Nunito", serif;
+}
