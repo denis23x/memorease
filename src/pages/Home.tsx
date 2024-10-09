@@ -48,8 +48,8 @@ const Home: React.FC = () => {
 					<div className="flex flex-col gap-4 self-center text-center md:self-start md:text-left p-4">
 						<span className="text-2xl font-bold text-sky-950">Want to know more?</span>
 						<div className="flex items-center gap-4">
-							<Link className="btn btn-red" to="/" aria-label="Start">
-								Start
+							<Link className="btn btn-red" to="/create" aria-label="Create">
+								Create
 							</Link>
 							<Link className="btn btn-teal" to="/example" aria-label="Example">
 								Example

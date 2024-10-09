@@ -2,7 +2,7 @@
   "semi": false,
   "overrides": [
     {
-      "files": "*.tsx",
+      "files": ["*.tsx", "*.ts"],
       "options": {
         "printWidth": 120,
         "tabWidth": 2,
