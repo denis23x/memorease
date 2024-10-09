@@ -5,15 +5,19 @@ import ReactDOM, { Root } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { StoreProvider } from './store/Store';
+
 import './styles/styles.css';
 
 const root: Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
 	<React.StrictMode>
-		<Router>
-			<App />
-		</Router>
+		<StoreProvider>
+			<Router>
+				<App />
+			</Router>
+		</StoreProvider>
 	</React.StrictMode>
 );
 

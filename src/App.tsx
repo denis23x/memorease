@@ -6,7 +6,9 @@ import About from './pages/About';
 import Example from './pages/Example';
 import Home from './pages/Home';
 import Header from './components/Header';
+import Create from './pages/Create';
 import Footer from './components/Footer';
+import Play from './pages/Play';
 import background from './assets/images/background.png';
 
 import '@fontsource/nunito/400.css';
@@ -21,8 +23,10 @@ const App: React.FC = () => {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home />} />
+				<Route path="/create" element={<Create />} />
 				<Route path="/example" element={<Example />} />
 				<Route path="/about" element={<About />} />
+				<Route path="/play/:deckUid" element={<Play />} />
 			</Routes>
 			<Footer />
 		</div>
