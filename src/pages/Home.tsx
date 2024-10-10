@@ -58,7 +58,7 @@ const Home: React.FC = () => {
 					</div>
 				</div>
 				<div className="block">
-					<img src={memorease} alt="MemorEase" className="w-96 h-96 object-cover animate-fly" />
+					<img src={memorease} alt="Memorease" className="w-96 h-96 object-cover animate-fly" />
 				</div>
 			</div>
 		</section>

@@ -10,9 +10,9 @@ const Header: React.FC = () => {
 	return (
 		<header className={'grid grid-cols-2 w-full p-4'}>
 			<nav className={'col-span-1 flex justify-start'}>
-				<Link className={'flex items-center justify-start gap-4'} to={'/'} aria-label={'MemorEase'} title={'MemorEase'}>
+				<Link className={'flex items-center justify-start gap-4'} to={'/'} aria-label={'Memorease'} title={'MemorEase'}>
 					<img src={memorease} alt={'memorease'} className={'size-12'} />
-					<span className={'text-2xl font-bold text-sky-950'}>MemorEase</span>
+					<span className={'text-2xl font-bold text-sky-950'}>Memorease</span>
 				</Link>
 			</nav>
 			<nav className={'col-span-1 flex justify-end'}>
