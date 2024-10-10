@@ -80,9 +80,9 @@ const Decks: React.FC = () => {
 			<Modal isOpen={createDeckModal} onClose={() => setCreateDeckModal(false)}>
 				<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-between gap-4 w-full'}>
-						<h1 className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
+						<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
 							Create
-						</h1>
+						</span>
 						<button
 							className={'me-btn me-btn-dark p-1'}
 							type={'button'}

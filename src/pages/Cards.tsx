@@ -63,9 +63,9 @@ const Cards: React.FC = () => {
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
 						<Back ref={childRef}></Back>
-						<h1 className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap truncate py-2 px-4'}>
+						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap truncate py-2 px-4'}>
 							{deck?.name}
-						</h1>
+						</span>
 					</div>
 					<div className={'flex items-center justify-start gap-4'}>
 						<button
@@ -111,9 +111,9 @@ const Cards: React.FC = () => {
 				<Modal isOpen={deleteDeckModal} onClose={() => setDeleteDeckModal(false)}>
 					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 						<div className={'flex items-center justify-between gap-4 w-full'}>
-							<h1 className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
+							<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
 								Delete
-							</h1>
+							</span>
 							<button
 								className={'me-btn me-btn-dark p-1'}
 								type={'button'}
@@ -147,9 +147,9 @@ const Cards: React.FC = () => {
 				<Modal isOpen={createCardModal} onClose={() => setCreateCardModal(false)}>
 					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 						<div className={'flex items-center justify-between gap-4 w-full'}>
-							<h1 className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
+							<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
 								New Card
-							</h1>
+							</span>
 							<button
 								className={'me-btn me-btn-dark p-1'}
 								type={'button'}

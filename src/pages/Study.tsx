@@ -5,27 +5,31 @@ import Confetti from 'react-confetti';
 import { useStore } from '../store/Store';
 import { useParams } from 'react-router-dom';
 import type { Card as CardType } from '../models/Card';
+import type { Deck as DeckType } from '../models/Deck';
 import type { Score } from '../models/Score';
 import { nanoid } from '../services/Helper';
 import bgDeck from '../assets/images/bg-deck.png';
 import bgCard from '../assets/images/bg-card.png';
 import bgCardStudy from '../assets/images/bg-card-study.png';
+import Back from '../components/Back';
 
 const Study: React.FC = () => {
 	const { deckUid } = useParams<{ deckUid: string }>();
-	const { cards } = useStore();
+	const { decks, cards } = useStore();
 
+	const [studyDeck, setStudyDeck] = useState<DeckType | null>(null);
 	const [studyCards, setStudyCards] = useState<CardType[]>([]);
+
 	const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
 	const [showAnswer, setShowAnswer] = useState<boolean>(false);
 	const [scoreRecords, setScoreRecords] = useState<Score[]>([]);
 
 	useEffect(() => {
 		if (deckUid) {
-			const studyCards: CardType[] = cards.filter((card: CardType) => {
-				return card.deckUid === deckUid;
-			});
+			const studyDeck: DeckType | null = decks.find((deck: DeckType) => deck.uid === deckUid) || null;
+			setStudyDeck(studyDeck);
 
+			const studyCards: CardType[] = cards.filter((card: CardType) => card.deckUid === deckUid);
 			shuffleCards(studyCards);
 		}
 	}, [deckUid, cards]);
@@ -34,6 +38,7 @@ const Study: React.FC = () => {
 		const shuffledCards = [...studyCards].sort(() => Math.random() - 0.5);
 
 		setStudyCards(shuffledCards);
+
 		setActiveCardIndex(0);
 		setShowAnswer(false);
 		setScoreRecords([]);
@@ -76,7 +81,7 @@ const Study: React.FC = () => {
 			<section className="p-4">
 				<Confetti recycle={false} />
 				<div className="flex flex-col gap-8 items-center justify-center max-w-screen-lg">
-					<h1 className="text-2xl font-bold bg-sky-950 text-neutral-50 rounded-full text-nowrap py-2 p-4">Score</h1>
+					<span className="text-2xl font-bold bg-sky-950 text-neutral-50 rounded-full text-nowrap py-2 p-4">Score</span>
 					<table className="table-auto outline outline-neutral-200 rounded-2xl overflow-hidden">
 						<thead className="bg-neutral-200">
 							<tr>
@@ -123,9 +128,16 @@ const Study: React.FC = () => {
 	const activeCard = studyCards[activeCardIndex];
 
 	return (
-		<section className="p-4">
-			<div className="flex flex-col gap-12 items-center justify-center max-w-screen-lg">
-				<h1 className="text-3xl font-bold">Example Quiz</h1>
+		<section className={'overflow-hidden p-4'}>
+			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-8'}>
+				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
+					<div className={'flex items-center justify-start gap-4 max-w-full'}>
+						<Back></Back>
+						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap py-2 px-4'}>
+							{studyDeck?.name}
+						</span>
+					</div>
+				</header>
 				<ul className="flex items-center justify-center relative aspect-[2/3] w-60">
 					<li className="flex card bg-cover" style={{ backgroundImage: `url(${bgDeck})` }}></li>
 					{studyCards.map((card: CardType, index: number) => (
