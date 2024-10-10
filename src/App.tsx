@@ -3,30 +3,31 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import About from './pages/About';
+import Cards from './pages/Cards';
+import Decks from './pages/Decks';
 import Example from './pages/Example';
 import Home from './pages/Home';
 import Header from './components/Header';
-import Create from './pages/Create';
 import Footer from './components/Footer';
-import Play from './pages/Play';
-import background from './assets/images/background.png';
+import bg from './assets/images/bg.png';
 
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 
 const App: React.FC = () => {
+	// prettier-ignore
 	return (
 		<div
-			className="grid grid-rows-layout place-items-center min-h-dvh min-w-dvw bg-repeat bg-center bg-opacity-50 overflow-hidden"
-			style={{ backgroundImage: `url(${background})` }}
+			className={'grid grid-rows-layout place-items-center min-h-dvh min-w-dvw bg-repeat bg-center bg-opacity-50 overflow-hidden'}
+			style={{ backgroundImage: `url(${bg})` }}
 		>
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/create" element={<Create />} />
+				<Route path="/decks" element={<Decks />} />
+				<Route path="/decks/:deckUid" element={<Cards />} />
 				<Route path="/example" element={<Example />} />
 				<Route path="/about" element={<About />} />
-				<Route path="/play/:deckUid" element={<Play />} />
 			</Routes>
 			<Footer />
 		</div>

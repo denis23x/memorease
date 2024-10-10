@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
-import background from '../assets/images/background-2.png';
 
 type Card = {
 	uid: string;
@@ -152,7 +151,7 @@ const Example: React.FC = () => {
 						<li className={`flex card ${index === activeCardIndex ? 'visible' : 'invisible'}`} key={card.uid}>
 							<div
 								className={`flex flex-col justify-center items-center h-full w-full border border-neutral-200 rounded-lg p-4`}
-								style={{ backgroundImage: `url(${background})` }}
+								// style={{ backgroundImage: `url(${background})` }}
 							>
 								{showAnswer ? (
 									<span className="text-lg text-sky-950">{activeCard.answer}</span>
