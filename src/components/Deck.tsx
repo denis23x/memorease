@@ -40,8 +40,8 @@ const Deck: React.FC<DeckProps> = (props: DeckProps) => {
 					</Link>
 				</div>
 				<div className={'text-center text-ellipsis overflow-hidden'}>
-					<span className={'bg-neutral-50 p-1'}>
-						{props.deck.name} ({deckCards.length})
+					<span className={'bg-neutral-50 font-bold p-1'}>
+						{props.deck.name} <span className={'bg-font-regular text-sky-950/50'}>({deckCards.length})</span>
 					</span>
 				</div>
 				<div
