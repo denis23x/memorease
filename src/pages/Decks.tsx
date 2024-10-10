@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/Store';
 import type { Deck as DeckType } from '../models/Deck';
 import Back from '../components/Back';
@@ -9,9 +9,29 @@ import Deck from '../components/Deck';
 const Decks: React.FC = () => {
 	const { decks } = useStore();
 
+	const [filteredDecks, setFilteredDecks] = useState<DeckType[]>([]);
+
+	useEffect(() => {
+		setFilteredDecks(decks);
+	}, [decks]);
+
 	const handleSearch = (value: string) => {
-		console.log(value);
+		const filteredDecks: DeckType[] = decks.filter((deck: DeckType) => {
+			return deck.name.toLowerCase().includes(value.toLowerCase());
+		});
+
+		setFilteredDecks(filteredDecks);
 	};
+
+	// const handleCreateDeck = () => {
+	// 	const deck: DeckType = {
+	// 		uid: nanoid(),
+	// 		name: deckName
+	// 	};
+	//
+	// 	createDeck(deck).then(() => console.debug('Deck created'));
+	// 	setDeckName('');
+	// };
 
 	return (
 		<section className={'p-4'}>
@@ -42,7 +62,7 @@ const Decks: React.FC = () => {
 							</button>
 						</div>
 					</li>
-					{decks.map((deck: DeckType) => (
+					{filteredDecks.map((deck: DeckType) => (
 						<li className={'col-span-1'} key={deck.uid}>
 							<Deck deck={deck}></Deck>
 						</li>

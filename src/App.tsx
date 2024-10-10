@@ -15,10 +15,9 @@ import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 
 const App: React.FC = () => {
-	// prettier-ignore
 	return (
 		<div
-			className={'grid grid-rows-layout place-items-center min-h-dvh min-w-dvw bg-repeat bg-center bg-opacity-50 overflow-hidden'}
+			className={'grid grid-rows-layout min-h-dvh min-w-dvw bg-repeat bg-center bg-opacity-50 overflow-hidden'}
 			style={{ backgroundImage: `url(${bg})` }}
 		>
 			<Header />
