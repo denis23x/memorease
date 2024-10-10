@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import About from './pages/About';
 import Cards from './pages/Cards';
 import Decks from './pages/Decks';
-import Example from './pages/Example';
+import Study from './pages/Study';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -25,7 +25,7 @@ const App: React.FC = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="/decks" element={<Decks />} />
 				<Route path="/decks/:deckUid" element={<Cards />} />
-				<Route path="/example" element={<Example />} />
+				<Route path="/study/:deckUid" element={<Study />} />
 				<Route path="/about" element={<About />} />
 			</Routes>
 			<Footer />

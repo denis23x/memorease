@@ -33,7 +33,7 @@ const Deck: React.FC<DeckProps> = (props: DeckProps) => {
 				<div
 					className={`absolute left-1/2 -translate-x-1/2 transition-all bg-sky-950 text-neutral-50 rounded-b-xl group-hover:top-0 -top-12`}
 				>
-					<Link className={'size-12 flex items-center justify-center p-2'} to={'/'}>
+					<Link className={'size-12 flex items-center justify-center p-2'} to={`/study/${props.deck.uid}`}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
 							<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
 						</svg>

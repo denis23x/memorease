@@ -2,63 +2,38 @@
 
 import React, { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
+import { useStore } from '../store/Store';
+import { useParams } from 'react-router-dom';
+import type { Card as CardType } from '../models/Card';
+import type { Score } from '../models/Score';
+import { nanoid } from '../services/Helper';
+import bgDeck from '../assets/images/bg-deck.png';
+import bgCard from '../assets/images/bg-card.png';
+import bgCardStudy from '../assets/images/bg-card-study.png';
 
-type Card = {
-	uid: string;
-	question: string;
-	answer: string;
-};
+const Study: React.FC = () => {
+	const { deckUid } = useParams<{ deckUid: string }>();
+	const { cards } = useStore();
 
-type ScoreRecord = {
-	question: string;
-	score: 'good' | 'bad';
-};
-
-const cardsData: Card[] = [
-	{
-		uid: '1',
-		question: 'What is the capital of France?',
-		answer: 'Paris'
-	},
-	{
-		uid: '2',
-		question: 'What is 2 + 2?',
-		answer: '4'
-	},
-	{
-		uid: '3',
-		question: 'What is the largest planet?',
-		answer: 'Jupiter'
-	}
-];
-
-const Example: React.FC = () => {
-	const [cards, setCards] = useState<Card[]>([]);
+	const [studyCards, setStudyCards] = useState<CardType[]>([]);
 	const [activeCardIndex, setActiveCardIndex] = useState(0);
 	const [showAnswer, setShowAnswer] = useState(false);
-	const [scoreRecords, setScoreRecords] = useState<ScoreRecord[]>([
-		// {
-		// 	question: 'What is the capital of France?',
-		// 	score: 'good'
-		// },
-		// {
-		// 	question: 'What is 2 + 2?',
-		// 	score: 'good'
-		// },
-		// {
-		// 	question: 'What is the largest planet?',
-		// 	score: 'good'
-		// }
-	]);
+	const [scoreRecords, setScoreRecords] = useState<Score[]>([]);
 
 	useEffect(() => {
-		// Shuffle cards initially
-		shuffleCards();
-	}, []);
+		if (deckUid) {
+			const studyCards: CardType[] = cards.filter((card: CardType) => {
+				return card.deckUid === deckUid;
+			});
 
-	const shuffleCards = () => {
-		const shuffledCards = [...cardsData].sort(() => Math.random() - 0.5);
-		setCards(shuffledCards);
+			shuffleCards(studyCards);
+		}
+	}, [deckUid, cards]);
+
+	const shuffleCards = (studyCards: CardType[]) => {
+		const shuffledCards = [...studyCards].sort(() => Math.random() - 0.5);
+
+		setStudyCards(shuffledCards);
 		setActiveCardIndex(0);
 		setShowAnswer(false);
 		setScoreRecords([]);
@@ -68,29 +43,35 @@ const Example: React.FC = () => {
 		setShowAnswer(true);
 	};
 
-	const handleScore = (score: 'good' | 'bad') => {
-		const currentCard = cards[activeCardIndex];
+	const handleScore = (answer: string) => {
+		const currentCard = studyCards[activeCardIndex];
 		setShowAnswer(false);
 
 		// Update the score records
-		setScoreRecords(prevRecords => [...prevRecords, { question: currentCard.question, score }]);
+		setScoreRecords((prevRecords: Score[]) => [
+			...prevRecords,
+			{
+				uid: nanoid(),
+				question: currentCard.question,
+				answer
+			}
+		]);
 
 		// Remove the current card and move to the next
-		const remainingCards = cards.filter((_, index) => index !== activeCardIndex);
+		const remainingCards = studyCards.filter((_, index) => index !== activeCardIndex);
 		if (remainingCards.length > 0) {
-			setCards(remainingCards);
+			setStudyCards(remainingCards);
 			setActiveCardIndex(0);
 		} else {
-			//! Callback
-			setCards([]); // End the round
+			setStudyCards([]); // End the round
 		}
 	};
 
 	const handleReset = () => {
-		shuffleCards(); // Reset the game fully
+		// shuffleCards(); // Reset the game fully
 	};
 
-	if (cards.length === 0 && scoreRecords.length > 0) {
+	if (studyCards.length === 0 && scoreRecords.length > 0) {
 		return (
 			<section className="p-4">
 				<Confetti recycle={false} />
@@ -104,16 +85,16 @@ const Example: React.FC = () => {
 							</tr>
 						</thead>
 						<tbody className="bg-neutral-50">
-							{scoreRecords.map((record, index) => (
+							{scoreRecords.map((score: Score, index) => (
 								<tr key={index}>
-									<td className="text-left text-base text-sky-950 py-2 px-4">{record.question}</td>
+									<td className="text-left text-base text-sky-950 py-2 px-4">{score.question}</td>
 									<td className="text-left text-base text-sky-950 py-2 px-4">
 										<button
 											type="button"
-											className={`btn ${record.score === 'bad' ? 'btn-red' : 'btn-teal'}`}
+											className={`btn ${score.answer === 'bad' ? 'btn-red' : 'btn-teal'}`}
 											aria-label="Score"
 										>
-											{record.score}
+											{score.answer}
 										</button>
 									</td>
 								</tr>
@@ -128,7 +109,7 @@ const Example: React.FC = () => {
 		);
 	}
 
-	if (cards.length === 0) {
+	if (studyCards.length === 0) {
 		return (
 			<div>
 				<p>No more cards. Well done!</p>
@@ -139,16 +120,20 @@ const Example: React.FC = () => {
 		);
 	}
 
-	const activeCard = cards[activeCardIndex];
+	const activeCard = studyCards[activeCardIndex];
 
 	return (
 		<section className="p-4">
 			<div className="flex flex-col gap-12 items-center justify-center max-w-screen-lg">
 				<h1 className="text-3xl font-bold">Example Quiz</h1>
 				<ul className="flex items-center justify-center relative aspect-[2/3] w-60">
-					<li className="flex card"></li>
-					{cards.map((card: Record<string, string>, index: number) => (
-						<li className={`flex card ${index === activeCardIndex ? 'visible' : 'invisible'}`} key={card.uid}>
+					<li className="flex card bg-cover" style={{ backgroundImage: `url(${bgDeck})` }}></li>
+					{studyCards.map((card: CardType, index: number) => (
+						<li
+							className={`flex card bg-cover ${index === activeCardIndex ? 'visible' : 'invisible'}`}
+							key={card.uid}
+							style={{ backgroundImage: `url(${bgCardStudy})` }}
+						>
 							<div
 								className={`flex flex-col justify-center items-center h-full w-full border border-neutral-200 rounded-lg p-4`}
 								// style={{ backgroundImage: `url(${background})` }}
@@ -161,18 +146,18 @@ const Example: React.FC = () => {
 							</div>
 						</li>
 					))}
-					<li className="flex card"></li>
+					<li className="flex card bg-cover" style={{ backgroundImage: `url(${bgCard})` }}></li>
 				</ul>
 				{!showAnswer ? (
-					<button type="button" className="btn btn-dark" aria-label="Reveal" onClick={handleReveal}>
+					<button type="button" className="me-btn me-btn-dark" aria-label="Reveal" onClick={handleReveal}>
 						Reveal
 					</button>
 				) : (
 					<div className="flex items-center justify-center gap-4">
-						<button type="button" className="btn btn-teal" aria-label="Good" onClick={() => handleScore('good')}>
+						<button type="button" className="me-btn me-btn-dark" aria-label="Good" onClick={() => handleScore('good')}>
 							Good
 						</button>
-						<button type="button" className="btn btn-red" aria-label="Bad" onClick={() => handleScore('bad')}>
+						<button type="button" className="me-btn me-btn-dark" aria-label="Bad" onClick={() => handleScore('bad')}>
 							Bad
 						</button>
 					</div>
@@ -182,4 +167,4 @@ const Example: React.FC = () => {
 	);
 };
 
-export default Example;
+export default Study;
