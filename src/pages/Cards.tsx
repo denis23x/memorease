@@ -1,17 +1,18 @@
 /** @format */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useStore } from '../store/Store';
 import type { Deck as DeckType } from '../models/Deck';
 import type { Card as CardType } from '../models/Card';
-import Back from '../components/Back';
 import Card from '../components/Card';
 import Modal from '../components/Modal';
 import { nanoid } from '../services/Helper';
+import { useNavigate } from 'react-router-dom';
+import bgNeutral from '../assets/images/bg-neutral.png';
 
 const Cards: React.FC = () => {
-	const childRef = useRef<{ handleBack: () => void }>(null);
+	const navigate = useNavigate();
 	const { deckUid } = useParams<{ deckUid: string }>();
 	const { decks, cards, deleteDeck, createCard } = useStore();
 	const [deleteDeckModal, setDeleteDeckModal] = useState<boolean>(false);
@@ -36,7 +37,8 @@ const Cards: React.FC = () => {
 			return;
 		}
 
-		deleteDeck(deckUid).then(() => childRef.current?.handleBack());
+		deleteDeck(deckUid).then(() => console.debug('Deck deleted'));
+		navigate('/decks');
 	};
 
 	const handleCreateCard = () => {
@@ -58,11 +60,15 @@ const Cards: React.FC = () => {
 	};
 
 	return (
-		<section className={'overflow-hidden p-4'}>
-			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-8'}>
+		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
+			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
-						<Back ref={childRef}></Back>
+						<Link className={'me-btn me-btn-dark p-1'} to={'/decks'}>
+							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+							</svg>
+						</Link>
 						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap truncate py-2 px-4'}>
 							{deck?.name}
 						</span>
@@ -87,23 +93,36 @@ const Cards: React.FC = () => {
 					</div>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 w-full'}>
-					<li className={`col-span-1`}>
+					<li className={`col-span-1 rounded-xl shadow-xl`}>
 						<div
-							className={`flex flex-col items-center justify-center gap-4 size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 overflow-hidden rounded-xl p-1`}
+							className={`flex flex-col items-center justify-center gap-4 size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 overflow-hidden rounded-xl transition-transform hover:mouse:scale-105 hover:mouse:-translate-y-1.5 p-1`}
 						>
-							<button
-								className={'me-btn me-btn-dark px-4'}
-								type={'button'}
-								onClick={() => setCreateCardModal(true)}
-								aria-label={'Create Card'}
-								title={'Create Card'}
+							<div
+								className={`flex items-center justify-center size-full relative bg-cover border border-neutral-200 rounded-lg`}
+								style={{ backgroundImage: `url(${bgNeutral})` }}
 							>
-								Create
-							</button>
+								<button
+									className={'me-btn me-btn-dark p-1'}
+									type={'button'}
+									aria-label={'Create Card'}
+									title={'Create Card'}
+									onClick={() => setCreateCardModal(true)}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="40"
+										height="40"
+										fill="currentColor"
+										viewBox="0 0 16 16"
+									>
+										<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+									</svg>
+								</button>
+							</div>
 						</div>
 					</li>
 					{deckCards.map((card: CardType) => (
-						<li className={'col-span-1'} key={card.uid}>
+						<li className={'col-span-1 rounded-xl shadow-xl'} key={card.uid}>
 							<Card card={card}></Card>
 						</li>
 					))}

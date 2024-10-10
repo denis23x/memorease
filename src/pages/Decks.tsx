@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/Store';
 import type { Deck as DeckType } from '../models/Deck';
-import Back from '../components/Back';
 import Deck from '../components/Deck';
 import { nanoid } from '../services/Helper';
 import Modal from '../components/Modal';
+import bgNeutral from '../assets/images/bg-neutral.png';
+import { Link } from 'react-router-dom';
 
 const Decks: React.FC = () => {
 	const { decks, createDeck } = useStore();
@@ -37,11 +38,15 @@ const Decks: React.FC = () => {
 	};
 
 	return (
-		<section className={'overflow-hidden p-4'}>
-			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-8'}>
+		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
+			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
-						<Back></Back>
+						<Link className={'me-btn me-btn-dark p-1'} to={'/'}>
+							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+							</svg>
+						</Link>
 						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap py-2 px-4'}>
 							Select a Deck
 						</span>
@@ -55,23 +60,36 @@ const Decks: React.FC = () => {
 					/>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-y-6 gap-x-4 w-full'}>
-					<li className={`col-span-1`}>
+					<li className={`col-span-1 rounded-xl shadow-xl`}>
 						<div
-							className={`flex flex-col items-center justify-center gap-4 size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 overflow-hidden rounded-xl shadow-deck p-1`}
+							className={`flex flex-col items-center justify-center gap-4 size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 overflow-hidden rounded-xl shadow-deck transition-transform hover:mouse:scale-110 hover:mouse:-translate-y-3 p-1`}
 						>
-							<button
-								className={'me-btn me-btn-dark px-4'}
-								type={'button'}
-								onClick={() => setCreateDeckModal(true)}
-								aria-label={'Create Deck'}
-								title={'Create Deck'}
+							<div
+								className={`flex items-center justify-center size-full relative bg-cover border border-neutral-200 rounded-lg`}
+								style={{ backgroundImage: `url(${bgNeutral})` }}
 							>
-								Create
-							</button>
+								<button
+									className={'me-btn me-btn-dark p-1'}
+									type={'button'}
+									aria-label={'Create Deck'}
+									title={'Create Deck'}
+									onClick={() => setCreateDeckModal(true)}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="40"
+										height="40"
+										fill="currentColor"
+										viewBox="0 0 16 16"
+									>
+										<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+									</svg>
+								</button>
+							</div>
 						</div>
 					</li>
 					{filteredDecks.map((deck: DeckType) => (
-						<li className={'col-span-1'} key={deck.uid}>
+						<li className={'col-span-1 rounded-xl shadow-xl'} key={deck.uid}>
 							<Deck deck={deck}></Deck>
 						</li>
 					))}
