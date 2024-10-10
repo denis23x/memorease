@@ -16,8 +16,8 @@ const Study: React.FC = () => {
 	const { cards } = useStore();
 
 	const [studyCards, setStudyCards] = useState<CardType[]>([]);
-	const [activeCardIndex, setActiveCardIndex] = useState(0);
-	const [showAnswer, setShowAnswer] = useState(false);
+	const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
+	const [showAnswer, setShowAnswer] = useState<boolean>(false);
 	const [scoreRecords, setScoreRecords] = useState<Score[]>([]);
 
 	useEffect(() => {

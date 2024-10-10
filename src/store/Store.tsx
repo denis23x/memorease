@@ -14,8 +14,8 @@ interface StoreContextProps {
 	deleteDeck: (deckUid: string) => Promise<void>;
 	createCard: (card: Card) => Promise<void>;
 	deleteCard: (cardUid: string) => Promise<void>;
-	createScore: (score: Score) => Promise<void>;
-	deleteScore: (scoreUid: string) => Promise<void>;
+	createScore: (score: Score) => void;
+	deleteScore: (scoreUid: string) => void;
 }
 
 // prettier-ignore
@@ -43,13 +43,13 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 		setDecks((prev: Deck[]) => [...prev, deck]);
 	};
 
-	// prettier-ignore
 	const deleteDeck = async (deckUid: string) => {
-		await dbDeleteDeck(deckUid);
+		// prettier-ignore
 		await Promise.all([...cards.filter((card: Card) => card.deckUid === deckUid).map(async (card: Card) => deleteCard(card.uid))]);
+		await dbDeleteDeck(deckUid);
 
-		setDecks((prev: Deck[]) => prev.filter((deck: Deck) => deck.uid !== deckUid));
 		setCards((prev: Card[]) => prev.filter((card: Card) => card.deckUid !== deckUid));
+		setDecks((prev: Deck[]) => prev.filter((deck: Deck) => deck.uid !== deckUid));
 	};
 
 	const createCard = async (card: Card) => {
@@ -62,11 +62,11 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 		setCards((prev: Card[]) => prev.filter((card: Card) => card.uid !== cardUid));
 	};
 
-	const createScore = async (score: Score) => {
+	const createScore = (score: Score) => {
 		setScores((prev: Score[]) => [...prev, score]);
 	};
 
-	const deleteScore = async (scoreUid: string) => {
+	const deleteScore = (scoreUid: string) => {
 		setScores((prev: Score[]) => prev.filter((score: Score) => score.uid !== scoreUid));
 	};
 
