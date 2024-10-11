@@ -25,12 +25,14 @@ const Cards: React.FC = () => {
 	const [deckCards, setDeckCards] = useState<CardType[]>([]);
 
 	useEffect(() => {
-		const deck: DeckType | undefined = decks.find((deck: DeckType) => deck.uid === deckUid);
-		const deckCards: CardType[] = cards.filter((card: CardType) => card.deckUid === deckUid);
+		if (deckUid) {
+			const deck: DeckType | undefined = decks.find((deck: DeckType) => deck.uid === deckUid);
+			const deckCards: CardType[] = cards.filter((card: CardType) => card.deckUid === deckUid);
 
-		if (deck) {
-			setDeck(deck);
-			setDeckCards(deckCards);
+			if (deck) {
+				setDeck(deck);
+				setDeckCards(deckCards);
+			}
 		}
 	}, [deckUid, decks, cards]);
 
