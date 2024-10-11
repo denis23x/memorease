@@ -5,8 +5,8 @@
 
 .Toastify__toast {
 	@apply rounded-full min-h-fit p-0 my-4 mx-auto w-fit;
+}
 
-	.Toastify__toast-body {
-		@apply text-2xl text-center font-sans font-bold py-2 px-4 m-0;
-	}
+.Toastify__toast-body {
+	@apply text-2xl text-center font-sans font-bold py-2 px-4 m-0;
 }

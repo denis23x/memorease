@@ -18,28 +18,26 @@
 	@apply aspect-[2/3];
 
 	perspective: 1000px;
+}
 
-	&.active {
-		.animate-flip-inner {
-			transform: rotateY(180deg);
-		}
-	}
+.animate-flip.active .animate-flip-inner {
+	transform: rotateY(180deg);
+}
 
-	.animate-flip-inner {
-		@apply relative size-full;
+.animate-flip-inner {
+	@apply relative size-full;
 
-		transition: transform 0.2s;
-		transform-style: preserve-3d;
-	}
+	transition: transform 0.2s;
+	transform-style: preserve-3d;
+}
 
-	.animate-flip-front, .animate-flip-back {
-		@apply absolute size-full;
+.animate-flip-front, .animate-flip-back {
+	@apply absolute size-full;
 
-		-webkit-backface-visibility: hidden;
-		backface-visibility: hidden;
-	}
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
 
-	.animate-flip-back {
-		transform: rotateY(180deg);
-	}
+.animate-flip-back {
+	transform: rotateY(180deg);
 }
