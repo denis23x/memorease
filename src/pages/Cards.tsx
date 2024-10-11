@@ -95,36 +95,33 @@ const Cards: React.FC = () => {
 					</div>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 w-full'}>
-					<li className={`col-span-1 rounded-xl shadow-xl`}>
-						<div
-							className={`flex flex-col items-center justify-center gap-4 size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 overflow-hidden rounded-xl transition-transform hover:mouse:scale-105 hover:mouse:-translate-y-1.5 p-1`}
-						>
-							<div
-								className={`flex items-center justify-center size-full relative bg-cover border border-neutral-200 rounded-lg`}
-								style={{ backgroundImage: `url(${bgNeutral})` }}
-							>
-								<button
-									className={'me-btn me-btn-dark p-1'}
-									type={'button'}
-									aria-label={'Create Card'}
-									title={'Create Card'}
-									onClick={() => setCreateCardModal(true)}
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="40"
-										height="40"
-										fill="currentColor"
-										viewBox="0 0 16 16"
+					<li className={'col-span-1'}>
+						<div className={'card'}>
+							<div className={'card-inner'} style={{ backgroundImage: `url(${bgNeutral})` }}>
+								<p className={'card-body'}>
+									<button
+										className={'me-btn me-btn-dark p-1'}
+										type={'button'}
+										aria-label={'Create Card'}
+										title={'Create Card'}
+										onClick={() => setCreateCardModal(true)}
 									>
-										<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-									</svg>
-								</button>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="40"
+											height="40"
+											fill="currentColor"
+											viewBox="0 0 16 16"
+										>
+											<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+										</svg>
+									</button>
+								</p>
 							</div>
 						</div>
 					</li>
 					{deckCards.map((card: CardType) => (
-						<li className={'col-span-1 rounded-xl shadow-xl'} key={card.uid}>
+						<li className={'col-span-1'} key={card.uid}>
 							<Card card={card}></Card>
 						</li>
 					))}

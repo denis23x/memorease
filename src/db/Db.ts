@@ -13,7 +13,6 @@ import seedHistory from '../assets/seed/seed-history.json';
 import seedInventions from '../assets/seed/seed-inventions.json';
 import seedMythology from '../assets/seed/seed-mythology.json';
 import seedPhysics from '../assets/seed/seed-physics.json';
-import seedQuotes from '../assets/seed/seed-quotes.json';
 import seedScience from '../assets/seed/seed-science.json';
 import seedSport from '../assets/seed/seed-sport.json';
 
@@ -71,10 +70,6 @@ dbPromise.then(async (db: IDBPDatabase<IDBPDatabase>) => {
 			name: 'Physics'
 		},
 		{
-			uid: 'seed-quotes',
-			name: 'Quotes'
-		},
-		{
 			uid: 'seed-science',
 			name: 'Science'
 		},
@@ -95,7 +90,6 @@ dbPromise.then(async (db: IDBPDatabase<IDBPDatabase>) => {
 		seedInventions,
 		seedMythology,
 		seedPhysics,
-		seedQuotes,
 		seedScience,
 		seedSport
 	].flat();
