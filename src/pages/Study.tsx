@@ -166,7 +166,7 @@ const Study: React.FC = () => {
 	const activeCard = studyCards[activeCardIndex];
 
 	return (
-		<section className={'overflow-hidden p-4'}>
+		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
 			<div className={'flex flex-col items-start justify-start gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
@@ -201,7 +201,7 @@ const Study: React.FC = () => {
 					</div>
 				</header>
 				<div className={'flex items-start justify-center w-full'}>
-					<ul className={'relative w-60'}>
+					<ul className={'relative w-60 aspect-[2/3]'}>
 						<li className={`study-card w-52 z-0 absolute top-4 -rotate-12 left-1/3 -translate-x-2/3`}>
 							<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgTeal})` }}></div>
 						</li>

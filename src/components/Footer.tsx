@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
 	}, []);
 
 	return (
-		<footer className={'p-4'}>
+		<footer className={'text-center p-4'}>
 			<span className={'text-sky-950/50'}>© {year} Memorease</span>
 		</footer>
 	);

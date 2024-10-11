@@ -17,11 +17,8 @@ import { Bounce, ToastContainer } from 'react-toastify';
 
 const App: React.FC = () => {
 	return (
-		<div className={'block'}>
-			<div
-				className={'grid grid-rows-layout min-h-dvh min-w-dvw bg-repeat bg-center bg-opacity-50 overflow-hidden'}
-				style={{ backgroundImage: `url(${bg})` }}
-			>
+		<div className={'bg-repeat'} style={{ backgroundImage: `url(${bg})` }}>
+			<div className={'grid grid-rows-layout min-h-dvh min-w-dvw overflow-hidden'}>
 				<Header />
 				<Routes>
 					<Route path="/" element={<Home />} />
