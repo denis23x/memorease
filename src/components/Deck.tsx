@@ -22,19 +22,14 @@ const Deck: React.FC<DeckProps> = ({ deck }: DeckProps) => {
 	}, [cards, deck]);
 
 	return (
-		<div
-			className={`size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-deck transition-transform hover:mouse:scale-110 hover:mouse:-translate-y-3 p-1`}
-		>
+		<div className={`deck`}>
 			<Link to={`/study/${deck.uid}`}>
-				<div
-					className={`flex items-center justify-center size-full relative bg-cover border border-neutral-200 rounded-lg`}
-					style={{ backgroundImage: `url(${bgTeal})` }}
-				>
-					<div className={'text-center text-ellipsis overflow-hidden'}>
-						<p className={'bg-neutral-50 font-bold p-1'}>
-							{deck.name} <span className={'bg-font-regular text-sky-950/50'}>({deckCards.length})</span>
-						</p>
-					</div>
+				<div className={`deck-inner`} style={{ backgroundImage: `url(${bgTeal})` }}>
+					<p className={'deck-body'}>
+						<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>
+							{deck.name} <span className={'text-sm text-sky-950/50'}>({deckCards.length})</span>
+						</span>
+					</p>
 				</div>
 			</Link>
 		</div>

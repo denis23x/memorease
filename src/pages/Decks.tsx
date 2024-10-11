@@ -64,14 +64,9 @@ const Decks: React.FC = () => {
 					/>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-y-6 gap-x-4 w-full'}>
-					<li className={`col-span-1 rounded-xl shadow-xl`}>
-						<div
-							className={`flex flex-col items-center justify-center gap-4 size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 overflow-hidden rounded-xl shadow-deck transition-transform hover:mouse:scale-110 hover:mouse:-translate-y-3 p-1`}
-						>
-							<div
-								className={`flex items-center justify-center size-full relative bg-cover border border-neutral-200 rounded-lg`}
-								style={{ backgroundImage: `url(${bgNeutral})` }}
-							>
+					<li className={`col-span-1`}>
+						<div className={`deck`}>
+							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 								<button
 									className={'me-btn me-btn-dark p-1'}
 									type={'button'}
@@ -93,7 +88,7 @@ const Decks: React.FC = () => {
 						</div>
 					</li>
 					{filteredDecks.map((deck: DeckType) => (
-						<li className={'col-span-1 rounded-xl shadow-xl'} key={deck.uid}>
+						<li className={'col-span-1'} key={deck.uid}>
 							<Deck deck={deck}></Deck>
 						</li>
 					))}

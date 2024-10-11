@@ -98,25 +98,23 @@ const Cards: React.FC = () => {
 					<li className={'col-span-1'}>
 						<div className={'card'}>
 							<div className={'card-inner'} style={{ backgroundImage: `url(${bgNeutral})` }}>
-								<p className={'card-body'}>
-									<button
-										className={'me-btn me-btn-dark p-1'}
-										type={'button'}
-										aria-label={'Create Card'}
-										title={'Create Card'}
-										onClick={() => setCreateCardModal(true)}
+								<button
+									className={'me-btn me-btn-dark p-1'}
+									type={'button'}
+									aria-label={'Create Card'}
+									title={'Create Card'}
+									onClick={() => setCreateCardModal(true)}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="40"
+										height="40"
+										fill="currentColor"
+										viewBox="0 0 16 16"
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="40"
-											height="40"
-											fill="currentColor"
-											viewBox="0 0 16 16"
-										>
-											<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-										</svg>
-									</button>
-								</p>
+										<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+									</svg>
+								</button>
 							</div>
 						</div>
 					</li>

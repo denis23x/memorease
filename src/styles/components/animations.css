@@ -13,3 +13,33 @@
 		transform: translateY(0);
 	}
 }
+
+.animate-flip {
+	@apply aspect-[2/3];
+
+	perspective: 1000px;
+
+	&.active {
+		.animate-flip-inner {
+			transform: rotateY(180deg);
+		}
+	}
+
+	.animate-flip-inner {
+		@apply relative size-full;
+
+		transition: transform 0.25s;
+		transform-style: preserve-3d;
+	}
+
+	.animate-flip-front, .animate-flip-back {
+		@apply absolute size-full;
+
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+
+	.animate-flip-back {
+		transform: rotateY(180deg);
+	}
+}
