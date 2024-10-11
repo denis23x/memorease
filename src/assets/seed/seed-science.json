@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-science-q1",
+    "deckUid": "seed-science",
+    "question": "What is the smallest unit of matter?",
+    "answer": "Atom ⚛️"
+  },
+  {
+    "uid": "seed-science-q2",
+    "deckUid": "seed-science",
+    "question": "Who discovered the theory of relativity?",
+    "answer": "Albert Einstein 👨‍🔬"
+  },
+  {
+    "uid": "seed-science-q3",
+    "deckUid": "seed-science",
+    "question": "What is the process by which plants convert sunlight into energy?",
+    "answer": "Photosynthesis 🌱☀️"
+  },
+  {
+    "uid": "seed-science-q4",
+    "deckUid": "seed-science",
+    "question": "What is the largest organ in the human body?",
+    "answer": "Skin 🧑‍⚕️"
+  },
+  {
+    "uid": "seed-science-q5",
+    "deckUid": "seed-science",
+    "question": "What is the chemical formula for water?",
+    "answer": "H₂O 💧"
+  },
+  {
+    "uid": "seed-science-q6",
+    "deckUid": "seed-science",
+    "question": "What is the name of the process by which cells divide?",
+    "answer": "Mitosis 🧬"
+  },
+  {
+    "uid": "seed-science-q7",
+    "deckUid": "seed-science",
+    "question": "What is the term for the study of the universe and its contents?",
+    "answer": "Astronomy 🔭"
+  },
+  {
+    "uid": "seed-science-q8",
+    "deckUid": "seed-science",
+    "question": "What is the name of the force that pulls objects towards the Earth?",
+    "answer": "Gravity 🌎"
+  },
+  {
+    "uid": "seed-science-q9",
+    "deckUid": "seed-science",
+    "question": "What is the name of the process by which DNA is copied?",
+    "answer": "Replication 🧬"
+  },
+  {
+    "uid": "seed-science-q10",
+    "deckUid": "seed-science",
+    "question": "What is the term for the study of living organisms?",
+    "answer": "Biology 🔬"
+  }
+]

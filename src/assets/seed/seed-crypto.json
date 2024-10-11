@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-crypto-q1",
+    "deckUid": "seed-crypto",
+    "question": "What is cryptocurrency?",
+    "answer": "A digital or virtual currency that uses cryptography for security and operates independently of a central bank. 🪙"
+  },
+  {
+    "uid": "seed-crypto-q2",
+    "deckUid": "seed-crypto",
+    "question": "What is blockchain technology?",
+    "answer": "A distributed ledger system that records transactions in a way that makes them difficult or impossible to hack or change. ⛓️"
+  },
+  {
+    "uid": "seed-crypto-q3",
+    "deckUid": "seed-crypto",
+    "question": "What is the most popular cryptocurrency?",
+    "answer": "Bitcoin ₿"
+  },
+  {
+    "uid": "seed-crypto-q4",
+    "deckUid": "seed-crypto",
+    "question": "How do you mine cryptocurrency?",
+    "answer": "By using powerful computers to solve complex mathematical problems in exchange for cryptocurrency. ⛏️"
+  },
+  {
+    "uid": "seed-crypto-q5",
+    "deckUid": "seed-crypto",
+    "question": "What are the risks associated with investing in cryptocurrency?",
+    "answer": "Volatility 📈📉, security risks 🔒, and regulatory uncertainty ⚖️."
+  },
+  {
+    "uid": "seed-crypto-q6",
+    "deckUid": "seed-crypto",
+    "question": "What is a cryptocurrency wallet?",
+    "answer": "A digital wallet used to store, send, and receive cryptocurrency. 👛"
+  },
+  {
+    "uid": "seed-crypto-q7",
+    "deckUid": "seed-crypto",
+    "question": "What is the difference between a cryptocurrency exchange and a wallet?",
+    "answer": "A cryptocurrency exchange is a platform where you can buy, sell, and trade cryptocurrencies, while a wallet is a digital storage device for your cryptocurrencies. 🏦 vs. 👛"
+  },
+  {
+    "uid": "seed-crypto-q8",
+    "deckUid": "seed-crypto",
+    "question": "What is a stablecoin?",
+    "answer": "A type of cryptocurrency pegged to a stable asset, such as the US dollar. 💲"
+  },
+  {
+    "uid": "seed-crypto-q9",
+    "deckUid": "seed-crypto",
+    "question": "What is a decentralized finance (DeFi) platform?",
+    "answer": "A financial application built on a blockchain network that offers various financial services, such as lending, borrowing, and trading. 🏦"
+  },
+  {
+    "uid": "seed-crypto-q10",
+    "deckUid": "seed-crypto",
+    "question": "What is the future of cryptocurrency?",
+    "answer": "The future of cryptocurrency is uncertain, but it has the potential to revolutionize the financial industry. 🚀"
+  }
+]

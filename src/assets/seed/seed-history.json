@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-history-q1",
+    "deckUid": "seed-history",
+    "question": "What is the oldest civilization?",
+    "answer": "Sumerian civilization 🇮🇶"
+  },
+  {
+    "uid": "seed-history-q2",
+    "deckUid": "seed-history",
+    "question": "Who was the first person to walk on the moon?",
+    "answer": "Neil Armstrong 🇺🇸"
+  },
+  {
+    "uid": "seed-history-q3",
+    "deckUid": "seed-history",
+    "question": "What was the French Revolution?",
+    "answer": "A period of political and social upheaval in France 🇫🇷"
+  },
+  {
+    "uid": "seed-history-q4",
+    "deckUid": "seed-history",
+    "question": "What was the Cold War?",
+    "answer": "A geopolitical rivalry between the United States and the Soviet Union 🇺🇸🇷🇺"
+  },
+  {
+    "uid": "seed-history-q5",
+    "deckUid": "seed-history",
+    "question": "Who was the first president of the United States?",
+    "answer": "George Washington 🇺🇸"
+  },
+  {
+    "uid": "seed-history-q6",
+    "deckUid": "seed-history",
+    "question": "What was the Industrial Revolution?",
+    "answer": "A period of rapid industrial growth in Europe and the United States 🏭"
+  },
+  {
+    "uid": "seed-history-q7",
+    "deckUid": "seed-history",
+    "question": "Who was the first emperor of Rome?",
+    "answer": "Augustus Caesar 🇮🇹"
+  },
+  {
+    "uid": "seed-history-q8",
+    "deckUid": "seed-history",
+    "question": "What was the American Civil War?",
+    "answer": "A war fought between the North and South of the United States 🇺🇸"
+  },
+  {
+    "uid": "seed-history-q9",
+    "deckUid": "seed-history",
+    "question": "Who was the first woman to win the Nobel Peace Prize?",
+    "answer": "Jane Addams 🇺🇸"
+  },
+  {
+    "uid": "seed-history-q10",
+    "deckUid": "seed-history",
+    "question": "What was the Battle of Waterloo?",
+    "answer": "A decisive battle in the Napoleonic Wars 🇫🇷"
+  }
+]

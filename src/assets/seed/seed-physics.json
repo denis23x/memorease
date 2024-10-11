@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-physics-q1",
+    "deckUid": "seed-physics",
+    "question": "What is the fundamental unit of force in the SI system?",
+    "answer": "Newton (N) 🍎"
+  },
+  {
+    "uid": "seed-physics-q2",
+    "deckUid": "seed-physics",
+    "question": "What is the formula for calculating force?",
+    "answer": "Force = mass x acceleration (F = ma) 🏋️‍♂️"
+  },
+  {
+    "uid": "seed-physics-q3",
+    "deckUid": "seed-physics",
+    "question": "What is the law of gravity?",
+    "answer": "Every object in the universe attracts every other object with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. 🌎"
+  },
+  {
+    "uid": "seed-physics-q4",
+    "deckUid": "seed-physics",
+    "question": "What is the difference between mass and weight?",
+    "answer": "Mass is the amount of matter in an object, while weight is the force of gravity acting on that object. ⚖️"
+  },
+  {
+    "uid": "seed-physics-q5",
+    "deckUid": "seed-physics",
+    "question": "What is the speed of light in a vacuum?",
+    "answer": "Approximately 3 x 10^8 meters per second (m/s) ⚡"
+  },
+  {
+    "uid": "seed-physics-q6",
+    "deckUid": "seed-physics",
+    "question": "What is the law of conservation of energy?",
+    "answer": "Energy cannot be created or destroyed, only transferred from one form to another. ♻️"
+  },
+  {
+    "uid": "seed-physics-q7",
+    "deckUid": "seed-physics",
+    "question": "What is the difference between a scalar quantity and a vector quantity?",
+    "answer": "A scalar quantity has only magnitude, while a vector quantity has both magnitude and direction. ➡️"
+  },
+  {
+    "uid": "seed-physics-q8",
+    "deckUid": "seed-physics",
+    "question": "What is the formula for calculating kinetic energy?",
+    "answer": "Kinetic energy = 1/2 x mass x velocity^2 (KE = 1/2 mv²) 🏃‍♂️"
+  },
+  {
+    "uid": "seed-physics-q9",
+    "deckUid": "seed-physics",
+    "question": "What is the formula for calculating potential energy?",
+    "answer": "Potential energy = mass x gravity x height (PE = mgh) ⛰️"
+  },
+  {
+    "uid": "seed-physics-q10",
+    "deckUid": "seed-physics",
+    "question": "What is the difference between a conductor and an insulator?",
+    "answer": "A conductor allows electricity to flow through it easily, while an insulator does not. ⚡🚫"
+  }
+]

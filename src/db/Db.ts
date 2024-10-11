@@ -2,6 +2,20 @@
 import { openDB, IDBPDatabase, StoreKey } from 'idb';
 import type { Card } from '../models/Card';
 import type { Deck } from '../models/Deck';
+import seedAi from '../assets/seed/seed-ai.json';
+import seedAstronomy from '../assets/seed/seed-astronomy.json';
+import seedAnimals from '../assets/seed/seed-animals.json';
+import seedBiology from '../assets/seed/seed-biology.json';
+import seedBooks from '../assets/seed/seed-books.json';
+import seedCrypto from '../assets/seed/seed-crypto.json';
+import seedGeography from '../assets/seed/seed-geography.json';
+import seedHistory from '../assets/seed/seed-history.json';
+import seedInventions from '../assets/seed/seed-inventions.json';
+import seedMythology from '../assets/seed/seed-mythology.json';
+import seedPhysics from '../assets/seed/seed-physics.json';
+import seedQuotes from '../assets/seed/seed-quotes.json';
+import seedScience from '../assets/seed/seed-science.json';
+import seedSport from '../assets/seed/seed-sport.json';
 
 const dbPromise: Promise<IDBPDatabase<IDBPDatabase>> = openDB<IDBPDatabase>('memoreaseDB', 1, {
 	upgrade(db: IDBPDatabase<IDBPDatabase>) {
@@ -10,81 +24,84 @@ const dbPromise: Promise<IDBPDatabase<IDBPDatabase>> = openDB<IDBPDatabase>('mem
 	}
 });
 
-dbPromise.then(x => {
-	x.put('decks', { uid: 'test', name: 'AI' }).then(() => {});
-
-	const asd = [
+dbPromise.then(async (db: IDBPDatabase<IDBPDatabase>) => {
+	const decks: Deck[] = [
 		{
-			uid: 'q1',
-			deckUid: 'test',
-			question: 'What is artificial intelligence?',
-			answer:
-				'Artificial intelligence (AI) is a branch of computer science that deals with creating intelligent agents, which are systems that can reason, learn, and act autonomously.'
+			uid: 'seed-ai',
+			name: 'AI'
 		},
 		{
-			uid: 'q2',
-			deckUid: 'test',
-			question: 'What are the different types of AI?',
-			answer: 'There are three main types of AI: narrow AI, general AI, and superintelligence.'
+			uid: 'seed-astronomy',
+			name: 'Astronomy'
 		},
 		{
-			uid: 'q3',
-			deckUid: 'test',
-			question: 'What are some examples of AI in use today?',
-			answer:
-				'Some examples of AI in use today include virtual assistants, self-driving cars, and recommendation systems.'
+			uid: 'seed-animals',
+			name: 'Animals'
 		},
 		{
-			uid: 'q4',
-			deckUid: 'test',
-			question: 'What are the potential benefits of AI?',
-			answer:
-				'The potential benefits of AI include increased efficiency, improved decision-making, and new opportunities for innovation.'
+			uid: 'seed-biology',
+			name: 'Biology'
 		},
 		{
-			uid: 'q5',
-			deckUid: 'test',
-			question: 'What are the potential risks of AI?',
-			answer:
-				'The potential risks of AI include job displacement, privacy concerns, and the possibility of AI being used for malicious purposes.'
+			uid: 'seed-books',
+			name: 'Books'
 		},
 		{
-			uid: 'q6',
-			deckUid: 'test',
-			question: 'How can we ensure that AI is developed and used ethically?',
-			answer:
-				'We can ensure that AI is developed and used ethically by developing and following ethical guidelines and regulations.'
+			uid: 'seed-crypto',
+			name: 'Crypto'
 		},
 		{
-			uid: 'q7',
-			deckUid: 'test',
-			question: 'What is machine learning?',
-			answer: 'Machine learning is a subset of AI that involves training computers to learn from data.'
+			uid: 'seed-geography',
+			name: 'Geography'
 		},
 		{
-			uid: 'q8',
-			deckUid: 'test',
-			question: 'What are some common machine learning algorithms?',
-			answer:
-				'Some common machine learning algorithms include linear regression, logistic regression, decision trees, and neural networks.'
+			uid: 'seed-history',
+			name: 'History'
 		},
 		{
-			uid: 'q9',
-			deckUid: 'test',
-			question: 'What is deep learning?',
-			answer:
-				'Deep learning is a subset of machine learning that involves training artificial neural networks with multiple layers.'
+			uid: 'seed-inventions',
+			name: 'Inventions'
 		},
 		{
-			uid: 'q10',
-			deckUid: 'test',
-			question: 'What is the future of AI?',
-			answer: 'The future of AI is bright, with the potential to revolutionize many aspects of our lives.'
+			uid: 'seed-mythology',
+			name: 'Mythology'
+		},
+		{
+			uid: 'seed-physics',
+			name: 'Physics'
+		},
+		{
+			uid: 'seed-quotes',
+			name: 'Quotes'
+		},
+		{
+			uid: 'seed-science',
+			name: 'Science'
+		},
+		{
+			uid: 'seed-sport',
+			name: 'Sport'
 		}
 	];
+	const cards: Card[] = [
+		seedAi,
+		seedAstronomy,
+		seedAnimals,
+		seedBiology,
+		seedBooks,
+		seedCrypto,
+		seedGeography,
+		seedHistory,
+		seedInventions,
+		seedMythology,
+		seedPhysics,
+		seedQuotes,
+		seedScience,
+		seedSport
+	].flat();
 
-	// prettier-ignore
-	Promise.all([...asd.map(async (card: Card) => x.put('cards', card))]).then(() => {})
+	await Promise.all(decks.map(async (deck: Deck) => db.put('decks', deck)));
+	await Promise.all(cards.map(async (card: Card) => db.put('cards', card)));
 });
 
 export const dbCreateDeck = async (deck: Deck): Promise<StoreKey<Deck, string>> => (await dbPromise).put('decks', deck);

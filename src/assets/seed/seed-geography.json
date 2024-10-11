@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-geography-q1",
+    "deckUid": "seed-geography",
+    "question": "What is the largest country in the world by land area?",
+    "answer": "Russia 🇷🇺"
+  },
+  {
+    "uid": "seed-geography-q2",
+    "deckUid": "seed-geography",
+    "question": "What is the tallest mountain in the world?",
+    "answer": "Mount Everest 🏔️"
+  },
+  {
+    "uid": "seed-geography-q3",
+    "deckUid": "seed-geography",
+    "question": "What is the longest river in the world?",
+    "answer": "Nile River 🇪🇬"
+  },
+  {
+    "uid": "seed-geography-q4",
+    "deckUid": "seed-geography",
+    "question": "What is the largest ocean in the world?",
+    "answer": "Pacific Ocean 🌊"
+  },
+  {
+    "uid": "seed-geography-q5",
+    "deckUid": "seed-geography",
+    "question": "What is the driest place on Earth?",
+    "answer": "Atacama Desert 🇨🇱"
+  },
+  {
+    "uid": "seed-geography-q6",
+    "deckUid": "seed-geography",
+    "question": "What is the highest waterfall in the world?",
+    "answer": "Angel Falls 🇻🇪"
+  },
+  {
+    "uid": "seed-geography-q7",
+    "deckUid": "seed-geography",
+    "question": "What is the largest island in the world?",
+    "answer": "Greenland 🇬🇱"
+  },
+  {
+    "uid": "seed-geography-q8",
+    "deckUid": "seed-geography",
+    "question": "What is the deepest lake in the world?",
+    "answer": "Lake Baikal 🇷🇺"
+  },
+  {
+    "uid": "seed-geography-q9",
+    "deckUid": "seed-geography",
+    "question": "What is the smallest country in the world?",
+    "answer": "Vatican City 🇻🇦"
+  },
+  {
+    "uid": "seed-geography-q10",
+    "deckUid": "seed-geography",
+    "question": "What is the most populous country in the world?",
+    "answer": "China 🇨🇳"
+  }
+]

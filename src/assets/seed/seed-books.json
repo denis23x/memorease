@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-books-q1",
+    "deckUid": "seed-books",
+    "question": "What is the most popular book of all time?",
+    "answer": "The Bible 📖"
+  },
+  {
+    "uid": "seed-books-q2",
+    "deckUid": "seed-books",
+    "question": "What is the longest book ever written?",
+    "answer": "In Search of Lost Time by Marcel Proust 📚"
+  },
+  {
+    "uid": "seed-books-q3",
+    "deckUid": "seed-books",
+    "question": "What is the most expensive book ever sold?",
+    "answer": "The Gutenberg Bible 💰"
+  },
+  {
+    "uid": "seed-books-q4",
+    "deckUid": "seed-books",
+    "question": "What is the best-selling book series of all time?",
+    "answer": "Harry Potter 🧙‍♂️"
+  },
+  {
+    "uid": "seed-books-q5",
+    "deckUid": "seed-books",
+    "question": "What is the most popular genre of books?",
+    "answer": "Romance ❤️"
+  },
+  {
+    "uid": "seed-books-q6",
+    "deckUid": "seed-books",
+    "question": "What is the most famous book by William Shakespeare?",
+    "answer": "Hamlet 🎭"
+  },
+  {
+    "uid": "seed-books-q7",
+    "deckUid": "seed-books",
+    "question": "What is the most famous book by Jane Austen?",
+    "answer": "Pride and Prejudice 💍"
+  },
+  {
+    "uid": "seed-books-q8",
+    "deckUid": "seed-books",
+    "question": "What is the most famous book by Charles Dickens?",
+    "answer": "Great Expectations 🕰️"
+  },
+  {
+    "uid": "seed-books-q9",
+    "deckUid": "seed-books",
+    "question": "What is the most famous book by Mark Twain?",
+    "answer": "The Adventures of Huckleberry Finn ⛵️"
+  },
+  {
+    "uid": "seed-books-q10",
+    "deckUid": "seed-books",
+    "question": "What is the most famous book by Ernest Hemingway?",
+    "answer": "The Old Man and the Sea 🎣"
+  }
+]

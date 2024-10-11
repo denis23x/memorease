@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-biology-q1",
+    "deckUid": "seed-biology",
+    "question": "What is the smallest unit of life?",
+    "answer": "Cell 🦠"
+  },
+  {
+    "uid": "seed-biology-q2",
+    "deckUid": "seed-biology",
+    "question": "What are the two main types of cells?",
+    "answer": "Prokaryotic and eukaryotic cells 🧬"
+  },
+  {
+    "uid": "seed-biology-q3",
+    "deckUid": "seed-biology",
+    "question": "What is DNA?",
+    "answer": "Deoxyribonucleic acid (DNA) is a molecule that carries genetic information 🧬"
+  },
+  {
+    "uid": "seed-biology-q4",
+    "deckUid": "seed-biology",
+    "question": "What is the process of converting food into energy?",
+    "answer": "Metabolism 🍽️"
+  },
+  {
+    "uid": "seed-biology-q5",
+    "deckUid": "seed-biology",
+    "question": "What is the study of plants called?",
+    "answer": "Botany 🌱"
+  },
+  {
+    "uid": "seed-biology-q6",
+    "deckUid": "seed-biology",
+    "question": "What is the study of animals called?",
+    "answer": "Zoology 🦁"
+  },
+  {
+    "uid": "seed-biology-q7",
+    "deckUid": "seed-biology",
+    "question": "What is the process of evolution?",
+    "answer": "Evolution is the gradual change in living organisms over time 🦖"
+  },
+  {
+    "uid": "seed-biology-q8",
+    "deckUid": "seed-biology",
+    "question": "What is the basic unit of heredity?",
+    "answer": "Gene 🧬"
+  },
+  {
+    "uid": "seed-biology-q9",
+    "deckUid": "seed-biology",
+    "question": "What is the process of cell division?",
+    "answer": "Mitosis 🧬"
+  },
+  {
+    "uid": "seed-biology-q10",
+    "deckUid": "seed-biology",
+    "question": "What is the largest organ in the human body?",
+    "answer": "Skin 🧑‍⚕️"
+  }
+]

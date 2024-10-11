@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-sport-q1",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in the world?",
+    "answer": "Soccer ⚽️"
+  },
+  {
+    "uid": "seed-sport-q2",
+    "deckUid": "seed-sport",
+    "question": "What is the largest sporting event in the world?",
+    "answer": "The Summer Olympics 🥇"
+  },
+  {
+    "uid": "seed-sport-q3",
+    "deckUid": "seed-sport",
+    "question": "What is the highest-scoring sport?",
+    "answer": "Basketball 🏀"
+  },
+  {
+    "uid": "seed-sport-q4",
+    "deckUid": "seed-sport",
+    "question": "What is the fastest sport?",
+    "answer": "Formula 1 racing 🏎️"
+  },
+  {
+    "uid": "seed-sport-q5",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in the United States?",
+    "answer": "American football 🏈"
+  },
+  {
+    "uid": "seed-sport-q6",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in India?",
+    "answer": "Cricket 🏏"
+  },
+  {
+    "uid": "seed-sport-q7",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in Brazil?",
+    "answer": "Soccer ⚽️"
+  },
+  {
+    "uid": "seed-sport-q8",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in China?",
+    "answer": "Table tennis 🏓"
+  },
+  {
+    "uid": "seed-sport-q9",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in Japan?",
+    "answer": "Baseball ⚾️"
+  },
+  {
+    "uid": "seed-sport-q10",
+    "deckUid": "seed-sport",
+    "question": "What is the most popular sport in the United Kingdom?",
+    "answer": "Soccer ⚽️"
+  }
+]

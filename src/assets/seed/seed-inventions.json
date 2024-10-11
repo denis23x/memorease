@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-inventions-q1",
+    "deckUid": "seed-inventions",
+    "question": "What was the first successful steam engine?",
+    "answer": "Thomas Newcomen's atmospheric engine 🚂"
+  },
+  {
+    "uid": "seed-inventions-q2",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the light bulb?",
+    "answer": "Thomas Edison 💡"
+  },
+  {
+    "uid": "seed-inventions-q3",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the telephone?",
+    "answer": "Alexander Graham Bell ☎️"
+  },
+  {
+    "uid": "seed-inventions-q4",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the airplane?",
+    "answer": "Wright brothers ✈️"
+  },
+  {
+    "uid": "seed-inventions-q5",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the computer?",
+    "answer": "Alan Turing 💻"
+  },
+  {
+    "uid": "seed-inventions-q6",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the internet?",
+    "answer": "Tim Berners-Lee 🌐"
+  },
+  {
+    "uid": "seed-inventions-q7",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the wheel?",
+    "answer": "Unknown 🚗"
+  },
+  {
+    "uid": "seed-inventions-q8",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the printing press?",
+    "answer": "Johannes Gutenberg 🖨️"
+  },
+  {
+    "uid": "seed-inventions-q9",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the light bulb?",
+    "answer": "Thomas Edison 💡"
+  },
+  {
+    "uid": "seed-inventions-q10",
+    "deckUid": "seed-inventions",
+    "question": "Who invented the telephone?",
+    "answer": "Alexander Graham Bell ☎️"
+  }
+]

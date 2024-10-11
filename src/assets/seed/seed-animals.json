@@ -1,0 +1,62 @@
+[
+  {
+    "uid": "seed-animals-q1",
+    "deckUid": "seed-animals",
+    "question": "What is the largest land animal on Earth?",
+    "answer": "African elephant 🐘"
+  },
+  {
+    "uid": "seed-animals-q2",
+    "deckUid": "seed-animals",
+    "question": "What is the fastest land animal on Earth?",
+    "answer": "Cheetah 🐆"
+  },
+  {
+    "uid": "seed-animals-q3",
+    "deckUid": "seed-animals",
+    "question": "What is the smallest mammal in the world?",
+    "answer": "Bumblebee bat 🦇"
+  },
+  {
+    "uid": "seed-animals-q4",
+    "deckUid": "seed-animals",
+    "question": "What is the largest ocean animal?",
+    "answer": "Blue whale 🐳"
+  },
+  {
+    "uid": "seed-animals-q5",
+    "deckUid": "seed-animals",
+    "question": "What is the most venomous snake in the world?",
+    "answer": "Inland taipan 🐍"
+  },
+  {
+    "uid": "seed-animals-q6",
+    "deckUid": "seed-animals",
+    "question": "What is the tallest mammal in the world?",
+    "answer": "Giraffe 🦒"
+  },
+  {
+    "uid": "seed-animals-q7",
+    "deckUid": "seed-animals",
+    "question": "What is the largest bird in the world?",
+    "answer": "Ostrich 鸵鸟"
+  },
+  {
+    "uid": "seed-animals-q8",
+    "deckUid": "seed-animals",
+    "question": "What is the fastest bird in the world?",
+    "answer": "Peregrine falcon 🦅"
+  },
+  {
+    "uid": "seed-animals-q9",
+    "deckUid": "seed-animals",
+    "question": "What is the most intelligent animal?",
+    "answer": "Chimpanzee 🐒"
+  },
+  {
+    "uid": "seed-animals-q10",
+    "deckUid": "seed-animals",
+    "question": "What is the most venomous spider in the world?",
+    "answer": "Sydney funnel-web spider 🕷️"
+  }
+]
