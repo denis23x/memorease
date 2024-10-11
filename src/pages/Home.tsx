@@ -51,7 +51,7 @@ const Home: React.FC = () => {
 							<Link className="me-btn me-btn-dark px-4" to="/decks" aria-label="Decks">
 								Decks
 							</Link>
-							<Link className="me-btn me-btn-light px-4" to="/about" aria-label="About">
+							<Link className="me-btn me-btn-dark px-4" to="/about" aria-label="About">
 								About
 							</Link>
 						</div>

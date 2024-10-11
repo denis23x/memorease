@@ -1,11 +1,7 @@
 .me-btn {
-	@apply text-base font-bold rounded-full p-2;
-
-	&.me-btn-light {
-		@apply bg-neutral-100 text-sky-950 outline outline-1 outline-sky-950;
-	}
+	@apply transition-colors text-base font-bold rounded-full p-2;
 
 	&.me-btn-dark {
-		@apply bg-sky-950 text-neutral-50;
+		@apply bg-sky-950 hover:bg-sky-900 text-neutral-50;
 	}
 }

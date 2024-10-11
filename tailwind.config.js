@@ -9,6 +9,10 @@ module.exports = {
       sans: ['Nunito', 'serif'],
     },
     extend: {
+      colors: {
+        white: '#fff',
+        black: '#000',
+      },
       gridTemplateRows: {
         'layout': 'auto 1fr auto'
       },

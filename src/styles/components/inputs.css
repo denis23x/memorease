@@ -1,3 +1,11 @@
 .me-input {
-	@apply text-base font-bold border-0 bg-neutral-100 text-sky-950 outline outline-1 outline-neutral-200 rounded-full py-3 px-4 focus:shadow-sky-950 focus:border-sky-950 focus:ring-sky-950;
+	@apply transition-colors text-base bg-white font-bold border-0 ring-1 rounded-full py-3 px-4;
+
+	&.me-input-default {
+		@apply text-sky-950 bg-white ring-neutral-200 focus:ring-sky-950;
+	}
+
+	&.me-input-error {
+		@apply text-sky-950 bg-red-200 ring-red-200 focus:ring-red-400 ;
+	}
 }

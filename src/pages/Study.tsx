@@ -86,7 +86,7 @@ const Study: React.FC = () => {
 				<div className="flex flex-col gap-8 items-center justify-center max-w-screen-lg">
 					<span className="text-2xl font-bold bg-sky-950 text-neutral-50 rounded-full text-nowrap py-2 p-4">Score</span>
 					<table className="table-auto outline outline-neutral-200 rounded-2xl overflow-hidden">
-						<thead className="bg-neutral-200">
+						<thead className="bg-neutral-100">
 							<tr>
 								<th className="text-left text-base text-sky-950 p-4">Question</th>
 								<th className="text-left text-base text-sky-950 p-4">Answer</th>

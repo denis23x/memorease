@@ -9,16 +9,22 @@ import Modal from '../components/Modal';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 const Decks: React.FC = () => {
+	// prettier-ignore
+	const { register, handleSubmit, reset, formState } = useForm();
 	const { decks, createDeck } = useStore();
 	const [filteredDecks, setFilteredDecks] = useState<DeckType[]>([]);
-	const [createDeckName, setCreateDeckName] = useState<string>('');
 	const [createDeckModal, setCreateDeckModal] = useState<boolean>(false);
 
 	useEffect(() => {
 		setFilteredDecks(decks);
 	}, [decks]);
+
+	useEffect(() => {
+		reset();
+	}, [createDeckModal]);
 
 	const handleSearch = (value: string) => {
 		const filteredDecks: DeckType[] = decks.filter((deck: DeckType) => {
@@ -28,11 +34,8 @@ const Decks: React.FC = () => {
 		setFilteredDecks(filteredDecks);
 	};
 
-	const handleCreateDeck = () => {
-		const deck: DeckType = {
-			uid: nanoid(),
-			name: createDeckName
-		};
+	const handleCreateDeck = (data: any) => {
+		const deck: DeckType = { uid: nanoid(), ...data };
 
 		createDeck(deck).then(() => toast.info('Deck has been created'));
 		setCreateDeckModal(false);
@@ -53,7 +56,7 @@ const Decks: React.FC = () => {
 						</span>
 					</div>
 					<input
-						className={'me-input w-full !border-0'}
+						className={'me-input me-input-default w-full'}
 						onChange={e => handleSearch(e.target.value)}
 						aria-label={'Search'}
 						title={'Search'}
@@ -99,8 +102,8 @@ const Decks: React.FC = () => {
 			<Modal isOpen={createDeckModal} onClose={() => setCreateDeckModal(false)}>
 				<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-between gap-4 w-full'}>
-						<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
-							Create
+						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap py-2 px-4'}>
+							New Deck
 						</span>
 						<button
 							className={'me-btn me-btn-dark p-1'}
@@ -114,26 +117,18 @@ const Decks: React.FC = () => {
 							</svg>
 						</button>
 					</div>
-					<div className={'flex items-start justify-start gap-4 w-full'}>
+					<form className={'flex items-start justify-start gap-4 w-full'} onSubmit={handleSubmit(handleCreateDeck)}>
 						<input
-							className={'me-input w-full !border-0'}
-							value={createDeckName}
-							onKeyDown={e => e.key === 'Enter' && handleCreateDeck()}
-							onChange={e => setCreateDeckName(e.target.value)}
+							className={`me-input ${formState.errors.name ? 'me-input-error' : 'me-input-default'} w-full`}
 							placeholder="Name"
+							{...register('name', { required: true })}
 						/>
-						<button
-							className={'me-btn me-btn-dark p-1'}
-							type={'button'}
-							aria-label={'Create'}
-							title={'Create'}
-							onClick={handleCreateDeck}
-						>
+						<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>
 							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
 								<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
 							</svg>
 						</button>
-					</div>
+					</form>
 				</div>
 			</Modal>
 		</section>

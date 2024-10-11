@@ -11,8 +11,11 @@ import { nanoid } from '../services/Helper';
 import { useNavigate } from 'react-router-dom';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 const Cards: React.FC = () => {
+	// prettier-ignore
+	const { register, handleSubmit, reset, formState } = useForm();
 	const navigate = useNavigate();
 	const { deckUid } = useParams<{ deckUid: string }>();
 	const { decks, cards, deleteDeck, createCard } = useStore();
@@ -20,8 +23,6 @@ const Cards: React.FC = () => {
 	const [createCardModal, setCreateCardModal] = useState<boolean>(false);
 	const [deck, setDeck] = useState<DeckType | null>(null);
 	const [deckCards, setDeckCards] = useState<CardType[]>([]);
-	const [cardQuestion, setCardQuestion] = useState<string>('');
-	const [cardAnswer, setCardAnswer] = useState<string>('');
 
 	useEffect(() => {
 		const deck: DeckType | undefined = decks.find((deck: DeckType) => deck.uid === deckUid);
@@ -33,6 +34,10 @@ const Cards: React.FC = () => {
 		}
 	}, [deckUid, decks, cards]);
 
+	useEffect(() => {
+		reset();
+	}, [createCardModal]);
+
 	const handleDeleteDeck = () => {
 		if (!deckUid) {
 			return;
@@ -42,22 +47,16 @@ const Cards: React.FC = () => {
 		navigate('/decks');
 	};
 
-	const handleCreateCard = () => {
+	const handleCreateCard = (data: any) => {
 		if (!deckUid) {
 			return;
 		}
 
-		const card: CardType = {
-			uid: nanoid(),
-			deckUid,
-			question: cardQuestion,
-			answer: cardAnswer
-		};
+		const card: CardType = { uid: nanoid(), deckUid, ...data };
 
 		createCard(card).then(() => toast.info('Card has been created'));
 		setDeckCards((prev: CardType[]) => [...prev, card]);
-		setCardQuestion('');
-		setCardAnswer('');
+		setCreateCardModal(false);
 	};
 
 	return (
@@ -132,7 +131,7 @@ const Cards: React.FC = () => {
 					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 						<div className={'flex items-center justify-between gap-4 w-full'}>
 							<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
-								Delete
+								Delete Deck
 							</span>
 							<button
 								className={'me-btn me-btn-dark p-1'}
@@ -165,9 +164,12 @@ const Cards: React.FC = () => {
 					</div>
 				</Modal>
 				<Modal isOpen={createCardModal} onClose={() => setCreateCardModal(false)}>
-					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
+					<form
+						className={'flex flex-col items-start justify-start gap-4 w-full'}
+						onSubmit={handleSubmit(handleCreateCard)}
+					>
 						<div className={'flex items-center justify-between gap-4 w-full'}>
-							<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full text-nowrap py-2 px-4'}>
+							<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap py-2 px-4'}>
 								New Card
 							</span>
 							<button
@@ -185,19 +187,11 @@ const Cards: React.FC = () => {
 						<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 							<div className={'flex items-start justify-start gap-4 w-full'}>
 								<input
-									className={'me-input w-full !border-0'}
-									value={cardQuestion}
-									onChange={e => setCardQuestion(e.target.value)}
-									onKeyDown={e => e.key === 'Enter' && handleCreateCard()}
+									className={`me-input ${formState.errors.question ? 'me-input-error' : 'me-input-default'} w-full`}
 									placeholder="Question"
+									{...register('question', { required: true })}
 								/>
-								<button
-									className={'me-btn me-btn-dark p-1'}
-									type={'button'}
-									aria-label={'Create'}
-									title={'Create'}
-									onClick={handleCreateCard}
-								>
+								<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="40"
@@ -210,14 +204,12 @@ const Cards: React.FC = () => {
 								</button>
 							</div>
 							<input
-								className={'me-input w-full !border-0'}
-								value={cardAnswer}
-								onChange={e => setCardAnswer(e.target.value)}
-								onKeyDown={e => e.key === 'Enter' && handleCreateCard()}
+								className={`me-input ${formState.errors.answer ? 'me-input-error' : 'me-input-default'} w-full`}
 								placeholder="Answer"
+								{...register('answer', { required: true })}
 							/>
 						</div>
-					</div>
+					</form>
 				</Modal>
 			</div>
 		</section>
