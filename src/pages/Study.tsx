@@ -84,7 +84,9 @@ const Study: React.FC = () => {
 			<section className="p-4">
 				<Confetti recycle={false} />
 				<div className="flex flex-col gap-8 items-center justify-center max-w-screen-lg">
-					<span className="text-2xl font-bold bg-sky-950 text-neutral-50 rounded-full text-nowrap py-2 p-4">Score</span>
+					<span className="text-2xl font-bold bg-sky-950 text-neutral-50 rounded-full whitespace-nowrap py-2 p-4">
+						Score
+					</span>
 					<table className="table-auto outline outline-neutral-200 rounded-2xl overflow-hidden">
 						<thead className="bg-neutral-100">
 							<tr>
@@ -135,7 +137,7 @@ const Study: React.FC = () => {
 								</svg>
 							</button>
 							<span
-								className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap truncate py-2 px-4`}
+								className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4`}
 							>
 								{studyDeck?.name}
 							</span>
@@ -179,7 +181,11 @@ const Study: React.FC = () => {
 								<path d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
 							</svg>
 						</button>
-						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap truncate py-2 px-4'}>
+						<span
+							className={
+								'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4'
+							}
+						>
 							{studyDeck?.name}
 						</span>
 					</div>
@@ -197,10 +203,10 @@ const Study: React.FC = () => {
 					</div>
 				</header>
 				<ul className="flex items-center justify-center relative aspect-[2/3] w-60">
-					<li className="flex card bg-cover" style={{ backgroundImage: `url(${bgRed})` }}></li>
+					<li className="flex card-x bg-cover" style={{ backgroundImage: `url(${bgRed})` }}></li>
 					{studyCards.map((card: CardType, index: number) => (
 						<li
-							className={`flex card bg-cover ${index === activeCardIndex ? 'visible' : 'invisible'}`}
+							className={`flex card-x bg-cover ${index === activeCardIndex ? 'visible' : 'invisible'}`}
 							key={card.uid}
 							style={{ backgroundImage: `url(${bgNeutral})` }}
 						>
@@ -216,7 +222,7 @@ const Study: React.FC = () => {
 							</div>
 						</li>
 					))}
-					<li className="flex card bg-cover" style={{ backgroundImage: `url(${bgTeal})` }}></li>
+					<li className="flex card-x bg-cover" style={{ backgroundImage: `url(${bgTeal})` }}></li>
 				</ul>
 				{!showAnswer ? (
 					<button type="button" className="me-btn me-btn-dark" aria-label="Reveal" onClick={handleReveal}>

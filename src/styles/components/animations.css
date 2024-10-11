@@ -28,7 +28,7 @@
 	.animate-flip-inner {
 		@apply relative size-full;
 
-		transition: transform 0.25s;
+		transition: transform 0.2s;
 		transform-style: preserve-3d;
 	}
 

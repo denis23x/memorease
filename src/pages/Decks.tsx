@@ -51,7 +51,7 @@ const Decks: React.FC = () => {
 								<path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
 							</svg>
 						</Link>
-						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap py-2 px-4'}>
+						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap py-2 px-4'}>
 							Select a Deck
 						</span>
 					</div>
@@ -63,8 +63,8 @@ const Decks: React.FC = () => {
 						placeholder={'Search'}
 					/>
 				</header>
-				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-y-6 gap-x-4 w-full'}>
-					<li className={`col-span-1`}>
+				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 w-full'}>
+					<li className={`col-span-1 rounded-3xl shadow-xl`}>
 						<div className={`deck`}>
 							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 								<button
@@ -88,7 +88,7 @@ const Decks: React.FC = () => {
 						</div>
 					</li>
 					{filteredDecks.map((deck: DeckType) => (
-						<li className={'col-span-1'} key={deck.uid}>
+						<li className={'col-span-1 rounded-3xl shadow-xl'} key={deck.uid}>
 							<Deck deck={deck}></Deck>
 						</li>
 					))}
@@ -97,7 +97,7 @@ const Decks: React.FC = () => {
 			<Modal isOpen={createDeckModal} onClose={() => setCreateDeckModal(false)}>
 				<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-between gap-4 w-full'}>
-						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full text-nowrap py-2 px-4'}>
+						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap py-2 px-4'}>
 							New Deck
 						</span>
 						<button

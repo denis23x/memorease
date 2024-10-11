@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 					<div className={'card'}>
 						<div className={'card-inner'} style={{ backgroundImage: `url(${bgNeutral})` }}>
 							<p className={'card-body'}>
-								<span className={'text-sm font-normal bg-neutral-50 text-sky-950'}>{card.answer}</span>
+								<span className={'font-normal bg-neutral-50 text-sky-950'}>{card.answer}</span>
 							</p>
 							<div className={'card-delete'}>
 								<button
