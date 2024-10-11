@@ -1,11 +1,11 @@
-.card {
-	@apply size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-xl p-1;
+.study-card {
+	@apply aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-2xl p-1;
 }
 
-.card-inner {
+.study-card-inner {
 	@apply size-full relative flex items-center justify-center bg-cover border border-neutral-200 rounded-lg overflow-x-hidden overflow-y-auto;
 }
 
-.card-body {
+.study-card-body {
 	@apply max-h-full inline text-center text-ellipsis overflow-x-hidden overflow-y-auto p-2;
 }

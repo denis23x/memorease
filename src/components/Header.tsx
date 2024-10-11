@@ -19,8 +19,8 @@ const Header: React.FC = () => {
 						<path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.6.6 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0z" />
 					</svg>
 				</Link>
-				<span className={'text-2xl font-bold text-sky-950 hidden sm:block'}>Memorease</span>
-				<span className={'text-2xl font-bold text-sky-950 block sm:hidden'}>ME</span>
+				<span className={'text-2xl font-bold text-sky-950 hidden md:block'}>Memorease</span>
+				<span className={'text-2xl font-bold text-sky-950 block md:hidden'}>ME</span>
 			</nav>
 			<nav className={'col-span-1 flex justify-end'}>
 				<ul className={'flex items-center justify-end gap-4'}>

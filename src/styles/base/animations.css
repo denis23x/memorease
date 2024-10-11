@@ -15,8 +15,6 @@
 }
 
 .animate-flip {
-	@apply aspect-[2/3];
-
 	perspective: 1000px;
 }
 

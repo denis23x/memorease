@@ -45,7 +45,7 @@ const Home: React.FC = () => {
 							</li>
 						))}
 					</ul>
-					<div className="flex flex-col gap-4 self-center text-center md:self-start md:text-left p-4">
+					<div className="flex flex-col gap-4 self-start md:text-left p-4">
 						<span className="text-2xl font-bold text-sky-950">Want to know more?</span>
 						<div className="flex items-center gap-4">
 							<Link className="me-btn me-btn-dark px-4" to="/decks" aria-label="Decks">

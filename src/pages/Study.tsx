@@ -167,7 +167,7 @@ const Study: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden p-4'}>
-			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-8'}>
+			<div className={'flex flex-col items-start justify-start gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
 						<button
@@ -182,9 +182,7 @@ const Study: React.FC = () => {
 							</svg>
 						</button>
 						<span
-							className={
-								'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4'
-							}
+							className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4`}
 						>
 							{studyDeck?.name}
 						</span>
@@ -202,42 +200,77 @@ const Study: React.FC = () => {
 						</Link>
 					</div>
 				</header>
-				<ul className="flex items-center justify-center relative aspect-[2/3] w-60">
-					<li className="flex card-x bg-cover" style={{ backgroundImage: `url(${bgRed})` }}></li>
-					{studyCards.map((card: CardType, index: number) => (
-						<li
-							className={`flex card-x bg-cover ${index === activeCardIndex ? 'visible' : 'invisible'}`}
-							key={card.uid}
-							style={{ backgroundImage: `url(${bgNeutral})` }}
-						>
-							<div
-								className={`flex flex-col justify-center items-center h-full w-full border border-neutral-200 rounded-lg p-4`}
-								// style={{ backgroundImage: `url(${background})` }}
-							>
-								{showAnswer ? (
-									<span className="text-lg text-sky-950">{activeCard.answer}</span>
-								) : (
-									<span className="text-lg text-sky-950">{activeCard.question}</span>
-								)}
-							</div>
+				<div className={'flex items-start justify-center w-full'}>
+					<ul className={'relative w-60'}>
+						<li className={`study-card w-52 z-0 absolute top-4 -rotate-12 left-1/3 -translate-x-2/3`}>
+							<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgTeal})` }}></div>
 						</li>
-					))}
-					<li className="flex card-x bg-cover" style={{ backgroundImage: `url(${bgTeal})` }}></li>
-				</ul>
-				{!showAnswer ? (
-					<button type="button" className="me-btn me-btn-dark" aria-label="Reveal" onClick={handleReveal}>
-						Reveal
-					</button>
-				) : (
-					<div className="flex items-center justify-center gap-4">
-						<button type="button" className="me-btn me-btn-dark" aria-label="Good" onClick={() => handleScore('good')}>
-							Good
-						</button>
-						<button type="button" className="me-btn me-btn-dark" aria-label="Bad" onClick={() => handleScore('bad')}>
-							Bad
-						</button>
-					</div>
-				)}
+						{studyCards.map((card: CardType, index: number) => (
+							<li className={'relative'} key={card.uid}>
+								<div className={`absolute z-10 size-full ${index === activeCardIndex ? 'visible' : 'invisible'}`}>
+									<div className={`animate-flip ${showAnswer ? 'active' : ''}`}>
+										<div className={'animate-flip-inner'}>
+											<div className={'animate-flip-front'}>
+												<div className={`study-card w-60 cursor-pointer`} onClick={handleReveal}>
+													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+														<div className={`study-card-body`}>
+															<span className={'text-lg bg-neutral-50 text-sky-950'}>{activeCard.question}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div className={'animate-flip-back'}>
+												<div className={`study-card w-60`}>
+													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+														<div className={`study-card-body`}>
+															<span className={'text-lg bg-neutral-50 text-sky-950'}>{activeCard.answer}</span>
+														</div>
+														<button
+															type="button"
+															className="me-btn me-btn-dark p-1 absolute left-8 bottom-8"
+															aria-label="Bad"
+															onClick={() => handleScore('bad')}
+														>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																width="40"
+																height="40"
+																fill="currentColor"
+																viewBox="0 0 16 16"
+															>
+																<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+															</svg>
+														</button>
+														<button
+															type="button"
+															className="me-btn me-btn-dark p-2 absolute right-8 bottom-8"
+															aria-label="Good"
+															onClick={() => handleScore('good')}
+														>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																width="32"
+																height="32"
+																fill="currentColor"
+																className="bi bi-check-lg"
+																viewBox="0 0 16 16"
+															>
+																<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+															</svg>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						))}
+						<li className={`study-card w-52 z-0 absolute top-4 rotate-12 left-2/3 -translate-x-1/3`}>
+							<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgRed})` }}></div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 	);
