@@ -128,93 +128,85 @@ const Cards: React.FC = () => {
 						</li>
 					))}
 				</ul>
-				<Modal isOpen={deleteDeckModal} onClose={() => setDeleteDeckModal(false)}>
-					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
-						<div className={'flex items-center justify-between gap-4 w-full'}>
-							<span
-								className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full whitespace-nowrap py-2 px-4'}
-							>
-								Delete Deck
-							</span>
-							<button
-								className={'me-btn me-btn-dark p-1'}
-								type={'button'}
-								aria-label={'Close'}
-								title={'Close'}
-								onClick={() => setDeleteDeckModal(false)}
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-								</svg>
-							</button>
-						</div>
-						<div className={'flex items-start justify-start gap-4 w-full'}>
-							<p className={'text-lg text-sky-950'}>
-								Deleting this Deck will also delete all cards associated with it. Are you sure you want to continue?
-							</p>
-							<button
-								className={'me-btn me-btn-dark p-3'}
-								type={'button'}
-								aria-label={'Delete Deck'}
-								title={'Delete Deck'}
-								onClick={handleDeleteDeck}
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-								</svg>
-							</button>
-						</div>
-					</div>
-				</Modal>
-				<Modal isOpen={createCardModal} onClose={() => setCreateCardModal(false)}>
-					<form
-						className={'flex flex-col items-start justify-start gap-4 w-full'}
-						onSubmit={handleSubmit(handleCreateCard)}
-					>
-						<div className={'flex items-center justify-between gap-4 w-full'}>
-							<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap py-2 px-4'}>
-								New Card
-							</span>
-							<button
-								className={'me-btn me-btn-dark p-1'}
-								type={'button'}
-								onClick={() => setCreateCardModal(false)}
-								aria-label={'Close'}
-								title={'Close'}
-							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-								</svg>
-							</button>
-						</div>
-						<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
-							<div className={'flex items-start justify-start gap-4 w-full'}>
-								<input
-									className={`me-input ${formState.errors.question ? 'me-input-error' : 'me-input-default'} w-full`}
-									placeholder="Question"
-									{...register('question', { required: true })}
-								/>
-								<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="40"
-										height="40"
-										fill="currentColor"
-										viewBox="0 0 16 16"
-									>
-										<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-									</svg>
-								</button>
-							</div>
-							<input
-								className={`me-input ${formState.errors.answer ? 'me-input-error' : 'me-input-default'} w-full`}
-								placeholder="Answer"
-								{...register('answer', { required: true })}
-							/>
-						</div>
-					</form>
-				</Modal>
 			</div>
+			<Modal isOpen={deleteDeckModal} onClose={() => setDeleteDeckModal(false)}>
+				<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
+					<div className={'flex items-center justify-between gap-4 w-full'}>
+						<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full whitespace-nowrap py-2 px-4'}>
+							Delete Deck
+						</span>
+						<button
+							className={'me-btn me-btn-dark p-1'}
+							type={'button'}
+							aria-label={'Close'}
+							title={'Close'}
+							onClick={() => setDeleteDeckModal(false)}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+							</svg>
+						</button>
+					</div>
+					<div className={'flex items-start justify-start gap-4 w-full'}>
+						<p className={'text-lg text-sky-950'}>
+							Deleting this Deck will also delete all cards associated with it. Are you sure you want to continue?
+						</p>
+						<button
+							className={'me-btn me-btn-dark p-3'}
+							type={'button'}
+							aria-label={'Delete Deck'}
+							title={'Delete Deck'}
+							onClick={handleDeleteDeck}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+							</svg>
+						</button>
+					</div>
+				</div>
+			</Modal>
+			<Modal isOpen={createCardModal} onClose={() => setCreateCardModal(false)}>
+				<form
+					className={'flex flex-col items-start justify-start gap-4 w-full'}
+					onSubmit={handleSubmit(handleCreateCard)}
+				>
+					<div className={'flex items-center justify-between gap-4 w-full'}>
+						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap py-2 px-4'}>
+							New Card
+						</span>
+						<button
+							className={'me-btn me-btn-dark p-1'}
+							type={'button'}
+							onClick={() => setCreateCardModal(false)}
+							aria-label={'Close'}
+							title={'Close'}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+							</svg>
+						</button>
+					</div>
+					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
+						<div className={'flex items-start justify-start gap-4 w-full'}>
+							<input
+								className={`me-input ${formState.errors.question ? 'me-input-error' : 'me-input-default'} w-full`}
+								placeholder="Question"
+								{...register('question', { required: true })}
+							/>
+							<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+								</svg>
+							</button>
+						</div>
+						<input
+							className={`me-input ${formState.errors.answer ? 'me-input-error' : 'me-input-default'} w-full`}
+							placeholder="Answer"
+							{...register('answer', { required: true })}
+						/>
+					</div>
+				</form>
+			</Modal>
 		</section>
 	);
 };
