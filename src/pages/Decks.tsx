@@ -8,6 +8,7 @@ import { nanoid } from '../services/Helper';
 import Modal from '../components/Modal';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Decks: React.FC = () => {
 	const { decks, createDeck } = useStore();
@@ -33,7 +34,7 @@ const Decks: React.FC = () => {
 			name: createDeckName
 		};
 
-		createDeck(deck).then(() => console.debug('Deck created'));
+		createDeck(deck).then(() => toast.info('Deck has been created'));
 		setCreateDeckModal(false);
 	};
 

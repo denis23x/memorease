@@ -4,6 +4,7 @@ import React from 'react';
 import bgRed from '../assets/images/bg-red.png';
 import type { Card as CardType } from '../models/Card';
 import { useStore } from '../store/Store';
+import { toast } from 'react-toastify';
 
 interface CardProps {
 	card: CardType;
@@ -13,7 +14,7 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 	const { deleteCard } = useStore();
 
 	const handleDeleteCard = () => {
-		deleteCard(card.uid).then(() => console.debug('Card deleted'));
+		deleteCard(card.uid).then(() => toast.info('Card has been deleted'));
 	};
 
 	return (

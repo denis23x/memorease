@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 						<span className="text-2xl font-bold bg-teal-200 text-sky-950 rounded-full md:rounded-l-full md:rounded-r-none text-nowrap py-2 px-4 md:pl-6 md:pr-2">
 							Unlock Your Potential
 						</span>
-						<h2 className="text-lg md:text-2xl font-bold bg-red-500 text-neutral-50 rounded-b-3xl md:rounded-r-full text-nowrap px-4 py-2 md:pr-6 md:pl-2">
+						<h2 className="text-lg md:text-2xl font-bold bg-red-400 text-neutral-50 rounded-b-3xl md:rounded-r-full text-nowrap px-4 py-2 md:pr-6 md:pl-2">
 							Never Forget Again
 						</h2>
 					</div>

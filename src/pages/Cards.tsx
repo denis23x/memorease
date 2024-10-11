@@ -10,6 +10,7 @@ import Modal from '../components/Modal';
 import { nanoid } from '../services/Helper';
 import { useNavigate } from 'react-router-dom';
 import bgNeutral from '../assets/images/bg-neutral.png';
+import { toast } from 'react-toastify';
 
 const Cards: React.FC = () => {
 	const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Cards: React.FC = () => {
 			return;
 		}
 
-		deleteDeck(deckUid).then(() => console.debug('Deck deleted'));
+		deleteDeck(deckUid).then(() => toast.info('Deck has been deleted'));
 		navigate('/decks');
 	};
 
@@ -53,7 +54,7 @@ const Cards: React.FC = () => {
 			answer: cardAnswer
 		};
 
-		createCard(card).then(() => console.debug('Card created'));
+		createCard(card).then(() => toast.info('Card has been created'));
 		setDeckCards((prev: CardType[]) => [...prev, card]);
 		setCardQuestion('');
 		setCardAnswer('');

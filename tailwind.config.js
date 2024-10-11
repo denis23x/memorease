@@ -5,6 +5,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    fontFamily: {
+      sans: ['Nunito', 'serif'],
+    },
     extend: {
       gridTemplateRows: {
         'layout': 'auto 1fr auto'
