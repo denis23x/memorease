@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import memorease from '../assets/images/memorease.png';
+import girl from '../assets/images/girl.png';
 
 const Home: React.FC = () => {
 	const highlights: string[] = [
@@ -12,8 +12,8 @@ const Home: React.FC = () => {
 	];
 
 	return (
-		<section className="p-4">
-			<div className="flex flex-col-reverse md:flex-row items-center justify-between max-w-screen-lg">
+		<section className="overflow-hidden p-4">
+			<div className="flex flex-col-reverse md:flex-row items-center justify-between">
 				<div className="flex flex-1 flex-col gap-4">
 					<div className="flex flex-col md:flex-row items-center mt-4 md:mt-0">
 						<span className="text-2xl font-bold bg-teal-200 text-sky-950 rounded-full md:rounded-l-full md:rounded-r-none whitespace-nowrap py-2 px-4 md:pl-6 md:pr-2">
@@ -49,16 +49,13 @@ const Home: React.FC = () => {
 						<span className="text-2xl font-bold text-sky-950">Want to know more?</span>
 						<div className="flex items-center gap-4">
 							<Link className="me-btn me-btn-dark px-4" to="/decks" aria-label="Decks">
-								Decks
-							</Link>
-							<Link className="me-btn me-btn-dark px-4" to="/about" aria-label="About">
-								About
+								Browse
 							</Link>
 						</div>
 					</div>
 				</div>
 				<div className="block">
-					<img src={memorease} alt="Memorease" className="w-96 h-96 object-cover animate-fly" />
+					<img src={girl} alt="Memorease" className="w-96 h-96 object-cover animate-fly" />
 				</div>
 			</div>
 		</section>

@@ -43,7 +43,7 @@ const Decks: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
-			<div className={'flex flex-col items-start justify-start max-w-screen-lg gap-4 md:gap-8'}>
+			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
 						<Link className={'me-btn me-btn-dark p-3'} to={'/'}>
@@ -63,7 +63,7 @@ const Decks: React.FC = () => {
 						placeholder={'Search'}
 					/>
 				</header>
-				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 w-full'}>
+				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full'}>
 					<li className={`col-span-1 rounded-3xl shadow-xl`}>
 						<div className={`deck`}>
 							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>

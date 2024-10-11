@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import About from './pages/About';
 import Cards from './pages/Cards';
 import Decks from './pages/Decks';
 import NotFound from './pages/NotFound';
@@ -29,7 +28,6 @@ const App: React.FC = () => {
 					<Route path="/decks" element={<Decks />} />
 					<Route path="/decks/:deckUid" element={<Cards />} />
 					<Route path="/study/:deckUid" element={<Study />} />
-					<Route path="/about" element={<About />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 				<Footer />
