@@ -1,7 +1,7 @@
 /** @format */
 
-export interface Score {
-	uid: string;
-	question: string;
-	answer: string;
+import { Card } from './Card';
+
+export interface Score extends Card {
+	score: boolean;
 }

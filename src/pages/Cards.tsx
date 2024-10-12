@@ -37,8 +37,6 @@ const Cards: React.FC = () => {
 				} else {
 					navigate('/404');
 				}
-			} else {
-				navigate('/404');
 			}
 		}
 	}, [deckUid, decks, cards, navigate]);
@@ -96,16 +94,20 @@ const Cards: React.FC = () => {
 								<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
 							</svg>
 						</button>
-						<Link
-							className={'me-btn me-btn-dark p-2'}
-							to={`/study/${deck?.uid}`}
-							aria-label={deck?.name}
-							title={deck?.name}
-						>
-							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-								<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
-							</svg>
-						</Link>
+						{deckCards.length ? (
+							<Link
+								className={'me-btn me-btn-dark p-2'}
+								to={`/study/${deck?.uid}`}
+								aria-label={deck?.name}
+								title={deck?.name}
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+									<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+								</svg>
+							</Link>
+						) : (
+							<></>
+						)}
 					</div>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full'}>

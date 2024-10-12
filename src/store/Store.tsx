@@ -15,7 +15,7 @@ interface StoreContextProps {
 	createCard: (card: Card) => Promise<void>;
 	deleteCard: (cardUid: string) => Promise<void>;
 	createScore: (score: Score) => void;
-	deleteScore: (scoreUid: string) => void;
+	deleteScore: () => void;
 }
 
 // prettier-ignore
@@ -66,8 +66,8 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 		setScores((prev: Score[]) => [...prev, score]);
 	};
 
-	const deleteScore = (scoreUid: string) => {
-		setScores((prev: Score[]) => prev.filter((score: Score) => score.uid !== scoreUid));
+	const deleteScore = () => {
+		setScores([]);
 	};
 
 	return (
