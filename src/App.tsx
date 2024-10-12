@@ -22,12 +22,12 @@ const App: React.FC = () => {
 			<div className={'grid grid-rows-layout min-h-dvh min-w-dvw overflow-hidden'}>
 				<Header />
 				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/decks" element={<Decks />} />
-					<Route path="/decks/:deckUid" element={<Cards />} />
-					<Route path="/study/:deckUid" element={<Study />} />
-					<Route path="/about" element={<About />} />
-					<Route path="*" element={<NotFound />} />
+					<Route path={'/'} element={<Home />} />
+					<Route path={'/decks'} element={<Decks />} />
+					<Route path={'/decks/:deckUid'} element={<Cards />} />
+					<Route path={'/study/:deckUid'} element={<Study />} />
+					<Route path={'/about'} element={<About />} />
+					<Route path={'*'} element={<NotFound />} />
 				</Routes>
 				<Footer />
 			</div>

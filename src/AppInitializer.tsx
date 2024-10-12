@@ -6,6 +6,7 @@ import App from './App';
 import { IDBPDatabase } from 'idb';
 import type { Deck } from './models/Deck';
 import type { Card } from './models/Card';
+import dayjs from 'dayjs';
 
 const AppInitializer: React.FC = () => {
 	const [isReady, setIsReady] = useState<boolean>(false);
@@ -29,7 +30,7 @@ const AppInitializer: React.FC = () => {
 				const seedScience = await import('./assets/seed/seed-science.json');
 				const seedSport = await import('./assets/seed/seed-sport.json');
 
-				const decks: Deck[] = [
+				const decks: Omit<Deck, 'timestamp'>[] = [
 					{
 						uid: 'seed-ai',
 						name: 'AI'
@@ -83,7 +84,7 @@ const AppInitializer: React.FC = () => {
 						name: 'Sport'
 					}
 				];
-				const cards: Card[] = [
+				const cards: Omit<Card, 'timestamp'>[] = [
 					seedAi.default,
 					seedAstronomy.default,
 					seedAnimals.default,
@@ -99,8 +100,16 @@ const AppInitializer: React.FC = () => {
 					seedSport.default
 				].flat();
 
-				await Promise.all(decks.map(async (deck: Deck) => db.put('decks', deck)));
-				await Promise.all(cards.map(async (card: Card) => db.put('cards', card)));
+				const decksPromise: Promise<IDBValidKey>[] = decks
+					.map((deck: Omit<Deck, 'timestamp'>) => ({ ...deck, timestamp: dayjs().unix() }))
+					.map(async (deck: Deck) => db.put('decks', deck));
+
+				const cardsPromise: Promise<IDBValidKey>[] = cards
+					.map((card: Omit<Card, 'timestamp'>) => ({ ...card, timestamp: dayjs().unix() }))
+					.map(async (card: Card) => db.put('cards', card));
+
+				await Promise.all(decksPromise);
+				await Promise.all(cardsPromise);
 
 				localStorage.setItem('seed', '1');
 			}

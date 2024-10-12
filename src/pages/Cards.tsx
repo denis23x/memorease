@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import dayjs from 'dayjs';
 
 const Cards: React.FC = () => {
 	// prettier-ignore
@@ -29,9 +30,10 @@ const Cards: React.FC = () => {
 			if (decks.length && cards.length) {
 				const deck: DeckType | undefined = decks.find((deck: DeckType) => deck.uid === deckUid);
 				const deckCards: CardType[] = cards.filter((card: CardType) => card.deckUid === deckUid);
+
 				if (deck) {
 					setDeck(deck);
-					setDeckCards(deckCards);
+					setDeckCards(deckCards.sort((a: CardType, b: CardType) => b.timestamp - a.timestamp));
 				} else {
 					navigate('/404');
 				}
@@ -43,7 +45,7 @@ const Cards: React.FC = () => {
 
 	useEffect(() => {
 		reset();
-	}, [reset]);
+	}, [createCardModal, reset]);
 
 	const handleDeleteDeck = () => {
 		if (!deckUid) {
@@ -59,7 +61,7 @@ const Cards: React.FC = () => {
 			return;
 		}
 
-		const card: CardType = { uid: nanoid(), deckUid, ...data };
+		const card: CardType = { uid: nanoid(), timestamp: dayjs().unix(), deckUid, ...data };
 
 		createCard(card).then(() => toast.info('Card has been created'));
 		setDeckCards((prev: CardType[]) => [...prev, card]);
@@ -77,9 +79,7 @@ const Cards: React.FC = () => {
 							</svg>
 						</Link>
 						<span
-							className={
-								'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4'
-							}
+							className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4`}
 						>
 							{deck?.name}
 						</span>
@@ -200,7 +200,7 @@ const Cards: React.FC = () => {
 						<div className={'flex items-start justify-start gap-4 w-full'}>
 							<input
 								className={`me-input ${formState.errors.question ? 'me-input-error' : 'me-input-default'} w-full`}
-								placeholder="Question"
+								placeholder={'Question'}
 								{...register('question', { required: true })}
 							/>
 							<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>
@@ -211,7 +211,7 @@ const Cards: React.FC = () => {
 						</div>
 						<input
 							className={`me-input ${formState.errors.answer ? 'me-input-error' : 'me-input-default'} w-full`}
-							placeholder="Answer"
+							placeholder={'Answer'}
 							{...register('answer', { required: true })}
 						/>
 					</div>

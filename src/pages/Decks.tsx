@@ -10,6 +10,7 @@ import bgNeutral from '../assets/images/bg-neutral.png';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import dayjs from 'dayjs';
 
 const Decks: React.FC = () => {
 	// prettier-ignore
@@ -19,23 +20,19 @@ const Decks: React.FC = () => {
 	const [createDeckModal, setCreateDeckModal] = useState<boolean>(false);
 
 	useEffect(() => {
-		setFilteredDecks(decks);
+		setFilteredDecks(decks.sort((a: DeckType, b: DeckType) => b.timestamp - a.timestamp));
 	}, [decks]);
 
 	useEffect(() => {
 		reset();
-	}, [reset]);
+	}, [createDeckModal, reset]);
 
 	const handleSearch = (value: string) => {
-		const filteredDecks: DeckType[] = decks.filter((deck: DeckType) => {
-			return deck.name.toLowerCase().includes(value.toLowerCase());
-		});
-
-		setFilteredDecks(filteredDecks);
+		setFilteredDecks(decks.filter((deck: DeckType) => deck.name.toLowerCase().includes(value.toLowerCase())));
 	};
 
 	const handleCreateDeck = (data: any) => {
-		const deck: DeckType = { uid: nanoid(), ...data };
+		const deck: DeckType = { uid: nanoid(), timestamp: dayjs().unix(), ...data };
 
 		createDeck(deck).then(() => toast.info('Deck has been created'));
 		setCreateDeckModal(false);
@@ -115,7 +112,7 @@ const Decks: React.FC = () => {
 					<form className={'flex items-start justify-start gap-4 w-full'} onSubmit={handleSubmit(handleCreateDeck)}>
 						<input
 							className={`me-input ${formState.errors.name ? 'me-input-error' : 'me-input-default'} w-full`}
-							placeholder="Name"
+							placeholder={'Name'}
 							{...register('name', { required: true })}
 						/>
 						<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>

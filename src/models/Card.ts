@@ -5,4 +5,5 @@ export interface Card {
 	deckUid: string;
 	question: string;
 	answer: string;
+	timestamp: number;
 }
