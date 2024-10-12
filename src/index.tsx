@@ -2,23 +2,22 @@
 
 import React from 'react';
 import ReactDOM, { Root } from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppInitializer from './AppInitializer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { StoreProvider } from './store/Store';
-
 import './styles/styles.css';
 
 const root: Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
-	<React.StrictMode>
-		<StoreProvider>
-			<Router>
-				<App />
-			</Router>
-		</StoreProvider>
-	</React.StrictMode>
+	// <React.StrictMode>
+	<StoreProvider>
+		<Router>
+			<AppInitializer />
+		</Router>
+	</StoreProvider>
+	// </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

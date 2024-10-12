@@ -23,7 +23,7 @@ const Deck: React.FC<DeckProps> = ({ deck }: DeckProps) => {
 
 	return (
 		<div className={`deck`}>
-			<Link to={`/study/${deck.uid}`}>
+			<Link to={deckCards.length ? `/study/${deck.uid}` : deck.uid} aria-label={deck.name} title={deck.name}>
 				<div className={`deck-inner`} style={{ backgroundImage: `url(${bgTeal})` }}>
 					<p className={'deck-body'}>
 						<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>

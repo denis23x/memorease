@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 import { useStore } from '../store/Store';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import type { Card as CardType } from '../models/Card';
 import type { Deck as DeckType } from '../models/Deck';
 import type { Score } from '../models/Score';
@@ -15,6 +15,7 @@ import bgNeutral from '../assets/images/bg-neutral.png';
 const Study: React.FC = () => {
 	const { deckUid } = useParams<{ deckUid: string }>();
 	const { decks, cards } = useStore();
+	const navigate = useNavigate();
 
 	const [studyDeck, setStudyDeck] = useState<DeckType | null>(null);
 	const [studyCards, setStudyCards] = useState<CardType[]>([]);
@@ -25,13 +26,21 @@ const Study: React.FC = () => {
 
 	useEffect(() => {
 		if (deckUid) {
-			const studyDeck: DeckType | null = decks.find((deck: DeckType) => deck.uid === deckUid) || null;
-			setStudyDeck(studyDeck);
+			if (decks.length && cards.length) {
+				const studyDeck: DeckType | null = decks.find((deck: DeckType) => deck.uid === deckUid) || null;
+				const studyCards: CardType[] = cards.filter((card: CardType) => card.deckUid === deckUid);
 
-			const studyCards: CardType[] = cards.filter((card: CardType) => card.deckUid === deckUid);
-			shuffleCards(studyCards);
+				if (studyDeck) {
+					setStudyDeck(studyDeck);
+					shuffleCards(studyCards);
+				} else {
+					navigate('/404');
+				}
+			} else {
+				navigate('/404');
+			}
 		}
-	}, [deckUid, decks, cards]);
+	}, [deckUid, decks, cards, navigate]);
 
 	const shuffleCards = (studyCards: CardType[]) => {
 		const shuffledCards = [...studyCards].sort(() => Math.random() - 0.5);
