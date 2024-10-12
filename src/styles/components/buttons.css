@@ -5,3 +5,11 @@
 .me-btn.me-btn-dark {
 	@apply bg-sky-950 hover:bg-sky-900 text-neutral-50;
 }
+
+.me-btn.me-btn-teal {
+	@apply bg-teal-200 hover:bg-teal-300 text-sky-950;
+}
+
+.me-btn.me-btn-red {
+	@apply bg-red-400 hover:bg-red-500 text-neutral-50;
+}

@@ -106,7 +106,7 @@ const Study: React.FC = () => {
 												<div className={`study-card w-60 cursor-pointer`} onClick={() => setActiveCardFlip(true)}>
 													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 														<div className={`study-card-body`}>
-															<span className={'text-lg bg-neutral-50 text-sky-950'}>{activeCard.question}</span>
+															<span className={'text-xl bg-neutral-50 text-sky-950'}>{activeCard.question}</span>
 														</div>
 													</div>
 												</div>
@@ -115,13 +115,13 @@ const Study: React.FC = () => {
 												<div className={`study-card w-60`}>
 													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 														<div className={`study-card-body`}>
-															<span className={'text-lg bg-neutral-50 text-sky-950'}>{activeCard.answer}</span>
+															<span className={'text-xl bg-neutral-50 text-sky-950'}>{activeCard.answer}</span>
 														</div>
 														<button
 															type={'button'}
-															className={'me-btn me-btn-dark p-1 absolute left-8 bottom-8'}
-															aria-label={'No'}
-															title={'No'}
+															className={'me-btn me-btn-red p-1 absolute left-8 bottom-8'}
+															aria-label={'Wrong'}
+															title={'Wrong'}
 															onClick={() => handleScore(false)}
 														>
 															<svg
@@ -136,9 +136,9 @@ const Study: React.FC = () => {
 														</button>
 														<button
 															type={'button'}
-															className={'me-btn me-btn-dark p-2 absolute right-8 bottom-8'}
-															aria-label={'Yes'}
-															title={'Yes'}
+															className={'me-btn me-btn-teal p-2 absolute right-8 bottom-8'}
+															aria-label={'Correct'}
+															title={'Correct'}
 															onClick={() => handleScore(true)}
 														>
 															<svg
