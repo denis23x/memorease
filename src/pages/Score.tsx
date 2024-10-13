@@ -11,6 +11,7 @@ const Score: React.FC = () => {
 	const navigate = useNavigate();
 	const [correct, setCorrect] = useState<number>(0);
 	const [wrong, setWrong] = useState<number>(0);
+	const [success, setSuccess] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (!scores.length) {
@@ -34,6 +35,7 @@ const Score: React.FC = () => {
 
 		setCorrect(trueCount);
 		setWrong(falseCount);
+		setSuccess(correct > wrong && correct - wrong > Math.abs(Math.round(scores.length / 3)));
 	};
 
 	return (
@@ -60,7 +62,7 @@ const Score: React.FC = () => {
 						</span>
 						{correct !== 0 ? (
 							<span
-								className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4`}
+								className={`text-2xl font-bold rounded-full whitespace-nowrap py-2 px-4 ${success ? 'bg-teal-200 text-sky-950' : 'bg-red-400 text-neutral-50'}`}
 							>
 								{correct}/{scores.length}
 							</span>
@@ -70,14 +72,14 @@ const Score: React.FC = () => {
 					</div>
 				</header>
 				<div className={'flex'}>
-					{correct > wrong && correct - wrong > Math.abs(Math.round(scores.length / 3)) ? (
+					{success ? (
 						<div className={'block'}>
 							<div className={'fixed inset-0 pointer-events-none'}>
 								<Confetti recycle={false} />
 							</div>
 							<p className={'text-lg text-sky-950'}>
-								Great job! You're doing fantastic. Keep up the good work and continue learning. Keep learning and
-								achieving your goals!
+								Great job! You're doing fantastic. Keep up the good work and continue learning. Your knowledge is
+								impressive!
 							</p>
 						</div>
 					) : (

@@ -5,6 +5,7 @@ import { dbCreateDeck, dbDeleteDeck, dbGetAllDecks, dbCreateCard, dbDeleteCard, 
 import type { Card } from '../models/Card';
 import type { Deck } from '../models/Deck';
 import type { Score } from '../models/Score';
+import { dbPromiseSeed } from '../db/DbSeed';
 
 interface StoreContextProps {
 	decks: Deck[];
@@ -27,15 +28,15 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 	const [scores, setScores] = useState<Score[]>([]);
 
 	useEffect(() => {
-		async function loadData() {
+		dbPromiseSeed.then(async (message: string) => {
 			const decksFromDb: Deck[] = await dbGetAllDecks();
 			const cardsFromDb: Card[] = await dbGetAllCards();
 
 			setDecks(decksFromDb);
 			setCards(cardsFromDb);
-		}
 
-		loadData().then(() => console.debug('Database is connected'));
+			console.debug('DB is connected: ' + message);
+		});
 	}, []);
 
 	const createDeck = async (deck: Deck) => {

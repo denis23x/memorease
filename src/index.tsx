@@ -2,8 +2,8 @@
 
 import React from 'react';
 import ReactDOM, { Root } from 'react-dom/client';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AppInitializer from './AppInitializer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { StoreProvider } from './store/Store';
 import './styles/styles.css';
@@ -14,7 +14,7 @@ root.render(
 	// <React.StrictMode>
 	<StoreProvider>
 		<Router>
-			<AppInitializer />
+			<App />
 		</Router>
 	</StoreProvider>
 	// </React.StrictMode>

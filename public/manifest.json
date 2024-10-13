@@ -1,5 +1,5 @@
 {
-  "name": "MemorEase",
+  "name": "Memorease",
   "short_name": "ME",
   "start_url": ".",
   "icons": [
@@ -21,7 +21,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#fafafa",
+  "background_color": "#fafafa",
   "display": "standalone"
 }
