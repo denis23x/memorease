@@ -35,7 +35,7 @@ const Score: React.FC = () => {
 
 		setCorrect(trueCount);
 		setWrong(falseCount);
-		setSuccess(correct > wrong && correct - wrong > Math.abs(Math.round(scores.length / 3)));
+		setSuccess(trueCount > falseCount && trueCount - falseCount > Math.abs(Math.round(scores.length / 3)));
 	};
 
 	return (

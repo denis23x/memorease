@@ -1,8 +1,9 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStore } from '../store/Store';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { formatMilliseconds } from '../services/Helper';
 import type { Card as CardType } from '../models/Card';
 import type { Deck as DeckType } from '../models/Deck';
 import bgRed from '../assets/images/bg-red.png';
@@ -18,6 +19,9 @@ const Study: React.FC = () => {
 	const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
 	const [activeCardFlip, setActiveCardFlip] = useState<boolean>(false);
 	const activeCard: CardType = studyCards[activeCardIndex];
+	const defaultTime: number = 10000;
+	const [timeLeft, setTimeLeft] = useState(defaultTime);
+	const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
 		if (deckUid) {
@@ -42,6 +46,18 @@ const Study: React.FC = () => {
 		}
 	}, [deckUid, decks, cards, navigate]);
 
+	useEffect(() => {
+		if (timeLeft > 0) {
+			intervalRef.current = setInterval(() => {
+				setTimeLeft(prev => prev - 1);
+			}, 1);
+		} else {
+			handleFlip();
+		}
+
+		return () => clearInterval(intervalRef.current!);
+	}, [timeLeft]);
+
 	const handleScore = (score: boolean) => {
 		setActiveCardFlip(false);
 		createScore({ ...studyCards[activeCardIndex], score });
@@ -51,10 +67,16 @@ const Study: React.FC = () => {
 		if (remainingCards.length) {
 			setStudyCards(remainingCards);
 			setActiveCardIndex(0);
+			setTimeLeft(defaultTime + timeLeft);
 		} else {
 			navigate('/score');
 			setStudyCards([]);
 		}
+	};
+
+	const handleFlip = () => {
+		setActiveCardFlip(true);
+		clearInterval(intervalRef.current!);
 	};
 
 	return (
@@ -103,8 +125,29 @@ const Study: React.FC = () => {
 									<div className={`animate-flip ${activeCardFlip ? 'active' : ''}`}>
 										<div className={'animate-flip-inner'}>
 											<div className={'animate-flip-front'}>
-												<div className={`study-card w-60 cursor-pointer`} onClick={() => setActiveCardFlip(true)}>
+												<div className={`study-card w-60 cursor-pointer`} onClick={handleFlip}>
 													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+														<button
+															type={'button'}
+															className={'me-btn me-btn-dark p-3 absolute left-8 top-8'}
+															aria-label={'Hourglass'}
+															title={'Hourglass'}
+														>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																width="24"
+																height="24"
+																fill="currentColor"
+																viewBox="0 0 16 16"
+															>
+																<path d="M2 14.5a.5.5 0 0 0 .5.5h11a.5.5 0 1 0 0-1h-1v-1a4.5 4.5 0 0 0-2.557-4.06c-.29-.139-.443-.377-.443-.59v-.7c0-.213.154-.451.443-.59A4.5 4.5 0 0 0 12.5 3V2h1a.5.5 0 0 0 0-1h-11a.5.5 0 0 0 0 1h1v1a4.5 4.5 0 0 0 2.557 4.06c.29.139.443.377.443.59v.7c0 .213-.154.451-.443.59A4.5 4.5 0 0 0 3.5 13v1h-1a.5.5 0 0 0-.5.5m2.5-.5v-1a3.5 3.5 0 0 1 1.989-3.158c.533-.256 1.011-.79 1.011-1.491v-.702s.18.101.5.101.5-.1.5-.1v.7c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13v1z" />
+															</svg>
+														</button>
+														<span
+															className={`text-2xl font-bold size-12 flex items-center justify-center opacity-25 absolute right-8 top-8`}
+														>
+															{formatMilliseconds(timeLeft)}s
+														</span>
 														<div className={`study-card-body`}>
 															<span className={'text-xl bg-neutral-50 text-sky-950'}>{activeCard.question}</span>
 														</div>
@@ -114,6 +157,28 @@ const Study: React.FC = () => {
 											<div className={'animate-flip-back'}>
 												<div className={`study-card w-60`}>
 													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+														<button
+															type={'button'}
+															className={'me-btn me-btn-dark p-3 absolute left-8 top-8'}
+															aria-label={'Hourglass'}
+															title={'Hourglass'}
+														>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																width="24"
+																height="24"
+																fill="currentColor"
+																viewBox="0 0 16 16"
+															>
+																<path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5m2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702s.18.149.5.149.5-.15.5-.15v-.7c0-.701.478-1.236 1.011-1.492A3.5 3.5 0 0 0 11.5 3V2z" />
+															</svg>
+														</button>
+														<span
+															className={`text-2xl font-bold size-12 flex items-center justify-center absolute right-8 top-8`}
+														>
+															{timeLeft > 0 ? '+' : ''}
+															{formatMilliseconds(timeLeft)}s
+														</span>
 														<div className={`study-card-body`}>
 															<span className={'text-xl bg-neutral-50 text-sky-950'}>{activeCard.answer}</span>
 														</div>
