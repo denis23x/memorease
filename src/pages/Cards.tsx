@@ -51,7 +51,7 @@ const Cards: React.FC = () => {
 	const [createCardModal, setCreateCardModal] = useState<boolean>(false);
 	const [deck, setDeck] = useState<DeckType | null>(null);
 	const [deckCards, setDeckCards] = useState<CardType[]>([]);
-	const [joyride] = useState<boolean>(!!localStorage.getItem(JOYRIDE_CARDS));
+	const [joyride, setJoyride] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (deckUid) {
@@ -62,6 +62,7 @@ const Cards: React.FC = () => {
 				if (deck) {
 					setDeck(deck);
 					setDeckCards(deckCards.sort((a: CardType, b: CardType) => b.timestamp - a.timestamp));
+					setJoyride(!localStorage.getItem(JOYRIDE_CARDS));
 				} else {
 					navigate('/404');
 				}
@@ -96,17 +97,14 @@ const Cards: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
-			{!joyride ? (
-				<Joyride
-					continuous
-					showSkipButton
-					steps={steps}
-					tooltipComponent={Tooltip}
-					callback={e => joyRideCallback(e, JOYRIDE_CARDS)}
-				/>
-			) : (
-				<></>
-			)}
+			<Joyride
+				run={joyride}
+				continuous
+				showSkipButton
+				steps={steps}
+				tooltipComponent={Tooltip}
+				callback={e => joyRideCallback(e, JOYRIDE_CARDS)}
+			/>
 			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>

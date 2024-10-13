@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import About from './pages/About';
 import Cards from './pages/Cards';
 import Decks from './pages/Decks';
@@ -18,6 +18,13 @@ import '@fontsource/nunito/700.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const App: React.FC = () => {
+	const location = useLocation();
+	const queryParams: URLSearchParams = new URLSearchParams(location.search);
+
+	if (queryParams.get('debug')) {
+		import('eruda').then((eruda: any) => eruda.default.init());
+	}
+
 	return (
 		<div className={'bg-repeat'} style={{ backgroundImage: `url(${bg})` }}>
 			<div className={'grid grid-rows-layout min-h-dvh min-w-dvw overflow-hidden'}>

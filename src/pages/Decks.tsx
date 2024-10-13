@@ -40,10 +40,11 @@ const Decks: React.FC = () => {
 	const { decks, createDeck } = useStore();
 	const [filteredDecks, setFilteredDecks] = useState<DeckType[]>([]);
 	const [createDeckModal, setCreateDeckModal] = useState<boolean>(false);
-	const [joyride] = useState<boolean>(!!localStorage.getItem(JOYRIDE_DECKS));
+	const [joyride, setJoyride] = useState<boolean>(false);
 
 	useEffect(() => {
 		setFilteredDecks(decks.sort((a: DeckType, b: DeckType) => b.timestamp - a.timestamp));
+		setJoyride(!localStorage.getItem(JOYRIDE_DECKS));
 	}, [decks]);
 
 	useEffect(() => {
@@ -63,17 +64,14 @@ const Decks: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
-			{!joyride ? (
-				<Joyride
-					continuous
-					showSkipButton
-					steps={steps}
-					tooltipComponent={Tooltip}
-					callback={e => joyRideCallback(e, JOYRIDE_DECKS)}
-				/>
-			) : (
-				<></>
-			)}
+			<Joyride
+				run={joyride}
+				continuous
+				showSkipButton
+				steps={steps}
+				tooltipComponent={Tooltip}
+				callback={e => joyRideCallback(e, JOYRIDE_DECKS)}
+			/>
 			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>

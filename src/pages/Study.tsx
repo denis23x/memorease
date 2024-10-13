@@ -39,7 +39,7 @@ const Study: React.FC = () => {
 	const defaultTime: number = 10000;
 	const [timeLeft, setTimeLeft] = useState(defaultTime);
 	const intervalRef = useRef<NodeJS.Timeout | null>(null);
-	const [joyride] = useState<boolean>(!!localStorage.getItem(JOYRIDE_STUDY));
+	const [joyride, setJoyride] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (deckUid) {
@@ -53,6 +53,7 @@ const Study: React.FC = () => {
 						setStudyCards(studyCards.sort(() => Math.random() - 0.5));
 						setActiveCardIndex(0);
 						setActiveCardFlip(false);
+						setJoyride(!localStorage.getItem(JOYRIDE_STUDY));
 						deleteScore();
 					} else {
 						navigate(`/decks/${studyDeck.uid}`);
@@ -99,17 +100,14 @@ const Study: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
-			{!joyride ? (
-				<Joyride
-					continuous
-					showSkipButton
-					steps={steps}
-					tooltipComponent={Tooltip}
-					callback={e => joyRideCallback(e, JOYRIDE_STUDY)}
-				/>
-			) : (
-				<></>
-			)}
+			<Joyride
+				run={joyride}
+				continuous
+				showSkipButton
+				steps={steps}
+				tooltipComponent={Tooltip}
+				callback={e => joyRideCallback(e, JOYRIDE_STUDY)}
+			/>
 			<div className={'flex flex-col items-start justify-start gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
