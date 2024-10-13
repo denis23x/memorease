@@ -53,6 +53,7 @@ const Decks: React.FC = () => {
 						</span>
 					</div>
 					<input
+						id={'joyride-decks-search'}
 						className={'me-input me-input-default w-full'}
 						onChange={e => handleSearch(e.target.value)}
 						aria-label={'Search'}
@@ -61,7 +62,7 @@ const Decks: React.FC = () => {
 					/>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full'}>
-					<li className={`col-span-1 rounded-3xl shadow-xl`}>
+					<li className={`col-span-1 rounded-3xl shadow-xl`} id={'joyride-decks-create'}>
 						<div className={`deck`}>
 							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 								<button
@@ -84,8 +85,12 @@ const Decks: React.FC = () => {
 							</div>
 						</div>
 					</li>
-					{filteredDecks.map((deck: DeckType) => (
-						<li className={'col-span-1 rounded-3xl shadow-xl'} key={deck.uid}>
+					{filteredDecks.map((deck: DeckType, index: number) => (
+						<li
+							id={index === 0 ? 'joyride-decks' : deck.uid}
+							className={'col-span-1 rounded-3xl shadow-xl'}
+							key={deck.uid}
+						>
 							<Deck deck={deck}></Deck>
 						</li>
 					))}

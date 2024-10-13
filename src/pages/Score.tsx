@@ -10,7 +10,6 @@ const Score: React.FC = () => {
 	const { scores } = useStore();
 	const navigate = useNavigate();
 	const [correct, setCorrect] = useState<number>(0);
-	const [wrong, setWrong] = useState<number>(0);
 	const [success, setSuccess] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -34,7 +33,6 @@ const Score: React.FC = () => {
 		}
 
 		setCorrect(trueCount);
-		setWrong(falseCount);
 		setSuccess(trueCount > falseCount && trueCount - falseCount > Math.abs(Math.round(scores.length / 3)));
 	};
 
