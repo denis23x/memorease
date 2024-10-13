@@ -179,7 +179,9 @@ const Study: React.FC = () => {
 															{formatMilliseconds(timeLeft)}s
 														</span>
 														<div className={`study-card-body`}>
-															<span className={'text-xl bg-neutral-50 text-sky-950'}>{activeCard.question}</span>
+															<span className={'text-xl font-bold bg-neutral-50 text-sky-950'}>
+																{activeCard.question}
+															</span>
 														</div>
 													</div>
 												</div>

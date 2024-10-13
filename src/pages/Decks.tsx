@@ -29,8 +29,8 @@ const steps: Step[] = [
 	},
 	{
 		target: '#joyride-deck',
-		title: 'Browse',
-		content: 'Browse our library. Discover popular and trending content.'
+		title: 'Study',
+		content: 'Start studying. Begin a quiz session and see how well you know the content.'
 	}
 ];
 
