@@ -11,17 +11,28 @@ const Tooltip: React.FC<TooltipRenderProps> = ({
 	primaryProps,
 	skipProps,
 	step,
-	tooltipProps
+	tooltipProps,
+	size,
+	closeProps
 }: TooltipRenderProps) => {
 	return (
 		<div
 			{...tooltipProps}
-			className={'bg-neutral-50 rounded-xl flex flex-col items-start justify-center gap-4 w-[calc(100vw-32px)] p-4'}
+			className={'bg-neutral-50 rounded-xl flex flex-col items-start justify-center gap-4 max-w-[calc(24rem-2rem)] p-4'}
 		>
-			<div className={'inline text-lg ='}>
-				{step.title && <span className={`font-bold text-sky-950`}>{step.title}</span>}
-				{step.content && <p className={'text-sky-950/50'}>{step.content}</p>}
+			<div className={`flex items-center justify-between w-full`}>
+				{step.title && (
+					<span
+						className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4`}
+					>
+						{step.title}
+					</span>
+				)}
+				<span className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap py-2 px-4`}>
+					{index + 1}/{size}
+				</span>
 			</div>
+			{step.content && <p className={'text-lg text-sky-950'}>{step.content}</p>}
 			<div className={`flex items-center ${!isLastStep ? 'justify-between' : 'justify-end'} w-full`}>
 				{!isLastStep && (
 					<button
@@ -64,7 +75,7 @@ const Tooltip: React.FC<TooltipRenderProps> = ({
 						</button>
 					) : (
 						<button
-							{...primaryProps}
+							{...closeProps}
 							className={'me-btn me-btn-dark p-1'}
 							type={'button'}
 							aria-label={'Close'}

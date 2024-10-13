@@ -4,13 +4,35 @@ import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/Store';
 import type { Deck as DeckType } from '../models/Deck';
 import Deck from '../components/Deck';
-import { nanoid } from '../services/Helper';
+import { joyRideCallback, nanoid } from '../services/Helper';
 import Modal from '../components/Modal';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import dayjs from 'dayjs';
+import Joyride, { Step } from 'react-joyride';
+import Tooltip from '../components/Tooltip';
+import { JOYRIDE_DECKS } from '../keys/Joyride';
+
+const steps: Step[] = [
+	{
+		disableBeacon: true,
+		target: '#joyride-deck-search',
+		title: 'Search',
+		content: "Search for decks by keyword. Type a word or phrase related to the topic you're interested in."
+	},
+	{
+		target: '#joyride-deck-create',
+		title: 'Create',
+		content: 'Create your own deck. Start from scratch or use templates to get inspired.'
+	},
+	{
+		target: '#joyride-deck',
+		title: 'Browse',
+		content: 'Browse our library. Discover popular and trending content.'
+	}
+];
 
 const Decks: React.FC = () => {
 	// prettier-ignore
@@ -18,6 +40,7 @@ const Decks: React.FC = () => {
 	const { decks, createDeck } = useStore();
 	const [filteredDecks, setFilteredDecks] = useState<DeckType[]>([]);
 	const [createDeckModal, setCreateDeckModal] = useState<boolean>(false);
+	const [joyride] = useState<boolean>(!!localStorage.getItem(JOYRIDE_DECKS));
 
 	useEffect(() => {
 		setFilteredDecks(decks.sort((a: DeckType, b: DeckType) => b.timestamp - a.timestamp));
@@ -40,6 +63,17 @@ const Decks: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
+			{!joyride ? (
+				<Joyride
+					continuous
+					showSkipButton
+					steps={steps}
+					tooltipComponent={Tooltip}
+					callback={e => joyRideCallback(e, JOYRIDE_DECKS)}
+				/>
+			) : (
+				<></>
+			)}
 			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
@@ -53,7 +87,7 @@ const Decks: React.FC = () => {
 						</span>
 					</div>
 					<input
-						id={'joyride-decks-search'}
+						id={'joyride-deck-search'}
 						className={'me-input me-input-default w-full'}
 						onChange={e => handleSearch(e.target.value)}
 						aria-label={'Search'}
@@ -62,10 +96,11 @@ const Decks: React.FC = () => {
 					/>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full'}>
-					<li className={`col-span-1 rounded-3xl shadow-xl`} id={'joyride-decks-create'}>
+					<li className={`col-span-1 rounded-3xl shadow-xl`}>
 						<div className={`deck`}>
 							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 								<button
+									id={'joyride-deck-create'}
 									className={'me-btn me-btn-dark p-1'}
 									type={'button'}
 									aria-label={'Create Deck'}
@@ -87,7 +122,7 @@ const Decks: React.FC = () => {
 					</li>
 					{filteredDecks.map((deck: DeckType, index: number) => (
 						<li
-							id={index === 0 ? 'joyride-decks' : deck.uid}
+							id={index === 0 ? 'joyride-deck' : deck.uid}
 							className={'col-span-1 rounded-3xl shadow-xl'}
 							key={deck.uid}
 						>

@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 		<div className={`animate-flip aspect-[2/3] ${flip ? 'active' : ''}`} onClick={() => setFlip(!flip)}>
 			<div className={`animate-flip-inner`}>
 				<div className={`animate-flip-front`}>
-					<div className={'card'}>
+					<div className={'card cursor-pointer'}>
 						<div className={'card-inner'} style={{ backgroundImage: `url(${bgRed})` }}>
 							<p className={'card-body'}>
 								<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>{card.question}</span>

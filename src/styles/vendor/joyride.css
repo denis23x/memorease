@@ -1,0 +1,7 @@
+.react-joyride__spotlight {
+	@apply rounded-2xl !important;
+}
+
+.react-joyride__beacon {
+	@apply focus-visible:outline-0;
+}

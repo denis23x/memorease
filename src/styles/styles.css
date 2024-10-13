@@ -4,6 +4,7 @@
 @import "./components/decks.css";
 @import "./components/inputs.css";
 @import "./pages/study.css";
+@import "./vendor/joyride.css";
 @import "./vendor/toastify.css";
 
 @tailwind base;

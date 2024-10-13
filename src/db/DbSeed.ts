@@ -5,10 +5,11 @@ import type { Card } from '../models/Card';
 import type { Deck } from '../models/Deck';
 import { dbPromise } from './Db';
 import dayjs from 'dayjs';
+import { DB_SEED } from '../keys/Db';
 
 export const dbPromiseSeed: Promise<string> = new Promise((resolve, reject) => {
 	dbPromise.then(async (db: IDBPDatabase<IDBPDatabase>) => {
-		if (!localStorage.getItem('seed')) {
+		if (!localStorage.getItem(DB_SEED)) {
 			const seedAi = await import('../assets/seed/seed-ai.json');
 			const seedAstronomy = await import('../assets/seed/seed-astronomy.json');
 			const seedAnimals = await import('../assets/seed/seed-animals.json');
@@ -104,7 +105,7 @@ export const dbPromiseSeed: Promise<string> = new Promise((resolve, reject) => {
 			await Promise.all(decksPromise);
 			await Promise.all(cardsPromise);
 
-			localStorage.setItem('seed', '1');
+			localStorage.setItem(DB_SEED, '1');
 
 			resolve('Seed was loaded');
 		} else {

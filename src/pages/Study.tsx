@@ -3,12 +3,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useStore } from '../store/Store';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { formatMilliseconds } from '../services/Helper';
+import { formatMilliseconds, joyRideCallback } from '../services/Helper';
 import type { Card as CardType } from '../models/Card';
 import type { Deck as DeckType } from '../models/Deck';
 import bgRed from '../assets/images/bg-red.png';
 import bgTeal from '../assets/images/bg-teal.png';
 import bgNeutral from '../assets/images/bg-neutral.png';
+import Joyride, { Step } from 'react-joyride';
+import Tooltip from '../components/Tooltip';
+import { JOYRIDE_STUDY } from '../keys/Joyride';
+
+const steps: Step[] = [
+	{
+		disableBeacon: true,
+		target: '#joyride-study-deck-edit',
+		title: 'Deck',
+		content: 'Customize your deck to fit your preferences. Click here to edit the current deck.'
+	},
+	{
+		target: '#joyride-study-card',
+		title: 'Card',
+		content: 'Ready to see the answer? Click the card to reveal the hidden content.'
+	}
+];
 
 const Study: React.FC = () => {
 	const { deckUid } = useParams<{ deckUid: string }>();
@@ -22,6 +39,7 @@ const Study: React.FC = () => {
 	const defaultTime: number = 10000;
 	const [timeLeft, setTimeLeft] = useState(defaultTime);
 	const intervalRef = useRef<NodeJS.Timeout | null>(null);
+	const [joyride] = useState<boolean>(!!localStorage.getItem(JOYRIDE_STUDY));
 
 	useEffect(() => {
 		if (deckUid) {
@@ -49,8 +67,8 @@ const Study: React.FC = () => {
 	useEffect(() => {
 		if (timeLeft > 0) {
 			intervalRef.current = setInterval(() => {
-				setTimeLeft(prev => prev - 1);
-			}, 1);
+				setTimeLeft(prev => prev - 10);
+			}, 10);
 		} else {
 			handleFlip();
 		}
@@ -81,6 +99,17 @@ const Study: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
+			{!joyride ? (
+				<Joyride
+					continuous
+					showSkipButton
+					steps={steps}
+					tooltipComponent={Tooltip}
+					callback={e => joyRideCallback(e, JOYRIDE_STUDY)}
+				/>
+			) : (
+				<></>
+			)}
 			<div className={'flex flex-col items-start justify-start gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
@@ -103,6 +132,7 @@ const Study: React.FC = () => {
 					</div>
 					<div className={'flex items-center justify-start gap-4'}>
 						<Link
+							id={'joyride-study-deck-edit'}
 							className={'me-btn me-btn-dark p-3'}
 							to={`/decks/${studyDeck?.uid}`}
 							aria-label={'Update Deck'}
@@ -115,7 +145,7 @@ const Study: React.FC = () => {
 					</div>
 				</header>
 				<div className={'flex items-start justify-center w-full'}>
-					<ul className={'relative w-60 aspect-[2/3]'}>
+					<ul id={'joyride-study-card'} className={'relative w-60 aspect-[2/3]'}>
 						<li className={`study-card w-52 z-0 absolute top-4 -rotate-12 left-1/3 -translate-x-2/3`}>
 							<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgTeal})` }}></div>
 						</li>
@@ -129,7 +159,7 @@ const Study: React.FC = () => {
 													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 														<button
 															type={'button'}
-															className={'me-btn me-btn-dark p-3 absolute left-8 top-8'}
+															className={'me-btn me-btn-dark p-3 pointer-events-none absolute left-8 top-8'}
 															aria-label={'Hourglass'}
 															title={'Hourglass'}
 														>
@@ -159,7 +189,7 @@ const Study: React.FC = () => {
 													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
 														<button
 															type={'button'}
-															className={'me-btn me-btn-dark p-3 absolute left-8 top-8'}
+															className={'me-btn me-btn-dark p-3 pointer-events-none absolute left-8 top-8'}
 															aria-label={'Hourglass'}
 															title={'Hourglass'}
 														>

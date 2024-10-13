@@ -7,12 +7,39 @@ import type { Deck as DeckType } from '../models/Deck';
 import type { Card as CardType } from '../models/Card';
 import Card from '../components/Card';
 import Modal from '../components/Modal';
-import { nanoid } from '../services/Helper';
+import { joyRideCallback, nanoid } from '../services/Helper';
 import { useNavigate } from 'react-router-dom';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import dayjs from 'dayjs';
+import Joyride, { Step } from 'react-joyride';
+import { JOYRIDE_CARDS } from '../keys/Joyride';
+import Tooltip from '../components/Tooltip';
+
+const steps: Step[] = [
+	{
+		disableBeacon: true,
+		target: '#joyride-deck-delete',
+		title: 'Delete',
+		content: 'Delete deck. Remove this deck permanently from your library.'
+	},
+	{
+		target: '#joyride-deck-study',
+		title: 'Study',
+		content: 'Start studying. Begin a quiz session and see how well you know the content.'
+	},
+	{
+		target: '#joyride-card-create',
+		title: 'Create',
+		content: 'Create your own card. Add a question and answer to your deck.'
+	},
+	{
+		target: '#joyride-card',
+		title: 'Card',
+		content: 'Click to flip card. Reveal the answer and test your memory.'
+	}
+];
 
 const Cards: React.FC = () => {
 	// prettier-ignore
@@ -24,6 +51,7 @@ const Cards: React.FC = () => {
 	const [createCardModal, setCreateCardModal] = useState<boolean>(false);
 	const [deck, setDeck] = useState<DeckType | null>(null);
 	const [deckCards, setDeckCards] = useState<CardType[]>([]);
+	const [joyride] = useState<boolean>(!!localStorage.getItem(JOYRIDE_CARDS));
 
 	useEffect(() => {
 		if (deckUid) {
@@ -68,6 +96,17 @@ const Cards: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
+			{!joyride ? (
+				<Joyride
+					continuous
+					showSkipButton
+					steps={steps}
+					tooltipComponent={Tooltip}
+					callback={e => joyRideCallback(e, JOYRIDE_CARDS)}
+				/>
+			) : (
+				<></>
+			)}
 			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
@@ -84,6 +123,7 @@ const Cards: React.FC = () => {
 					</div>
 					<div className={'flex items-center justify-start gap-4'}>
 						<button
+							id={'joyride-deck-delete'}
 							className={'me-btn me-btn-dark p-3'}
 							type={'button'}
 							onClick={() => setDeleteDeckModal(true)}
@@ -96,6 +136,7 @@ const Cards: React.FC = () => {
 						</button>
 						{deckCards.length ? (
 							<Link
+								id={'joyride-deck-study'}
 								className={'me-btn me-btn-dark p-2'}
 								to={`/study/${deck?.uid}`}
 								aria-label={deck?.name}
@@ -115,6 +156,7 @@ const Cards: React.FC = () => {
 						<div className={'card'}>
 							<div className={'card-inner'} style={{ backgroundImage: `url(${bgNeutral})` }}>
 								<button
+									id={'joyride-card-create'}
 									className={'me-btn me-btn-dark p-1'}
 									type={'button'}
 									aria-label={'Create Card'}
@@ -134,8 +176,8 @@ const Cards: React.FC = () => {
 							</div>
 						</div>
 					</li>
-					{deckCards.map((card: CardType) => (
-						<li className={'col-span-1'} key={card.uid}>
+					{deckCards.map((card: CardType, index: number) => (
+						<li id={index === 0 ? 'joyride-card' : card.uid} className={'col-span-1'} key={card.uid}>
 							<Card card={card}></Card>
 						</li>
 					))}
