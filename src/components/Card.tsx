@@ -6,6 +6,7 @@ import bgNeutral from '../assets/images/bg-neutral.png';
 import type { Card as CardType } from '../models/Card';
 import { useStore } from '../store/Store';
 import { toast } from 'react-toastify';
+import Icon from './Icon';
 
 interface CardProps {
 	card: CardType;
@@ -38,15 +39,13 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 								<span className={'font-normal bg-neutral-50 text-sky-950'}>{card.answer}</span>
 							</p>
 							<button
-								className={`me-btn me-btn-dark p-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all bg-sky-950 text-neutral-50 rounded-full opacity-10 hover:opacity-100`}
+								className={`btn btn-dark btn-icon size-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-10 hover:opacity-100`}
 								type={'button'}
 								aria-label={'Delete Card'}
 								title={'Delete Card'}
 								onClick={handleDeleteCard}
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-								</svg>
+								<Icon name={'trash-fill'} width={24} height={24}></Icon>
 							</button>
 						</div>
 					</div>

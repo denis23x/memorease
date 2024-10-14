@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }: ModalProps) 
 				className={'relative bg-neutral-50 rounded-t-3xl md:rounded-3xl max-w-lg w-full p-4'}
 				onClick={e => e.stopPropagation()}
 			>
-				<div className={'flex'}>{children}</div>
+				{children}
 			</div>
 		</div>
 	);

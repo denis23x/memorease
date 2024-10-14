@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import { useStore } from '../store/Store';
 import { Score as ScoreType } from '../models/Score';
+import Icon from '../components/Icon';
 
 const Score: React.FC = () => {
 	const { scores } = useStore();
@@ -38,30 +39,21 @@ const Score: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden p-4'}>
-			<div className={'flex flex-col items-start justify-start gap-4'}>
-				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
-					<div className={'flex items-center justify-start gap-4 max-w-full'}>
+			<div className={'flex flex-col gap-4'}>
+				<header className={'flex flex-col md:flex-row md:items-center gap-4'}>
+					<div className={'flex items-center gap-4'}>
 						<button
-							className={'me-btn me-btn-dark p-2.5'}
+							className={'btn btn-dark btn-icon size-12'}
 							type={'button'}
 							aria-label={'Repeat'}
 							title={'Repeat'}
 							onClick={() => window.history.back()}
 						>
-							<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9" />
-								<path d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
-							</svg>
+							<Icon name={'arrow-repeat'} width={26} height={26}></Icon>
 						</button>
-						<span
-							className={`text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap truncate py-2 px-4`}
-						>
-							Score
-						</span>
+						<span className={'heading heading-teal'}>Score</span>
 						{correct !== 0 ? (
-							<span
-								className={`text-2xl font-bold rounded-full whitespace-nowrap py-2 px-4 ${success ? 'bg-teal-200 text-sky-950' : 'bg-red-400 text-neutral-50'}`}
-							>
+							<span className={`heading ${success ? 'heading-teal' : 'heading-red'}`}>
 								{correct}/{scores.length}
 							</span>
 						) : (
@@ -71,17 +63,17 @@ const Score: React.FC = () => {
 				</header>
 				<div className={'flex'}>
 					{success ? (
-						<div className={'block'}>
+						<>
 							<div className={'fixed inset-0 pointer-events-none'}>
 								<Confetti recycle={false} />
 							</div>
-							<p className={'text-lg text-sky-950'}>
+							<p className={'paragraph'}>
 								Great job! You're doing fantastic. Keep up the good work and continue learning. Your knowledge is
 								impressive!
 							</p>
-						</div>
+						</>
 					) : (
-						<p className={'text-lg text-sky-950'}>
+						<p className={'paragraph'}>
 							Don't worry, learning takes time! Keep practicing and reviewing your answers. The more you learn, the
 							easier it will get. Let's aim for more correct answers next time!
 						</p>
@@ -109,37 +101,20 @@ const Score: React.FC = () => {
 											{score.score ? (
 												<button
 													type={'button'}
-													className={'me-btn me-btn-teal pointer-events-none p-2 scale-75'}
+													className={'btn btn-teal btn-icon size-12 pointer-events-none scale-75'}
 													aria-label={'Correct'}
 													title={'Correct'}
 												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="32"
-														height="32"
-														fill="currentColor"
-														className="bi bi-check-lg"
-														viewBox="0 0 16 16"
-													>
-														<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
-													</svg>
+													<Icon name={'check'} width={32} height={32}></Icon>
 												</button>
 											) : (
 												<button
 													type={'button'}
-													className={'me-btn me-btn-red pointer-events-none p-1 scale-75'}
+													className={'btn btn-red btn-icon size-12 pointer-events-none scale-75'}
 													aria-label={'Wrong'}
 													title={'Wrong'}
 												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="40"
-														height="40"
-														fill="currentColor"
-														viewBox="0 0 16 16"
-													>
-														<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-													</svg>
+													<Icon name={'x'} width={40} height={40}></Icon>
 												</button>
 											)}
 										</div>

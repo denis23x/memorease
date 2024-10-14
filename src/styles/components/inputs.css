@@ -1,15 +1,15 @@
-.me-input {
+.input {
 	@apply transition-colors text-base bg-white font-bold border-0 ring-1 rounded-full truncate py-3 px-4;
 }
 
-.me-input:disabled {
+.input:disabled {
 	@apply opacity-25 cursor-not-allowed;
 }
 
-.me-input.me-input-default {
+.input.input-default {
 	@apply text-sky-950 bg-white ring-neutral-200 focus:ring-sky-950;
 }
 
-.me-input.me-input-error {
+.input.input-error {
 	@apply text-sky-950 bg-red-200 ring-red-200 focus:ring-red-400 ;
 }

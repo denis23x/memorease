@@ -2,6 +2,7 @@
 @import "./components/buttons.css";
 @import "./components/cards.css";
 @import "./components/decks.css";
+@import "./components/heading.css";
 @import "./components/inputs.css";
 @import "./components/inputs-range.css";
 @import "./pages/study.css";

@@ -1,0 +1,15 @@
+.heading {
+	@apply text-2xl font-bold truncate py-2 px-4
+}
+
+.heading.heading-teal {
+	@apply bg-teal-200 text-sky-950 rounded-full;
+}
+
+.heading.heading-red {
+	@apply bg-red-400 text-neutral-50 rounded-full;
+}
+
+.paragraph {
+	@apply text-lg text-sky-950;
+}

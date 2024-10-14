@@ -1,7 +1,6 @@
 /** @format */
 
 import { customAlphabet } from 'nanoid';
-import { useForm } from 'react-hook-form';
 import { CallBackProps } from 'react-joyride';
 import { Card } from '../models/Card';
 
@@ -24,12 +23,6 @@ export const joyRideCallback = (data: CallBackProps, key: string): void => {
 	if (isClosed || isSkipped) {
 		localStorage.setItem(key, '1');
 	}
-};
-export const registerForm = () => {
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const { register, formState, reset, watch, handleSubmit } = useForm();
-
-	return { register, formState, reset, watch, handleSubmit };
 };
 export const parseCSV = (text: string): Partial<Card>[] => {
 	const lines: string[] = text.split('\n');
