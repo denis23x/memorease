@@ -11,9 +11,9 @@ interface StoreContextProps {
 	decks: Deck[];
 	cards: Card[];
 	scores: Score[];
-	createDeck: (deck: Deck) => Promise<void>;
+	createDeck: (deck: Deck) => Promise<Deck>;
 	deleteDeck: (deckUid: string) => Promise<void>;
-	createCard: (card: Card) => Promise<void>;
+	createCard: (card: Card) => Promise<Card>;
 	deleteCard: (cardUid: string) => Promise<void>;
 	createScore: (score: Score) => void;
 	deleteScore: () => void;
@@ -42,6 +42,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 	const createDeck = async (deck: Deck) => {
 		await dbCreateDeck(deck);
 		setDecks((prev: Deck[]) => [...prev, deck]);
+		return deck;
 	};
 
 	const deleteDeck = async (deckUid: string) => {
@@ -56,6 +57,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 	const createCard = async (card: Card) => {
 		await dbCreateCard(card);
 		setCards((prev: Card[]) => [...prev, card]);
+		return card;
 	};
 
 	const deleteCard = async (cardUid: string) => {

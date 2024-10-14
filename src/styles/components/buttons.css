@@ -2,14 +2,30 @@
 	@apply transition-colors text-base font-bold rounded-full focus-visible:outline-0 p-2;
 }
 
+.me-btn:disabled {
+	@apply opacity-25 cursor-not-allowed;
+}
+
 .me-btn.me-btn-dark {
-	@apply bg-sky-950 hover:bg-sky-900 text-neutral-50;
+	@apply bg-sky-950 text-neutral-50;
+
+	&:not(:disabled) {
+		@apply hover:bg-sky-900;
+	}
 }
 
 .me-btn.me-btn-teal {
-	@apply bg-teal-200 hover:bg-teal-300 text-sky-950;
+	@apply bg-teal-200 text-sky-950;
+
+	&:not(:disabled) {
+		@apply hover:bg-teal-300;
+	}
 }
 
 .me-btn.me-btn-red {
-	@apply bg-red-400 hover:bg-red-500 text-neutral-50;
+	@apply bg-red-400 text-neutral-50;
+
+	&:not(:disabled) {
+		@apply hover:bg-red-500;
+	}
 }

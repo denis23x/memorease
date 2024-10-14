@@ -7,11 +7,10 @@ import type { Deck as DeckType } from '../models/Deck';
 import type { Card as CardType } from '../models/Card';
 import Card from '../components/Card';
 import Modal from '../components/Modal';
-import { joyRideCallback, nanoid } from '../services/Helper';
+import { joyRideCallback, nanoid, registerForm } from '../services/Helper';
 import { useNavigate } from 'react-router-dom';
 import bgNeutral from '../assets/images/bg-neutral.png';
 import { toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
 import dayjs from 'dayjs';
 import Joyride, { Step } from 'react-joyride';
 import { JOYRIDE_CARDS } from '../keys/Joyride';
@@ -22,12 +21,12 @@ const steps: Step[] = [
 		disableBeacon: true,
 		target: '#joyride-deck-delete',
 		title: 'Delete',
-		content: 'Delete deck. Remove this deck permanently from your library.'
+		content: 'Remove this deck permanently from your library.'
 	},
 	{
 		target: '#joyride-deck-study',
 		title: 'Study',
-		content: 'Start studying. Begin a quiz session and see how well you know the content.'
+		content: 'Begin a quiz session and see how well you know the content.'
 	},
 	{
 		target: '#joyride-card-create',
@@ -42,9 +41,8 @@ const steps: Step[] = [
 ];
 
 const Cards: React.FC = () => {
-	// prettier-ignore
-	const { register, handleSubmit, reset, formState } = useForm();
 	const navigate = useNavigate();
+	const createCardForm = registerForm();
 	const { deckUid } = useParams<{ deckUid: string }>();
 	const { decks, cards, deleteDeck, createCard } = useStore();
 	const [deleteDeckModal, setDeleteDeckModal] = useState<boolean>(false);
@@ -71,8 +69,8 @@ const Cards: React.FC = () => {
 	}, [deckUid, decks, cards, navigate]);
 
 	useEffect(() => {
-		reset();
-	}, [createCardModal, reset]);
+		createCardForm.reset();
+	}, [createCardModal]);
 
 	const handleDeleteDeck = () => {
 		if (!deckUid) {
@@ -183,7 +181,7 @@ const Cards: React.FC = () => {
 			</div>
 			<Modal isOpen={deleteDeckModal} onClose={() => setDeleteDeckModal(false)}>
 				<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
-					<div className={'flex items-center justify-between gap-4 w-full'}>
+					<header className={'flex items-center justify-between gap-4 w-full'}>
 						<span className={'text-2xl font-bold bg-red-400 text-neutral-50 rounded-full whitespace-nowrap py-2 px-4'}>
 							Delete Deck
 						</span>
@@ -198,7 +196,7 @@ const Cards: React.FC = () => {
 								<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
 							</svg>
 						</button>
-					</div>
+					</header>
 					<div className={'flex items-start justify-start gap-4 w-full'}>
 						<p className={'text-lg text-sky-950'}>
 							Deleting this Deck will also delete all cards associated with it. Are you sure you want to continue?
@@ -218,11 +216,8 @@ const Cards: React.FC = () => {
 				</div>
 			</Modal>
 			<Modal isOpen={createCardModal} onClose={() => setCreateCardModal(false)}>
-				<form
-					className={'flex flex-col items-start justify-start gap-4 w-full'}
-					onSubmit={handleSubmit(handleCreateCard)}
-				>
-					<div className={'flex items-center justify-between gap-4 w-full'}>
+				<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
+					<header className={'flex items-center justify-between gap-4 w-full'}>
 						<span className={'text-2xl font-bold bg-teal-200 text-sky-950 rounded-full whitespace-nowrap py-2 px-4'}>
 							New Card
 						</span>
@@ -237,27 +232,35 @@ const Cards: React.FC = () => {
 								<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
 							</svg>
 						</button>
-					</div>
-					<div className={'flex flex-col items-start justify-start gap-4 w-full'}>
+					</header>
+					<form
+						className={'flex flex-col items-start justify-start gap-4 w-full'}
+						onSubmit={createCardForm.handleSubmit(handleCreateCard)}
+					>
 						<div className={'flex items-start justify-start gap-4 w-full'}>
 							<input
-								className={`me-input ${formState.errors.question ? 'me-input-error' : 'me-input-default'} w-full`}
+								className={`me-input ${createCardForm.formState.errors.question ? 'me-input-error' : 'me-input-default'} w-full`}
 								placeholder={'Question'}
-								{...register('question', { required: true })}
+								{...createCardForm.register('question', { required: true })}
 							/>
-							<button className={'me-btn me-btn-dark p-1'} type={'submit'} aria-label={'Create'} title={'Create'}>
+							<button
+								className={'me-btn me-btn-dark p-1'}
+								type={'submit'}
+								aria-label={'Create Card'}
+								title={'Create Card'}
+							>
 								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
 									<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
 								</svg>
 							</button>
 						</div>
 						<input
-							className={`me-input ${formState.errors.answer ? 'me-input-error' : 'me-input-default'} w-full`}
+							className={`me-input ${createCardForm.formState.errors.answer ? 'me-input-error' : 'me-input-default'} w-full`}
 							placeholder={'Answer'}
-							{...register('answer', { required: true })}
+							{...createCardForm.register('answer', { required: true })}
 						/>
-					</div>
-				</form>
+					</form>
+				</div>
 			</Modal>
 		</section>
 	);

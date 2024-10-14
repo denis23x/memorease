@@ -1,5 +1,9 @@
 .me-input {
-	@apply transition-colors text-base bg-white font-bold border-0 ring-1 rounded-full py-3 px-4;
+	@apply transition-colors text-base bg-white font-bold border-0 ring-1 rounded-full truncate py-3 px-4;
+}
+
+.me-input:disabled {
+	@apply opacity-25 cursor-not-allowed;
 }
 
 .me-input.me-input-default {

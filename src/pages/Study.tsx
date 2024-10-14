@@ -18,12 +18,12 @@ const steps: Step[] = [
 		disableBeacon: true,
 		target: '#joyride-study-deck-edit',
 		title: 'Deck',
-		content: 'Customize your deck to fit your preferences. Click here to edit the current deck.'
+		content: 'Customize your deck to fit your preferences.'
 	},
 	{
 		target: '#joyride-study-card',
 		title: 'Card',
-		content: 'Ready to see the answer? Click the card to reveal the hidden content.'
+		content: 'Click the card to reveal the hidden content.'
 	}
 ];
 

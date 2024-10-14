@@ -3,6 +3,7 @@
 @import "./components/cards.css";
 @import "./components/decks.css";
 @import "./components/inputs.css";
+@import "./components/inputs-range.css";
 @import "./pages/study.css";
 @import "./vendor/joyride.css";
 @import "./vendor/toastify.css";
