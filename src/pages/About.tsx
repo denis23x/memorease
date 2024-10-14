@@ -3,12 +3,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { JOYRIDE_CARDS, JOYRIDE_DECKS, JOYRIDE_STUDY } from '../keys/Joyride';
-import { Deck } from '../models/Deck';
+import type { Deck } from '../models/Deck';
+import type { Card } from '../models/Card';
 import { useStore } from '../store/Store';
-import { type Card as CardType, Card } from '../models/Card';
 import Icon from '../components/Icon';
 
 interface SpecialTanks {
+	id: number;
 	link: string;
 	text: string;
 }
@@ -25,18 +26,22 @@ const About: React.FC = () => {
 	];
 	const specialThanks: SpecialTanks[] = [
 		{
+			id: 1,
 			link: 'https://vercel.com',
 			text: 'Your complete platform for the web'
 		},
 		{
+			id: 2,
 			link: 'https://gemini.google.com',
 			text: 'Supercharge your creativity and productivity'
 		},
 		{
+			id: 3,
 			link: 'https://patternpad.com',
 			text: 'Design beautiful patterns from endless variations'
 		},
 		{
+			id: 4,
 			link: 'https://range-input-css.netlify.app',
 			text: 'Generate CSS to style range inputs that look consistent across all browsers'
 		}
@@ -93,8 +98,8 @@ const About: React.FC = () => {
 					</p>
 					<span className={'heading heading-red'}>How to Study</span>
 					<ul className={'flex flex-col gap-4 list-disc'}>
-						{howToStudy.map((howTo: string) => (
-							<li className={'list-inside flex items-start gap-4'}>
+						{howToStudy.map((howTo: string, index: number) => (
+							<li className={'list-inside flex items-start gap-4'} key={index}>
 								<figure className={'size-4 aspect-square py-1.5'}>
 									<Icon name={'asterisk'} width={16} height={16}></Icon>
 								</figure>
@@ -150,14 +155,18 @@ const About: React.FC = () => {
 						<></>
 					)}
 					<div className={'flex items-center  gap-4'}>
-						<span className={'btn btn-dark btn-icon size-12 pointer-events-none'} aria-label={'Tour'} title={'Tour'}>
+						<span
+							className={'btn btn-dark btn-icon size-12 pointer-events-none'}
+							aria-label={'Thanks'}
+							title={'Thanks'}
+						>
 							<Icon name={'pin-angle-fill'} width={24} height={24}></Icon>
 						</span>
 						<span className={'heading heading-teal'}>Special Thanks</span>
 					</div>
 					<ul className={'flex flex-col gap-4'}>
 						{specialThanks.map((thanks: SpecialTanks) => (
-							<li className={'paragraph'}>
+							<li className={'paragraph'} key={thanks.id}>
 								<a className={'underline'} href={thanks.link} target={'_blank'} rel={'noreferrer noopener'}>
 									<strong>{thanks.link}</strong>
 								</a>

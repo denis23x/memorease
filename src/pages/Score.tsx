@@ -53,7 +53,7 @@ const Score: React.FC = () => {
 						</button>
 						<span className={'heading heading-teal'}>Score</span>
 						{correct !== 0 ? (
-							<span className={`heading ${success ? 'heading-teal' : 'heading-red'}`}>
+							<span className={`heading px-0`}>
 								{correct}/{scores.length}
 							</span>
 						) : (

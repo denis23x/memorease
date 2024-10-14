@@ -20,7 +20,7 @@ const Tooltip: React.FC<TooltipRenderProps> = ({
 		<div {...tooltipProps} className={'bg-neutral-50 rounded-xl flex flex-col gap-4 max-w-[calc(24rem-2rem)] p-4'}>
 			<div className={`flex items-center justify-between`}>
 				<span className={'heading heading-teal'}>{step.title}</span>
-				<span className={'heading heading-teal'}>
+				<span className={'heading px-0'}>
 					{index + 1}/{size}
 				</span>
 			</div>

@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 								<span className={'font-normal bg-neutral-50 text-sky-950'}>{card.answer}</span>
 							</p>
 							<button
-								className={`btn btn-dark btn-icon size-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-10 hover:opacity-100`}
+								className={`btn btn-dark btn-icon size-12 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-10 hover:opacity-100`}
 								type={'button'}
 								aria-label={'Delete Card'}
 								title={'Delete Card'}
