@@ -66,12 +66,14 @@ const Study: React.FC = () => {
 	}, [deckUid, decks, cards, navigate]);
 
 	useEffect(() => {
-		if (timeLeft > 0) {
-			intervalRef.current = setInterval(() => {
-				setTimeLeft(prev => prev - 10);
-			}, 10);
-		} else {
-			handleFlip();
+		if (!activeCardFlip) {
+			if (timeLeft > 0) {
+				intervalRef.current = setInterval(() => {
+					setTimeLeft(prev => prev - 10);
+				}, 10);
+			} else {
+				handleFlip();
+			}
 		}
 
 		return () => clearInterval(intervalRef.current!);

@@ -103,7 +103,7 @@ const Cards: React.FC = () => {
 				tooltipComponent={Tooltip}
 				callback={e => joyRideCallback(e, JOYRIDE_CARDS)}
 			/>
-			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
+			<div className={'flex flex-col items-start justify-start gap-4'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
 						<Link className={'me-btn me-btn-dark p-1'} to={'/decks'} aria-label={'Decks'} title={'Decks'}>

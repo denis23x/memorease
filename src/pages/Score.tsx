@@ -38,7 +38,7 @@ const Score: React.FC = () => {
 
 	return (
 		<section className={'overflow-hidden p-4'}>
-			<div className={'flex flex-col items-start justify-start gap-4 md:gap-8'}>
+			<div className={'flex flex-col items-start justify-start gap-4'}>
 				<header className={'flex flex-col md:flex-row items-start md:items-center justify-start gap-4 w-full'}>
 					<div className={'flex items-center justify-start gap-4 max-w-full'}>
 						<button

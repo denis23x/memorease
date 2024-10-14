@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom';
 import girl from '../assets/images/girl.png';
 
 const Home: React.FC = () => {
-	const highlights: string[] = [
-		`<strong>Active recall</strong>: Test yourself to strengthen memory.`,
-		`<strong>Optimal timing</strong>: Review at the right time to prevent forgetting.`,
-		`<strong>Adaptability</strong>: Adjust review schedule based on your learning.`
-	];
-
 	return (
 		<section className={'overflow-hidden p-4'}>
 			<div className={'flex flex-col-reverse md:flex-row items-center justify-between'}>
@@ -40,16 +34,36 @@ const Home: React.FC = () => {
 						and learn how to remember anything, fast and easy.
 					</p>
 					<ul className={'flex flex-col gap-4 px-4'}>
-						{highlights.map((highlight: string, index: number) => (
-							<li className={'flex items-center justify-start gap-4'} key={index}>
-								<span
-									className={`text-lg font-bold flex items-center justify-center bg-sky-950 text-neutral-50 rounded-full aspect-square w-8 h-8`}
-								>
-									{index + 1}
-								</span>
-								<span className={'text-base text-sky-950'} dangerouslySetInnerHTML={{ __html: highlight }}></span>
-							</li>
-						))}
+						<li className={'flex items-center justify-start gap-4'}>
+							<span
+								className={`text-lg font-bold flex items-center justify-center bg-sky-950 text-neutral-50 rounded-full aspect-square w-8 h-8`}
+							>
+								1
+							</span>
+							<span className={'text-base text-sky-950'}>
+								<strong>Active recall</strong>: Test yourself to strengthen memory.
+							</span>
+						</li>
+						<li className={'flex items-center justify-start gap-4'}>
+							<span
+								className={`text-lg font-bold flex items-center justify-center bg-sky-950 text-neutral-50 rounded-full aspect-square w-8 h-8`}
+							>
+								2
+							</span>
+							<span className={'text-base text-sky-950'}>
+								<strong>Optimal timing</strong>: Review at the right time to prevent forgetting.
+							</span>
+						</li>
+						<li className={'flex items-center justify-start gap-4'}>
+							<span
+								className={`text-lg font-bold flex items-center justify-center bg-sky-950 text-neutral-50 rounded-full aspect-square w-8 h-8`}
+							>
+								3
+							</span>
+							<span className={'text-base text-sky-950'}>
+								<strong>Amplified by Gemini</strong>: AI can automate creating a new questions, and reduce errors.
+							</span>
+						</li>
 					</ul>
 					<div className={'flex flex-col gap-4 self-start md:text-left p-4'}>
 						<span className={'text-2xl font-bold text-sky-950'}>Want to know more?</span>
@@ -57,8 +71,8 @@ const Home: React.FC = () => {
 							<Link className={'me-btn me-btn-dark px-4'} to={'/decks'} aria-label={'Decks'} title={'Decks'}>
 								Browse
 							</Link>
-							<Link className={'me-btn me-btn-dark px-4'} to={'/about'} aria-label={'About'} title={'About'}>
-								About
+							<Link className={'me-btn me-btn-teal px-4'} to={'/about'} aria-label={'About'} title={'About'}>
+								How to Use
 							</Link>
 						</div>
 					</div>
