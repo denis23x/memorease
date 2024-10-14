@@ -92,6 +92,8 @@ const Decks: React.FC = () => {
 				// prettier-ignore
 				createDeck(deck).then(async (deck: DeckType) => {
 					const cardsPromise: Promise<CardType>[] = cards
+						.filter((card: Partial<CardType>) => card.answer !== '' && card.question !== '')
+						.filter((card: Partial<CardType>) => card.answer?.toLowerCase() !== 'answer' && card.question?.toLowerCase() !== 'question')
 						.map((card: Partial<CardType>) => ({ uid: nanoid(), timestamp: dayjs().unix(), deckUid: deck.uid, ...card } as CardType))
 						.map(async (card: CardType) => createCard(card));
 
