@@ -6,7 +6,6 @@
     "@fontsource/nunito": "^5.1.0",
     "@google/generative-ai": "^0.21.0",
     "dayjs": "^1.11.13",
-    "eruda": "^3.4.0",
     "idb": "^8.0.0",
     "nanoid": "^5.0.7",
     "react": "^18.3.1",

@@ -9,9 +9,11 @@ const Header: React.FC = () => {
 
 	useEffect(() => {
 		if (darkMode) {
+			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
 			document.documentElement.classList.remove('dark');
 			localStorage.removeItem('dark');
 		} else {
+			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#020617');
 			document.documentElement.classList.add('dark');
 			localStorage.setItem('dark', '1');
 		}

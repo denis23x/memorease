@@ -7,7 +7,7 @@
 }
 
 .input.input-default {
-	@apply text-sky-950 bg-white ring-neutral-200 focus:ring-sky-950 dark:bg-slate-800 dark:ring-slate-700 dark:focus:ring-slate-600;
+	@apply text-sky-950 bg-white ring-neutral-200 focus:ring-sky-950 dark:text-neutral-400 dark:bg-slate-800 dark:ring-slate-700 dark:focus:ring-slate-600;
 }
 
 .input.input-error {

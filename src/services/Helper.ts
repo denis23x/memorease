@@ -5,15 +5,21 @@ import { CallBackProps } from 'react-joyride';
 import { Card } from '../models/Card';
 
 export const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 12);
-export const formatMilliseconds = (milliseconds: number): string => {
-	const seconds: number = milliseconds / 1000;
-	const minutes: number = Math.floor(seconds / 60);
-	const remainingSeconds: number = seconds % 60;
+export const formatMilliseconds = (ms: number): string => {
+	const milliseconds: number = ms % 1000;
+	const totalSeconds: number = Math.floor(ms / 1000);
+	const seconds: number = totalSeconds % 60;
+	const minutes: number = Math.floor(totalSeconds / 60);
 
 	if (minutes > 0) {
-		return `${minutes}.${remainingSeconds.toFixed(2)}`;
+		const s: string = seconds.toFixed(0).padStart(2, '0');
+		const ms: string = Math.floor(milliseconds / 10)
+			.toString()
+			.padStart(2, '0');
+
+		return `${minutes}:${s}.${ms}`;
 	} else {
-		return `${remainingSeconds.toFixed(2)}`;
+		return (seconds + milliseconds / 1000).toFixed(2).toString();
 	}
 };
 export const joyRideCallback = (data: CallBackProps, key: string): void => {

@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import About from './pages/About';
 import Cards from './pages/Cards';
@@ -17,12 +17,11 @@ import '@fontsource/nunito/700.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const App: React.FC = () => {
-	const location = useLocation();
-	const queryParams: URLSearchParams = new URLSearchParams(location.search);
+	const { pathname } = useLocation();
 
-	if (queryParams.get('debug')) {
-		import('eruda').then((eruda: any) => eruda.default.init());
-	}
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
 
 	return (
 		<div className={'bg-no-repeat bg-cover bg-pattern-12-9-neutral dark:bg-pattern-12-9-slate'}>
