@@ -25,7 +25,7 @@ const App: React.FC = () => {
 	}
 
 	return (
-		<div className={'bg-repeat bg-pattern-12-9-neutral'}>
+		<div className={'bg-no-repeat bg-cover bg-pattern-12-9-neutral dark:bg-pattern-12-9-slate'}>
 			<div className={'grid grid-rows-layout min-h-dvh min-w-dvw overflow-hidden'}>
 				<Header />
 				<Routes>

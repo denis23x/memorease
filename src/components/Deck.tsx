@@ -21,12 +21,12 @@ const Deck: React.FC<DeckProps> = ({ deck }: DeckProps) => {
 	}, [cards, deck]);
 
 	return (
-		<div className={`deck`}>
+		<div className={'deck'}>
 			<Link to={deckCards.length ? `/study/${deck.uid}` : deck.uid} aria-label={deck.name} title={deck.name}>
-				<div className={`deck-inner bg-pattern-2-3-teal`}>
+				<div className={'deck-inner bg-pattern-2-3-teal dark:bg-pattern-2-3-teal-2'}>
 					<p className={'deck-body'}>
-						<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>
-							{deck.name} <span className={'text-sm text-sky-950/50'}>({deckCards.length})</span>
+						<span className={'paragraph text-lg font-bold bg-neutral-50 dark:bg-slate-900'}>
+							{deck.name} <span className={'text-sm opacity-50'}>({deckCards.length})</span>
 						</span>
 					</p>
 				</div>

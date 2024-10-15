@@ -1,9 +1,13 @@
 .deck {
-  @apply size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl transition-all hover:mouse:shadow-deck hover:mouse:-translate-y-2 p-1;
+  @apply size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl hover:mouse:shadow-stack-neutral hover:mouse:-translate-y-2 p-1 dark:bg-slate-900 dark:border-slate-700 dark:hover:mouse:shadow-stack-sky;
+
+  transition-property: box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .deck-inner {
-  @apply flex items-center justify-center size-full relative bg-cover border border-neutral-200 rounded-lg;
+  @apply relative flex items-center justify-center size-full border border-neutral-200 bg-cover rounded-lg overflow-x-hidden overflow-y-auto dark:bg-slate-900 dark:border-slate-700;
 }
 
 .deck-body {

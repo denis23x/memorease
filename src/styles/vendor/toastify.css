@@ -1,10 +1,9 @@
-:root {
-	--toastify-text-color-info: theme('colors.neutral.50');
-	--toastify-color-info: theme('colors.sky.950');
-}
-
 .Toastify__toast {
 	@apply rounded-full min-h-fit p-0 my-4 mx-auto w-fit;
+}
+
+.Toastify__toast.Toastify__toast--info {
+	@apply bg-sky-950 text-neutral-50 dark:bg-slate-800 dark:text-neutral-300;
 }
 
 .Toastify__toast-body {

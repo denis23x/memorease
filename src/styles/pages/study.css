@@ -1,9 +1,9 @@
 .study-card {
-	@apply grid aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-xl p-1;
+	@apply grid aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-xl p-1 dark:bg-slate-900 dark:border-slate-700;
 }
 
 .study-card-inner {
-	@apply size-full relative flex items-center justify-center bg-cover border border-neutral-200 rounded-lg overflow-x-hidden overflow-y-auto;
+	@apply size-full relative flex items-center justify-center bg-cover border border-neutral-200 rounded-lg overflow-x-hidden overflow-y-auto dark:bg-slate-900 dark:border-slate-700;
 }
 
 .study-card-body {

@@ -53,7 +53,7 @@ const Score: React.FC = () => {
 						</button>
 						<span className={'heading heading-teal'}>Score</span>
 						{correct !== 0 ? (
-							<span className={`heading px-0`}>
+							<span className={`text-2xl font-bold text-sky-950 dark:text-neutral-300`}>
 								{correct}/{scores.length}
 							</span>
 						) : (
@@ -81,17 +81,20 @@ const Score: React.FC = () => {
 				</div>
 				<div className={'flex items-start justify-start w-full'}>
 					<table
-						className={`table-auto border-collapse outline outline-1 outline-neutral-200 rounded-xl overflow-hidden w-full`}
+						className={`table-auto border-collapse outline outline-1 outline-neutral-200 dark:outline-slate-700 rounded-xl overflow-hidden w-full`}
 					>
 						<tbody className={'bg-neutral-50'}>
 							{scores.map((score: ScoreType, index: number) => (
-								<tr className={'last:border-0 border-b border-neutral-200 odd:bg-neutral-100'} key={index}>
+								<tr
+									className={`last:border-0 border-b border-neutral-200 odd:bg-neutral-100 dark:border-slate-700 dark:bg-slate-900 dark:odd:bg-slate-800`}
+									key={index}
+								>
 									<td className={'text-left py-2 px-4'}>
 										<div className={'flex flex-col gap-1'}>
-											<span className={'text-base text-sky-950'}>
+											<span className={'text-base paragraph'}>
 												<span className={'font-bold'}>Q:</span> {score.question}
 											</span>
-											<span className={'text-base text-sky-950'}>
+											<span className={'text-base paragraph'}>
 												<span className={'font-bold'}>A:</span> {score.answer}
 											</span>
 										</div>

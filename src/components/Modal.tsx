@@ -15,11 +15,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }: ModalProps) 
 
 	return (
 		<div
-			className={'flex items-end md:items-center justify-center fixed inset-0 size-full bg-sky-950/50'}
+			className={'flex items-end md:items-center justify-center fixed inset-0 size-full bg-black/50 z-50'}
 			onClick={onClose}
 		>
 			<div
-				className={'relative bg-neutral-50 rounded-t-3xl md:rounded-3xl max-w-lg w-full p-4'}
+				className={'relative bg-neutral-50 dark:bg-slate-900 rounded-t-3xl md:rounded-3xl max-w-lg w-full p-4'}
 				onClick={e => e.stopPropagation()}
 			>
 				{children}

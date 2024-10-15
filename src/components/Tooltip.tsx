@@ -17,10 +17,13 @@ const Tooltip: React.FC<TooltipRenderProps> = ({
 	closeProps
 }: TooltipRenderProps) => {
 	return (
-		<div {...tooltipProps} className={'bg-neutral-50 rounded-xl flex flex-col gap-4 max-w-[calc(24rem-2rem)] p-4'}>
-			<div className={`flex items-center justify-between`}>
+		<div
+			{...tooltipProps}
+			className={'bg-neutral-50 dark:bg-slate-900 rounded-xl flex flex-col gap-4 max-w-[calc(24rem-2rem)] p-4'}
+		>
+			<div className={`flex items-center gap-4`}>
 				<span className={'heading heading-teal'}>{step.title}</span>
-				<span className={'heading px-0'}>
+				<span className={'text-2xl font-bold text-sky-950 dark:text-neutral-300'}>
 					{index + 1}/{size}
 				</span>
 			</div>

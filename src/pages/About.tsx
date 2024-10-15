@@ -100,10 +100,10 @@ const About: React.FC = () => {
 					<ul className={'flex flex-col gap-4 list-disc'}>
 						{howToStudy.map((howTo: string, index: number) => (
 							<li className={'list-inside flex items-start gap-4'} key={index}>
-								<figure className={'size-4 aspect-square py-1.5'}>
+								<figure className={'size-4 aspect-square paragraph py-1.5'}>
 									<Icon name={'asterisk'} width={16} height={16}></Icon>
 								</figure>
-								<span className={'paragraph bg-neutral-50'} dangerouslySetInnerHTML={{ __html: howTo }}></span>
+								<span className={'paragraph'} dangerouslySetInnerHTML={{ __html: howTo }}></span>
 							</li>
 						))}
 					</ul>

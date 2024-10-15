@@ -39,8 +39,6 @@ const steps: Step[] = [
 
 const Decks: React.FC = () => {
 	const { decks } = useStore();
-	const [createWithAIModal, setCreateWithAIModal] = useState<boolean>(false);
-	const [createDeckModal, setCreateDeckModal] = useState<boolean>(false);
 	const [filteredDecks, setFilteredDecks] = useState<DeckType[]>([]);
 	const [joyride, setJoyride] = useState<boolean>(false);
 
@@ -56,6 +54,11 @@ const Decks: React.FC = () => {
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
 			<Joyride
+				styles={{
+					options: {
+						arrowColor: 'currentColor'
+					}
+				}}
 				run={joyride}
 				continuous
 				showSkipButton
@@ -77,41 +80,15 @@ const Decks: React.FC = () => {
 						onChange={e => handleSearch(e.target.value)}
 						aria-label={'Search'}
 						title={'Search'}
-						placeholder={'Search'}
+						placeholder={'Your search begins here'}
 					/>
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4'}>
 					<li className={`col-span-1 rounded-3xl shadow-xl`}>
-						<div className={`deck`}>
-							<div className={`deck-inner bg-pattern-2-3-neutral`}>
-								<button
-									id={'joyride-deck-ai'}
-									className={'btn btn-dark btn-icon size-12'}
-									type={'button'}
-									aria-label={'Create with AI'}
-									title={'Create with AI'}
-									onClick={() => setCreateWithAIModal(true)}
-								>
-									<Icon name={'cpu-fill'} width={24} height={24}></Icon>
-								</button>
-							</div>
-						</div>
+						<CreateWithAI></CreateWithAI>
 					</li>
 					<li className={`col-span-1 rounded-3xl shadow-xl`}>
-						<div className={`deck`}>
-							<div className={`deck-inner bg-pattern-2-3-neutral`}>
-								<button
-									id={'joyride-deck-create'}
-									className={'btn btn-dark btn-icon size-12'}
-									type={'button'}
-									aria-label={'Create Deck'}
-									title={'Create Deck'}
-									onClick={() => setCreateDeckModal(true)}
-								>
-									<Icon name={'plus'} width={40} height={40}></Icon>
-								</button>
-							</div>
-						</div>
+						<CreateDeck></CreateDeck>
 					</li>
 					{filteredDecks.map((deck: DeckType, index: number) => (
 						<li
@@ -124,8 +101,6 @@ const Decks: React.FC = () => {
 					))}
 				</ul>
 			</div>
-			<CreateDeck createDeckModal={createDeckModal} setCreateDeckModal={setCreateDeckModal}></CreateDeck>
-			<CreateWithAI createWithAIModal={createWithAIModal} setCreateWithAIModal={setCreateWithAIModal}></CreateWithAI>
 		</section>
 	);
 };

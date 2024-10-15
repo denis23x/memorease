@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import Modal from '../Modal';
 import type { Card as CardType } from '../../models/Card';
@@ -11,69 +11,93 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Icon from '../Icon';
 
-interface CreateCardProps {
-	createCardModal: boolean;
-	setCreateCardModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const CreateCard: React.FC<CreateCardProps> = ({ createCardModal, setCreateCardModal }: CreateCardProps) => {
+const CreateCard: React.FC = () => {
 	const { createCard } = useStore();
 	const { deckUid } = useParams<{ deckUid: string }>();
 	const { register, formState, reset, handleSubmit } = useForm();
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		reset();
-	}, [createCardModal, reset]);
+	}, [isOpen, reset]);
 
 	const handleCreateCard = (data: any) => {
 		if (deckUid) {
 			const card: CardType = { uid: nanoid(), timestamp: dayjs().unix(), deckUid, ...data };
 
 			createCard(card)
-				.then(() => setCreateCardModal(false))
+				.then(() => setIsOpen(false))
 				.then(() => toast.info('Card has been created'));
 		}
 	};
 
 	return (
-		<Modal isOpen={createCardModal} onClose={() => setCreateCardModal(false)}>
-			<div className={'flex flex-col gap-4'}>
-				<header className={'flex items-center justify-between gap-4'}>
-					<span className={'heading heading-teal'}>New Card</span>
+		<>
+			<div className={'card'}>
+				<div className={'card-inner'}>
+					<img
+						className={'block dark:hidden absolute size-full inset-0'}
+						src={'/assets/images/pattern-2-3-neutral.png'}
+						loading={'eager'}
+						alt={'Create Card'}
+					/>
+					<img
+						className={'hidden dark:block absolute size-full inset-0'}
+						src={'/assets/images/pattern-2-3-slate.png'}
+						loading={'eager'}
+						alt={'Create Card'}
+					/>
 					<button
-						className={'btn btn-dark btn-icon size-12'}
+						id={'joyride-card-create'}
+						className={'btn btn-dark btn-icon size-12 z-10'}
 						type={'button'}
-						aria-label={'Close'}
-						title={'Close'}
-						onClick={() => setCreateCardModal(false)}
+						aria-label={'Create Card'}
+						title={'Create Card'}
+						onClick={() => setIsOpen(true)}
 					>
-						<Icon name={'x'} width={40} height={40}></Icon>
+						<Icon name={'plus'} width={40} height={40}></Icon>
 					</button>
-				</header>
-				<form className={'flex flex-col gap-4'} onSubmit={handleSubmit(handleCreateCard)}>
-					<div className={'flex gap-4'}>
-						<input
-							className={`input ${formState.errors.question ? 'input-error' : 'input-default'} flex-1`}
-							placeholder={'Question'}
-							{...register('question', { required: true })}
-						/>
+				</div>
+			</div>
+			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+				<div className={'flex flex-col gap-4'}>
+					<header className={'flex items-center justify-between gap-4'}>
+						<span className={'heading heading-teal'}>New Card</span>
 						<button
 							className={'btn btn-dark btn-icon size-12'}
-							type={'submit'}
-							aria-label={'Create Deck'}
-							title={'Create Deck'}
+							type={'button'}
+							aria-label={'Close'}
+							title={'Close'}
+							onClick={() => setIsOpen(false)}
 						>
-							<Icon name={'plus'} width={40} height={40}></Icon>
+							<Icon name={'x'} width={40} height={40}></Icon>
 						</button>
-					</div>
-					<input
-						className={`input ${formState.errors.answer ? 'input-error' : 'input-default'} flex-1`}
-						placeholder={'Answer'}
-						{...register('answer', { required: true })}
-					/>
-				</form>
-			</div>
-		</Modal>
+					</header>
+					<form className={'flex flex-col gap-4'} onSubmit={handleSubmit(handleCreateCard)}>
+						<div className={'flex gap-4'}>
+							<input
+								className={`input ${formState.errors.question ? 'input-error' : 'input-default'} flex-1`}
+								placeholder={'Question'}
+								{...register('question', { required: true })}
+							/>
+							<button
+								className={'btn btn-dark btn-icon size-12'}
+								type={'submit'}
+								aria-label={'Create Deck'}
+								title={'Create Deck'}
+							>
+								<Icon name={'plus'} width={40} height={40}></Icon>
+							</button>
+						</div>
+						<input
+							className={`input ${formState.errors.answer ? 'input-error' : 'input-default'} flex-1`}
+							placeholder={'Answer'}
+							{...register('answer', { required: true })}
+						/>
+					</form>
+				</div>
+			</Modal>
+		</>
 	);
 };
 

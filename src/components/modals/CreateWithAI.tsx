@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../Modal';
 import { useForm } from 'react-hook-form';
 import type { Deck as DeckType } from '../../models/Deck';
@@ -14,19 +14,15 @@ import { generationConfig, model } from '../../services/Gemini';
 import type { Card as CardType } from '../../models/Card';
 import Icon from '../Icon';
 
-interface CreateWithAIProps {
-	createWithAIModal: boolean;
-	setCreateWithAIModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const CreateWithAI: React.FC<CreateWithAIProps> = ({ createWithAIModal, setCreateWithAIModal }: CreateWithAIProps) => {
+const CreateWithAI: React.FC = () => {
 	const navigate = useNavigate();
 	const { createDeck, createCard } = useStore();
 	const { register, formState, reset, watch, handleSubmit } = useForm();
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		reset();
-	}, [createWithAIModal, reset]);
+	}, [isOpen, reset]);
 
 	const handleAI = (data: any) => {
 		const chatSession: ChatSession = model.startChat({
@@ -70,65 +66,93 @@ const CreateWithAI: React.FC<CreateWithAIProps> = ({ createWithAIModal, setCreat
 	};
 
 	return (
-		<Modal isOpen={createWithAIModal} onClose={() => setCreateWithAIModal(false)}>
-			<div className={'flex flex-col gap-4'}>
-				<header className={'flex items-center justify-between gap-4'}>
-					<span className={'heading heading-teal'}>Ask AI</span>
+		<>
+			<div className={`deck`}>
+				<div className={`deck-inner`}>
+					<img
+						className={'block dark:hidden absolute size-full inset-0'}
+						src={'/assets/images/pattern-2-3-neutral.png'}
+						loading={'eager'}
+						alt={'Create with AI'}
+					/>
+					<img
+						className={'hidden dark:block absolute size-full inset-0'}
+						src={'/assets/images/pattern-2-3-slate.png'}
+						loading={'eager'}
+						alt={'Create with AI'}
+					/>
 					<button
-						className={'btn btn-dark btn-icon size-12'}
+						id={'joyride-deck-ai'}
+						className={'btn btn-dark btn-icon size-12 z-10'}
 						type={'button'}
-						aria-label={'Close'}
-						title={'Close'}
-						onClick={() => setCreateWithAIModal(false)}
+						aria-label={'Create with AI'}
+						title={'Create with AI'}
+						onClick={() => setIsOpen(true)}
 					>
-						<Icon name={'x'} width={40} height={40}></Icon>
+						<Icon name={'cpu-fill'} width={24} height={24}></Icon>
 					</button>
-				</header>
-				<p className={'paragraph'}>Enter a topic and quantity to get AI-generated questions.</p>
-				<form className={`flex flex-col gap-4`} onSubmit={handleSubmit(handleAI)}>
-					<div className={'flex items-center gap-4'}>
-						<input
-							className={`input ${formState.errors.name ? 'input-error' : 'input-default'} flex-1`}
-							placeholder={'Space, WW2, Spider-Man ..etc'}
-							disabled={formState.isSubmitSuccessful}
-							{...register('name', { required: true, minLength: 3 })}
-						/>
+				</div>
+			</div>
+			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+				<div className={'flex flex-col gap-4'}>
+					<header className={'flex items-center justify-between gap-4'}>
+						<span className={'heading heading-teal'}>Ask AI</span>
 						<button
 							className={'btn btn-dark btn-icon size-12'}
-							type={'submit'}
-							aria-label={'Create Deck with AI'}
-							title={'Create Deck with AI'}
-							disabled={formState.isSubmitSuccessful}
+							type={'button'}
+							aria-label={'Close'}
+							title={'Close'}
+							onClick={() => setIsOpen(false)}
 						>
-							{formState.isSubmitSuccessful ? (
-								<div className={'animate-spin'}>
-									<Icon name={'arrow-right-short'} width={40} height={40}></Icon>
-								</div>
-							) : (
-								<Icon name={'arrow-right-short'} width={40} height={40}></Icon>
-							)}
+							<Icon name={'x'} width={40} height={40}></Icon>
 						</button>
-					</div>
-					<div className={'flex items-center gap-4'}>
-						<input
-							type={'range'}
-							step={1}
-							min={10}
-							max={30}
-							disabled={formState.isSubmitSuccessful}
-							{...register('count', { required: true, value: 10 })}
-						/>
-						<span
-							className={`btn btn-dark btn-icon size-12 text-xl pointer-events-none ${formState.isSubmitSuccessful ? 'opacity-25' : ''}`}
-							aria-label={'Count of Questions'}
-							title={'Count of Questions'}
-						>
-							{watch('count')}
-						</span>
-					</div>
-				</form>
-			</div>
-		</Modal>
+					</header>
+					<p className={'paragraph'}>Enter a topic and quantity to get AI-generated questions.</p>
+					<form className={`flex flex-col gap-4`} onSubmit={handleSubmit(handleAI)}>
+						<div className={'flex items-center gap-4'}>
+							<input
+								className={`input ${formState.errors.name ? 'input-error' : 'input-default'} flex-1`}
+								placeholder={'Space, WW2, Spider-Man ..etc'}
+								disabled={formState.isSubmitSuccessful}
+								{...register('name', { required: true, minLength: 3 })}
+							/>
+							<button
+								className={'btn btn-dark btn-icon size-12'}
+								type={'submit'}
+								aria-label={'Create Deck with AI'}
+								title={'Create Deck with AI'}
+								disabled={formState.isSubmitSuccessful}
+							>
+								{formState.isSubmitSuccessful ? (
+									<div className={'animate-spin'}>
+										<Icon name={'arrow-right-short'} width={40} height={40}></Icon>
+									</div>
+								) : (
+									<Icon name={'arrow-right-short'} width={40} height={40}></Icon>
+								)}
+							</button>
+						</div>
+						<div className={'flex items-center gap-4'}>
+							<input
+								type={'range'}
+								step={1}
+								min={10}
+								max={30}
+								disabled={formState.isSubmitSuccessful}
+								{...register('count', { required: true, value: 10 })}
+							/>
+							<span
+								className={`btn btn-dark btn-icon size-12 text-xl pointer-events-none ${formState.isSubmitSuccessful ? 'opacity-25' : ''}`}
+								aria-label={'Count of Questions'}
+								title={'Count of Questions'}
+							>
+								{watch('count')}
+							</span>
+						</div>
+					</form>
+				</div>
+			</Modal>
+		</>
 	);
 };
 

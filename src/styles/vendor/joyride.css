@@ -5,3 +5,7 @@
 .react-joyride__beacon {
 	@apply focus-visible:outline-0;
 }
+
+.__floater__arrow {
+	@apply text-neutral-50 dark:text-slate-900
+}

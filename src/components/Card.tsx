@@ -23,18 +23,18 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 			<div className={`animate-flip-inner`}>
 				<div className={`animate-flip-front`}>
 					<div className={'card cursor-pointer'}>
-						<div className={'card-inner bg-pattern-2-3-red'}>
+						<div className={'card-inner bg-pattern-2-3-red dark:bg-pattern-2-3-red-2'}>
 							<p className={'card-body'}>
-								<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>{card.question}</span>
+								<span className={'paragraph text-lg font-bold bg-neutral-50 dark:bg-slate-900'}>{card.question}</span>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div className={`animate-flip-back`}>
 					<div className={'card'}>
-						<div className={'card-inner bg-pattern-2-3-neutral'}>
+						<div className={'card-inner bg-pattern-2-3-neutral dark:bg-pattern-2-3-slate'}>
 							<p className={'card-body'}>
-								<span className={'font-normal bg-neutral-50 text-sky-950'}>{card.answer}</span>
+								<span className={'paragraph text-lg bg-neutral-50 dark:bg-slate-900'}>{card.answer}</span>
 							</p>
 							<button
 								className={`btn btn-dark btn-icon size-12 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-10 hover:opacity-100`}

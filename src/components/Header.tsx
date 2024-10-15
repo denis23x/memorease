@@ -23,7 +23,7 @@ const Header: React.FC = () => {
 				<Link className={'btn btn-teal btn-icon size-12'} to={'/decks'} aria-label={'Decks'} title={'Decks'}>
 					<Icon name={'stack'} width={24} height={24}></Icon>
 				</Link>
-				<span className={'text-2xl font-bold text-sky-950 hidden md:block'}>Memorease</span>
+				<span className={'heading text-sky-950 dark:text-neutral-300 px-0 hidden md:block'}>Memorease</span>
 			</nav>
 			<nav className={'col-span-1 flex justify-end'}>
 				<ul className={'flex items-center justify-end gap-4'}>

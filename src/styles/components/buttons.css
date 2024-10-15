@@ -1,5 +1,5 @@
 .btn {
-	@apply transition-colors text-base font-bold rounded-full focus-visible:outline-0 p-2;
+	@apply text-base font-bold rounded-full focus-visible:outline-0 mouse:hover:scale-110 transition-transform p-2;
 }
 
 .btn-icon {
@@ -11,25 +11,13 @@
 }
 
 .btn.btn-dark {
-	@apply bg-sky-950 text-neutral-50;
-
-	&:not(:disabled) {
-		@apply hover:bg-sky-900;
-	}
+	@apply bg-sky-950 text-neutral-50 dark:bg-slate-800 dark:text-neutral-300;
 }
 
 .btn.btn-teal {
-	@apply bg-teal-200 text-sky-950;
-
-	&:not(:disabled) {
-		@apply hover:bg-teal-300;
-	}
+	@apply bg-teal-200 text-sky-950 dark:bg-teal-400/80 dark:text-sky-950;
 }
 
 .btn.btn-red {
-	@apply bg-red-400 text-neutral-50;
-
-	&:not(:disabled) {
-		@apply hover:bg-red-500;
-	}
+	@apply bg-red-400 text-neutral-50 dark:bg-red-400/70 dark:text-neutral-300;
 }

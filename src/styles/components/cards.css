@@ -1,9 +1,9 @@
 .card {
-	@apply size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-xl p-1;
+	@apply size-full aspect-[2/3] bg-neutral-50 border border-neutral-200 rounded-xl shadow-xl p-1 dark:bg-slate-900 dark:border-slate-700;
 }
 
 .card-inner {
-	@apply size-full relative flex items-center justify-center bg-cover border border-neutral-200 rounded-lg overflow-x-hidden overflow-y-auto;
+	@apply relative flex items-center justify-center size-full border border-neutral-200 bg-cover rounded-lg overflow-x-hidden overflow-y-auto dark:bg-slate-900 dark:border-slate-700;
 }
 
 .card-body {

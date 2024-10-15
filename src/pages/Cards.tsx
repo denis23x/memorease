@@ -43,8 +43,6 @@ const Cards: React.FC = () => {
 	const navigate = useNavigate();
 	const { deckUid } = useParams<{ deckUid: string }>();
 	const { decks, cards } = useStore();
-	const [deleteDeckModal, setDeleteDeckModal] = useState<boolean>(false);
-	const [createCardModal, setCreateCardModal] = useState<boolean>(false);
 	const [deck, setDeck] = useState<DeckType | null>(null);
 	const [deckCards, setDeckCards] = useState<CardType[]>([]);
 	const [joyride, setJoyride] = useState<boolean>(false);
@@ -85,16 +83,7 @@ const Cards: React.FC = () => {
 						<span className={'heading heading-teal'}>{deck?.name}</span>
 					</div>
 					<div className={'flex items-center gap-4'}>
-						<button
-							id={'joyride-deck-delete'}
-							className={'btn btn-dark btn-icon size-12'}
-							type={'button'}
-							onClick={() => setDeleteDeckModal(true)}
-							aria-label={'Delete Deck'}
-							title={'Delete Deck'}
-						>
-							<Icon name={'trash-fill'} width={24} height={24}></Icon>
-						</button>
+						<DeleteDeck></DeleteDeck>
 						{deckCards.length ? (
 							<Link
 								id={'joyride-deck-study'}
@@ -112,20 +101,7 @@ const Cards: React.FC = () => {
 				</header>
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4'}>
 					<li className={'col-span-1'}>
-						<div className={'card'}>
-							<div className={'card-inner bg-pattern-2-3-neutral'}>
-								<button
-									id={'joyride-card-create'}
-									className={'btn btn-dark btn-icon size-12'}
-									type={'button'}
-									aria-label={'Create Card'}
-									title={'Create Card'}
-									onClick={() => setCreateCardModal(true)}
-								>
-									<Icon name={'plus'} width={40} height={40}></Icon>
-								</button>
-							</div>
-						</div>
+						<CreateCard></CreateCard>
 					</li>
 					{deckCards.map((card: CardType, index: number) => (
 						<li id={index === 0 ? 'joyride-card' : card.uid} className={'col-span-1'} key={card.uid}>
@@ -134,8 +110,6 @@ const Cards: React.FC = () => {
 					))}
 				</ul>
 			</div>
-			<CreateCard createCardModal={createCardModal} setCreateCardModal={setCreateCardModal}></CreateCard>
-			<DeleteDeck deleteDeckModal={deleteDeckModal} setDeleteDeckModal={setDeleteDeckModal}></DeleteDeck>
 		</section>
 	);
 };
