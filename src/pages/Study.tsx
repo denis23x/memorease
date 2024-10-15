@@ -61,7 +61,7 @@ const Study: React.FC = () => {
 				}
 			}
 		}
-	}, [deckUid, decks, cards, navigate]);
+	}, [deckUid, decks, cards, navigate]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		if (!activeCardFlip) {
@@ -75,7 +75,7 @@ const Study: React.FC = () => {
 		}
 
 		return () => clearInterval(intervalRef.current!);
-	}, [timeLeft]);
+	}, [timeLeft, activeCardFlip]);
 
 	const handleScore = (score: boolean) => {
 		setActiveCardFlip(false);

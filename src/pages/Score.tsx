@@ -18,24 +18,24 @@ const Score: React.FC = () => {
 			navigate('/decks');
 		}
 
+		const handleScore = () => {
+			let trueCount: number = 0;
+			let falseCount: number = 0;
+
+			for (const score of scores) {
+				if (score.score) {
+					trueCount++;
+				} else {
+					falseCount++;
+				}
+			}
+
+			setCorrect(trueCount);
+			setSuccess(trueCount > falseCount && trueCount - falseCount > Math.abs(Math.round(scores.length / 3)));
+		};
+
 		handleScore();
 	}, [scores, navigate]);
-
-	const handleScore = () => {
-		let trueCount: number = 0;
-		let falseCount: number = 0;
-
-		for (const score of scores) {
-			if (score.score) {
-				trueCount++;
-			} else {
-				falseCount++;
-			}
-		}
-
-		setCorrect(trueCount);
-		setSuccess(trueCount > falseCount && trueCount - falseCount > Math.abs(Math.round(scores.length / 3)));
-	};
 
 	return (
 		<section className={'overflow-hidden p-4'}>

@@ -31,20 +31,8 @@ const CreateDeck: React.FC = () => {
 
 	return (
 		<>
-			<div className={`deck`}>
-				<div className={`deck-inner`}>
-					<img
-						className={'block dark:hidden absolute size-full inset-0'}
-						src={'/assets/images/pattern-2-3-neutral.png'}
-						loading={'eager'}
-						alt={'Create Deck'}
-					/>
-					<img
-						className={'hidden dark:block absolute size-full inset-0'}
-						src={'/assets/images/pattern-2-3-slate.png'}
-						loading={'eager'}
-						alt={'Create Deck'}
-					/>
+			<div className={'deck'}>
+				<div className={'deck-inner bg-pattern-2-3-neutral dark:bg-pattern-2-3-slate'}>
 					<button
 						id={'joyride-deck-create'}
 						className={'btn btn-dark btn-icon size-12 z-10'}

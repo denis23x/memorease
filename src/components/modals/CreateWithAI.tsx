@@ -67,20 +67,8 @@ const CreateWithAI: React.FC = () => {
 
 	return (
 		<>
-			<div className={`deck`}>
-				<div className={`deck-inner`}>
-					<img
-						className={'block dark:hidden absolute size-full inset-0'}
-						src={'/assets/images/pattern-2-3-neutral.png'}
-						loading={'eager'}
-						alt={'Create with AI'}
-					/>
-					<img
-						className={'hidden dark:block absolute size-full inset-0'}
-						src={'/assets/images/pattern-2-3-slate.png'}
-						loading={'eager'}
-						alt={'Create with AI'}
-					/>
+			<div className={'deck'}>
+				<div className={'deck-inner bg-pattern-2-3-neutral dark:bg-pattern-2-3-slate'}>
 					<button
 						id={'joyride-deck-ai'}
 						className={'btn btn-dark btn-icon size-12 z-10'}
@@ -125,7 +113,7 @@ const CreateWithAI: React.FC = () => {
 							>
 								{formState.isSubmitSuccessful ? (
 									<div className={'animate-spin'}>
-										<Icon name={'arrow-right-short'} width={40} height={40}></Icon>
+										<Icon name={'asterisk'} width={24} height={24}></Icon>
 									</div>
 								) : (
 									<Icon name={'arrow-right-short'} width={40} height={40}></Icon>

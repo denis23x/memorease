@@ -41,10 +41,10 @@ const Home: React.FC = () => {
 					<div className={'flex flex-col gap-4 self-start md:text-left p-4'}>
 						<span className={'heading text-sky-950 dark:text-neutral-300 px-0'}>Want to know more?</span>
 						<div className={'flex items-center gap-4'}>
-							<Link className={'btn btn-dark px-4'} to={'/decks'} aria-label={'Decks'} title={'Decks'}>
+							<Link className={'btn btn-dark text-2xl py-2 px-4'} to={'/decks'} aria-label={'Decks'} title={'Decks'}>
 								Browse
 							</Link>
-							<Link className={'btn btn-teal px-4'} to={'/about'} aria-label={'About'} title={'About'}>
+							<Link className={'btn btn-teal text-2xl py-2 px-4'} to={'/about'} aria-label={'About'} title={'About'}>
 								How to Use
 							</Link>
 						</div>

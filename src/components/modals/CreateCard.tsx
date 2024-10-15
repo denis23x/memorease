@@ -34,19 +34,7 @@ const CreateCard: React.FC = () => {
 	return (
 		<>
 			<div className={'card'}>
-				<div className={'card-inner'}>
-					<img
-						className={'block dark:hidden absolute size-full inset-0'}
-						src={'/assets/images/pattern-2-3-neutral.png'}
-						loading={'eager'}
-						alt={'Create Card'}
-					/>
-					<img
-						className={'hidden dark:block absolute size-full inset-0'}
-						src={'/assets/images/pattern-2-3-slate.png'}
-						loading={'eager'}
-						alt={'Create Card'}
-					/>
+				<div className={'card-inner bg-pattern-2-3-neutral dark:bg-pattern-2-3-slate'}>
 					<button
 						id={'joyride-card-create'}
 						className={'btn btn-dark btn-icon size-12 z-10'}
