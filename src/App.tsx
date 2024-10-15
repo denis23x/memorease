@@ -12,7 +12,6 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Bounce, ToastContainer } from 'react-toastify';
-import bg from './assets/images/bg.png';
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -26,7 +25,7 @@ const App: React.FC = () => {
 	}
 
 	return (
-		<div className={'bg-repeat'} style={{ backgroundImage: `url(${bg})` }}>
+		<div className={'bg-repeat bg-pattern-12-9-neutral'}>
 			<div className={'grid grid-rows-layout min-h-dvh min-w-dvw overflow-hidden'}>
 				<Header />
 				<Routes>

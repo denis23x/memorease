@@ -23,7 +23,7 @@ const CreateCard: React.FC<CreateCardProps> = ({ createCardModal, setCreateCardM
 
 	useEffect(() => {
 		reset();
-	}, [createCardModal]);
+	}, [createCardModal, reset]);
 
 	const handleCreateCard = (data: any) => {
 		if (deckUid) {

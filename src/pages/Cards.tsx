@@ -8,7 +8,6 @@ import type { Card as CardType } from '../models/Card';
 import Card from '../components/Card';
 import { joyRideCallback } from '../services/Helper';
 import { useNavigate } from 'react-router-dom';
-import bgNeutral from '../assets/images/bg-neutral.png';
 import Joyride, { Step } from 'react-joyride';
 import { JOYRIDE_CARDS } from '../keys/Joyride';
 import Tooltip from '../components/Tooltip';
@@ -43,7 +42,7 @@ const steps: Step[] = [
 const Cards: React.FC = () => {
 	const navigate = useNavigate();
 	const { deckUid } = useParams<{ deckUid: string }>();
-	const { decks, cards, deleteDeck, createCard } = useStore();
+	const { decks, cards } = useStore();
 	const [deleteDeckModal, setDeleteDeckModal] = useState<boolean>(false);
 	const [createCardModal, setCreateCardModal] = useState<boolean>(false);
 	const [deck, setDeck] = useState<DeckType | null>(null);
@@ -114,7 +113,7 @@ const Cards: React.FC = () => {
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4'}>
 					<li className={'col-span-1'}>
 						<div className={'card'}>
-							<div className={'card-inner'} style={{ backgroundImage: `url(${bgNeutral})` }}>
+							<div className={'card-inner bg-pattern-2-3-neutral'}>
 								<button
 									id={'joyride-card-create'}
 									className={'btn btn-dark btn-icon size-12'}

@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-import bgTeal from '../assets/images/bg-teal.png';
 import { Link } from 'react-router-dom';
 import type { Deck as DeckType } from '../models/Deck';
 import type { Card as CardType } from '../models/Card';
@@ -24,7 +23,7 @@ const Deck: React.FC<DeckProps> = ({ deck }: DeckProps) => {
 	return (
 		<div className={`deck`}>
 			<Link to={deckCards.length ? `/study/${deck.uid}` : deck.uid} aria-label={deck.name} title={deck.name}>
-				<div className={`deck-inner`} style={{ backgroundImage: `url(${bgTeal})` }}>
+				<div className={`deck-inner bg-pattern-2-3-teal`}>
 					<p className={'deck-body'}>
 						<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>
 							{deck.name} <span className={'text-sm text-sky-950/50'}>({deckCards.length})</span>

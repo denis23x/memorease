@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cat from '../assets/images/cat.png';
 import Icon from '../components/Icon';
 
 const NotFound: React.FC = () => {
@@ -19,7 +18,13 @@ const NotFound: React.FC = () => {
 				</header>
 				<div className={'flex items-center justify-center'}>
 					<Link to={'/'} aria-label={'Home'} title={'Home'}>
-						<img src={cat} alt={'Cat'} className={'w-96 h-96 object-cover'} width={384} height={384} />
+						<img
+							src={'/assets/images/cat.png'}
+							alt={'Cat'}
+							className={'w-96 h-96 object-cover'}
+							width={384}
+							height={384}
+						/>
 					</Link>
 				</div>
 			</div>

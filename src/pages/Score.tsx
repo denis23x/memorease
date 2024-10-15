@@ -89,10 +89,10 @@ const Score: React.FC = () => {
 									<td className={'text-left py-2 px-4'}>
 										<div className={'flex flex-col gap-1'}>
 											<span className={'text-base text-sky-950'}>
-												<span className={'font-bold'}>Q</span>: {score.question}
+												<span className={'font-bold'}>Q:</span> {score.question}
 											</span>
 											<span className={'text-base text-sky-950'}>
-												<span className={'font-bold'}>A</span>: {score.answer}
+												<span className={'font-bold'}>A:</span> {score.answer}
 											</span>
 										</div>
 									</td>

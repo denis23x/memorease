@@ -5,7 +5,6 @@ import { useStore } from '../store/Store';
 import type { Deck as DeckType } from '../models/Deck';
 import Deck from '../components/Deck';
 import { joyRideCallback } from '../services/Helper';
-import bgNeutral from '../assets/images/bg-neutral.png';
 import { Link } from 'react-router-dom';
 import Joyride, { Step } from 'react-joyride';
 import Tooltip from '../components/Tooltip';
@@ -84,7 +83,7 @@ const Decks: React.FC = () => {
 				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4'}>
 					<li className={`col-span-1 rounded-3xl shadow-xl`}>
 						<div className={`deck`}>
-							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+							<div className={`deck-inner bg-pattern-2-3-neutral`}>
 								<button
 									id={'joyride-deck-ai'}
 									className={'btn btn-dark btn-icon size-12'}
@@ -100,7 +99,7 @@ const Decks: React.FC = () => {
 					</li>
 					<li className={`col-span-1 rounded-3xl shadow-xl`}>
 						<div className={`deck`}>
-							<div className={`deck-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+							<div className={`deck-inner bg-pattern-2-3-neutral`}>
 								<button
 									id={'joyride-deck-create'}
 									className={'btn btn-dark btn-icon size-12'}

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  darkMode: 'selector',
   content: [
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
@@ -12,6 +13,12 @@ module.exports = {
       colors: {
         white: '#fff',
         black: '#000',
+      },
+      backgroundImage: {
+        'pattern-12-9-neutral': "url('/public/assets/images/pattern-12-9-neutral.png')",
+        'pattern-2-3-neutral': "url('/public/assets/images/pattern-2-3-neutral.png')",
+        'pattern-2-3-red': "url('/public/assets/images/pattern-2-3-red.png')",
+        'pattern-2-3-teal': "url('/public/assets/images/pattern-2-3-teal.png')"
       },
       gridTemplateRows: {
         'layout': 'auto 1fr auto'

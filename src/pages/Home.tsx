@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import girl from '../assets/images/girl.png';
 
 const Home: React.FC = () => {
 	const highlights: string[] = [
@@ -52,7 +51,13 @@ const Home: React.FC = () => {
 					</div>
 				</div>
 				<div className={'block'}>
-					<img src={girl} alt={'Memorease'} className={'w-96 h-96 object-cover animate-fly'} width={384} height={384} />
+					<img
+						src={'/assets/images/girl.png'}
+						alt={'Memorease'}
+						className={'w-96 h-96 object-cover animate-fly'}
+						width={384}
+						height={384}
+					/>
 				</div>
 			</div>
 		</section>

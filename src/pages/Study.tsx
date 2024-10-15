@@ -6,9 +6,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { formatMilliseconds, joyRideCallback } from '../services/Helper';
 import type { Card as CardType } from '../models/Card';
 import type { Deck as DeckType } from '../models/Deck';
-import bgRed from '../assets/images/bg-red.png';
-import bgTeal from '../assets/images/bg-teal.png';
-import bgNeutral from '../assets/images/bg-neutral.png';
 import Joyride, { Step } from 'react-joyride';
 import Tooltip from '../components/Tooltip';
 import { JOYRIDE_STUDY } from '../keys/Joyride';
@@ -138,7 +135,7 @@ const Study: React.FC = () => {
 				<div className={'flex items-start justify-center w-full'}>
 					<ul id={'joyride-study-card'} className={'relative w-60 aspect-[2/3]'}>
 						<li className={`study-card w-52 z-0 absolute top-4 -rotate-12 left-1/3 -translate-x-2/3`}>
-							<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgTeal})` }}></div>
+							<div className={`study-card-inner bg-pattern-2-3-teal`}></div>
 						</li>
 						{studyCards.map((card: CardType, index: number) => (
 							<li className={'relative'} key={card.uid}>
@@ -147,7 +144,7 @@ const Study: React.FC = () => {
 										<div className={'animate-flip-inner'}>
 											<div className={'animate-flip-front'}>
 												<div className={`study-card w-60 cursor-pointer`} onClick={handleFlip}>
-													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+													<div className={`study-card-inner bg-pattern-2-3-neutral`}>
 														<button
 															type={'button'}
 															className={'btn btn-dark btn-icon size-12 pointer-events-none absolute left-8 top-8'}
@@ -171,7 +168,7 @@ const Study: React.FC = () => {
 											</div>
 											<div className={'animate-flip-back'}>
 												<div className={`study-card w-60`}>
-													<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgNeutral})` }}>
+													<div className={`study-card-inner bg-pattern-2-3-neutral`}>
 														<button
 															type={'button'}
 															className={'btn btn-dark btn-icon size-12 pointer-events-none absolute left-8 top-8'}
@@ -216,7 +213,7 @@ const Study: React.FC = () => {
 							</li>
 						))}
 						<li className={`study-card w-52 z-0 absolute top-4 rotate-12 left-2/3 -translate-x-1/3`}>
-							<div className={`study-card-inner`} style={{ backgroundImage: `url(${bgRed})` }}></div>
+							<div className={`study-card-inner bg-pattern-2-3-red`}></div>
 						</li>
 					</ul>
 				</div>

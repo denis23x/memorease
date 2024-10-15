@@ -1,8 +1,6 @@
 /** @format */
 
 import React, { useState } from 'react';
-import bgRed from '../assets/images/bg-red.png';
-import bgNeutral from '../assets/images/bg-neutral.png';
 import type { Card as CardType } from '../models/Card';
 import { useStore } from '../store/Store';
 import { toast } from 'react-toastify';
@@ -25,7 +23,7 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 			<div className={`animate-flip-inner`}>
 				<div className={`animate-flip-front`}>
 					<div className={'card cursor-pointer'}>
-						<div className={'card-inner'} style={{ backgroundImage: `url(${bgRed})` }}>
+						<div className={'card-inner bg-pattern-2-3-red'}>
 							<p className={'card-body'}>
 								<span className={'text-base font-bold bg-neutral-50 text-sky-950'}>{card.question}</span>
 							</p>
@@ -34,7 +32,7 @@ const Card: React.FC<CardProps> = ({ card }: CardProps) => {
 				</div>
 				<div className={`animate-flip-back`}>
 					<div className={'card'}>
-						<div className={'card-inner'} style={{ backgroundImage: `url(${bgNeutral})` }}>
+						<div className={'card-inner bg-pattern-2-3-neutral'}>
 							<p className={'card-body'}>
 								<span className={'font-normal bg-neutral-50 text-sky-950'}>{card.answer}</span>
 							</p>
