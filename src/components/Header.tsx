@@ -58,7 +58,13 @@ const Header: React.FC = () => {
 							aria-label={'Ko-fi'}
 							title={'Ko-fi'}
 						>
-							<img src={'/assets/logos/ko-fi.png'} alt={'Ko-fi'} className={'size-12'} width={48} height={48} />
+							<img
+								src={'/assets/logos/ko-fi.png'}
+								alt={'Ko-fi'}
+								className={'size-12 dark:opacity-80'}
+								width={48}
+								height={48}
+							/>
 						</a>
 					</li>
 					<li className={'block'}>
@@ -69,7 +75,20 @@ const Header: React.FC = () => {
 							aria-label={'Github'}
 							title={'Github'}
 						>
-							<img src={'/assets/logos/github.png'} alt={'Github'} className={'size-12'} width={48} height={48} />
+							<img
+								src={'/assets/logos/github.png'}
+								alt={'Github'}
+								className={'block dark:hidden size-12'}
+								width={48}
+								height={48}
+							/>
+							<img
+								src={'/assets/logos/github-mark-white.png'}
+								alt={'Github'}
+								className={'hidden dark:block size-12 opacity-80'}
+								width={48}
+								height={48}
+							/>
 						</a>
 					</li>
 				</ul>

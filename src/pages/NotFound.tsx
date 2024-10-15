@@ -21,7 +21,7 @@ const NotFound: React.FC = () => {
 						<img
 							src={'/assets/images/cat.png'}
 							alt={'Cat'}
-							className={'w-96 h-96 object-cover'}
+							className={'w-96 h-96 object-cover dark:opacity-80'}
 							width={384}
 							height={384}
 						/>
