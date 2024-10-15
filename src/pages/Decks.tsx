@@ -54,11 +54,7 @@ const Decks: React.FC = () => {
 	return (
 		<section className={'overflow-hidden pt-4 px-4 pb-8'}>
 			<Joyride
-				styles={{
-					options: {
-						arrowColor: 'currentColor'
-					}
-				}}
+				styles={{ options: { arrowColor: 'currentColor' } }}
 				run={joyride}
 				continuous
 				showSkipButton
