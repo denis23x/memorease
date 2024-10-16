@@ -27,15 +27,18 @@ const App: React.FC = () => {
 		<div className={'bg-no-repeat bg-cover bg-pattern-12-9-neutral dark:bg-pattern-12-9-slate'}>
 			<div className={'grid grid-rows-layout min-h-dvh min-w-dvw overflow-hidden'}>
 				<Header />
-				<Routes>
-					<Route path={'/'} element={<Home />} />
-					<Route path={'/decks'} element={<Decks />} />
-					<Route path={'/decks/:deckUid'} element={<Cards />} />
-					<Route path={'/study/:deckUid'} element={<Study />} />
-					<Route path={'/score'} element={<Score />} />
-					<Route path={'/about'} element={<About />} />
-					<Route path={'*'} element={<NotFound />} />
-				</Routes>
+				<div className={'w-full max-w-screen-lg mx-auto'}>
+					<Routes>
+						<Route path={'/'} element={<Home />} />
+						<Route path={'/decks'} element={<Decks />} />
+						<Route path={'/decks/:deckUid'} element={<Cards />} />
+						<Route path={'/study/:deckUid'} element={<Study />} />
+						<Route path={'/score'} element={<Score />} />
+						<Route path={'/about'} element={<About />} />
+						<Route path={'*'} element={<NotFound />} />
+					</Routes>
+				</div>
+
 				<Footer />
 			</div>
 			<ToastContainer

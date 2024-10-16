@@ -30,7 +30,8 @@ const CreateWithAI: React.FC = () => {
 			history: []
 		});
 		const chatMessage: string[] = [
-			`generate a ${data.count} questions about '${data.name}'`,
+			`generate a ${data.count} questions about '${data.name}' topic`,
+			'generate questions in same language as topic language',
 			'question should be no longer than 40 characters',
 			'answer should be no longer than 60 characters, add emojis in answer',
 			'generate output as CSV format (comma-separated value)',

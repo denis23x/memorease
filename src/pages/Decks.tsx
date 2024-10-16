@@ -79,7 +79,7 @@ const Decks: React.FC = () => {
 						placeholder={'Your search begins here'}
 					/>
 				</header>
-				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4'}>
+				<ul className={'grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4'}>
 					<li className={`col-span-1 rounded-3xl shadow-xl`}>
 						<CreateWithAI></CreateWithAI>
 					</li>
