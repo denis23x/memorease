@@ -14,7 +14,11 @@ import { generationConfig, model } from '../../services/Gemini';
 import type { Card as CardType } from '../../models/Card';
 import Icon from '../Icon';
 
-const CreateWithAI: React.FC = () => {
+interface CreateWithAIProps {
+	template?: string;
+}
+
+const CreateWithAI: React.FC<CreateWithAIProps> = ({ template }: CreateWithAIProps) => {
 	const navigate = useNavigate();
 	const { createDeck, createCard } = useStore();
 	const { register, formState, reset, watch, handleSubmit } = useForm();
@@ -58,7 +62,7 @@ const CreateWithAI: React.FC = () => {
 						.map(async (card: CardType) => createCard(card));
 
 					await Promise.all(cardsPromise)
-						.then(() => navigate(deck.uid))
+						.then(() => navigate(`/decks/${deck.uid}`))
 						.then(() => toast.info('Deck has been created'));
 				});
 			})
@@ -68,20 +72,37 @@ const CreateWithAI: React.FC = () => {
 
 	return (
 		<>
-			<div className={'deck'}>
-				<div className={'deck-inner bg-pattern-2-3-neutral dark:bg-pattern-2-3-slate'}>
-					<button
-						id={'joyride-deck-ai'}
-						className={'btn btn-dark btn-icon size-12 z-10'}
-						type={'button'}
-						aria-label={'Create with AI'}
-						title={'Create with AI'}
-						onClick={() => setIsOpen(true)}
-					>
-						<Icon name={'cpu-fill'} width={24} height={24}></Icon>
-					</button>
+			{template ? (
+				<button
+					className={'btn btn-red text-2xl py-2 px-4'}
+					type={'button'}
+					aria-label={'Create with AI'}
+					title={'Create with AI'}
+					onClick={() => setIsOpen(true)}
+				>
+					Ask AI
+				</button>
+			) : (
+				<div className={'deck'}>
+					<div className={'deck-inner bg-pattern-2-3-neutral dark:bg-pattern-2-3-slate relative'}>
+						<div className={`absolute top-0 right-1/2 px-2 bg-red-400 dark:bg-red-400/70 translate-x-1/2 rounded-b-xl`}>
+							<span className={'text-base font-bold text-neutral-50 dark:text-neutral-300 whitespace-nowrap'}>
+								Ask AI
+							</span>
+						</div>
+						<button
+							id={'joyride-deck-ai'}
+							className={'btn btn-dark btn-icon size-12 z-10'}
+							type={'button'}
+							aria-label={'Create with AI'}
+							title={'Create with AI'}
+							onClick={() => setIsOpen(true)}
+						>
+							<Icon name={'cpu-fill'} width={24} height={24}></Icon>
+						</button>
+					</div>
 				</div>
-			</div>
+			)}
 			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
 				<div className={'flex flex-col gap-4'}>
 					<header className={'flex items-center justify-between gap-4'}>

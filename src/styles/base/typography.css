@@ -1,5 +1,5 @@
 .heading {
-	@apply text-2xl font-bold truncate py-2 px-4
+	@apply text-2xl font-bold truncate py-2 px-4;
 }
 
 .heading.heading-teal {

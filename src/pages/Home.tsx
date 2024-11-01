@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CreateWithAI from '../components/modals/CreateWithAI';
 
 const Home: React.FC = () => {
 	const highlights: string[] = [
@@ -40,13 +41,14 @@ const Home: React.FC = () => {
 					</ul>
 					<div className={'flex flex-col gap-4 self-start md:text-left p-4'}>
 						<span className={'heading text-sky-950 dark:text-neutral-300 px-0'}>Want to know more?</span>
-						<div className={'flex items-center gap-4'}>
+						<div className={'flex flex-wrap items-center gap-4'}>
 							<Link className={'btn btn-dark text-2xl py-2 px-4'} to={'/decks'} aria-label={'Decks'} title={'Decks'}>
 								Browse
 							</Link>
 							<Link className={'btn btn-teal text-2xl py-2 px-4'} to={'/about'} aria-label={'About'} title={'About'}>
-								How to Use
+								About
 							</Link>
+							<CreateWithAI template={'button'}></CreateWithAI>
 						</div>
 					</div>
 				</div>
