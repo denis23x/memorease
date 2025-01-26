@@ -40,8 +40,8 @@ const CreateWithAI: React.FC<CreateWithAIProps> = ({ template }: CreateWithAIPro
 			'answer should be no longer than 60 characters, add emojis in answer',
 			'generate output as CSV format (comma-separated value)',
 			'use a semicolon character (;) as the delimiter',
+			'do not include ``` in your answer, only pairs of values',
 			'example:',
-			'question;answer',
 			"Who are you?;I'm AI",
 			'What is your name?;Gemini'
 		];
@@ -57,7 +57,6 @@ const CreateWithAI: React.FC<CreateWithAIProps> = ({ template }: CreateWithAIPro
 				createDeck(deck).then(async (deck: DeckType) => {
 					const cardsPromise: Promise<CardType>[] = cards
 						.filter((card: Partial<CardType>) => card.answer !== '' && card.question !== '')
-						.filter((card: Partial<CardType>) => card.answer?.toLowerCase() !== 'answer' && card.question?.toLowerCase() !== 'question')
 						.map((card: Partial<CardType>) => ({ uid: nanoid(), timestamp: dayjs().unix(), deckUid: deck.uid, ...card } as CardType))
 						.map(async (card: CardType) => createCard(card));
 
